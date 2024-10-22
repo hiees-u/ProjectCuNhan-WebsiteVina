@@ -1,0 +1,32 @@
+Hiếu:
+ - Đăng nhập, đăng xuất, đổi mật khẩu
+ - Khách hàng:
+	+ Tra cứu sản phẩm, Loại sản phẩm, 
+	+ Đặt hàng, thanh toán, hủy hàng
+ - Quản trị người dùng
+ - Quản lý danh mục:
+	- Loại hàng,
+	- Mặt hàng,
+	- Khách hàng,
+	- Nhà Sản xuất,
+	- Loai khách hàng, 
+	- Nhân viên, 
+	- phòng ban
+ - Thiết kế, cài đặt cơ sở dữ liệu.
+
+Vinh:
+ - Nhân viên: 
+      + Xử lý đơn hàng, xuất hóa đơn
+      + Nhập kho, 
+      + Xuất kho
+ - Chức năng chatbox giao tiếp với khách hàng.
+ - Quản lý kho: cảnh báo sản phẩm sắp hết hạn sử dụng,
+quản lý vị trí lưu trữ sản phẩm trên ngăn kệ
+ - Khảo sát, phân tích, thiết kế hệ thống.
+
+Thịnh:
+ - Thống kê số lượng bán theo ngày, tuần của từng loại
+mặt hàng
+ - Thống kê loại khách hàng tiêu thụ 
+ - Thống kê số lượng khách hàng mới/cũ theo từng năm
+ - Khảo sát, phân tích, thiết kế hệ thống.
