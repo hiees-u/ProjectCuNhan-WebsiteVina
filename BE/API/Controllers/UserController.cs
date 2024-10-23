@@ -56,7 +56,13 @@ namespace API.Controllers
             {
                 return Ok(res);
             }
-            return BadRequest(res;
+            return BadRequest(res);
+        }
+
+        [HttpPost("LogOut")]
+        public IActionResult LogOut()
+        {
+            return Ok(userBll.LogOut());
         }
     }
 }

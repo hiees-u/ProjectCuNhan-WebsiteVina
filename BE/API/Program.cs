@@ -17,6 +17,8 @@ builder.Services.AddDbContext<DbVINA>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DbVINA"))
 );
 
+//CORS
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

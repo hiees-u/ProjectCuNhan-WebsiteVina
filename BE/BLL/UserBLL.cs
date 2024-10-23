@@ -125,5 +125,17 @@ namespace BLL
                 };
             }
         }
+
+        //Đăng xuất
+        public BaseResponseModel LogOut()
+        {
+            ConnectionStringHelper.Reset();
+            return new BaseResponseModel()
+            {
+                IsSuccess = true,
+                Message = "Đăng Xuất Thành Công!!"
+            };
+        }
+
     }
 }
