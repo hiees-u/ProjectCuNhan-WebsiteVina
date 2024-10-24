@@ -2,10 +2,8 @@ import { Routes } from '@angular/router';
 
 import { LoginComponent } from './auth/login/login.component';
 import { RegistreComponent } from './auth/registre/registre.component';
-import { ViewProductsComponent } from './customer/view-products/view-products.component';
-import { OrderProductsComponent } from './customer/order-products/order-products.component';
-import { ApproveOrdersComponent } from './employee/approve-orders/approve-orders.component';
-import { ManageInventoryComponent } from './employee/manage-inventory/manage-inventory.component';
+import { CustomerDashboardComponent } from './customer/customer-dashboard/customer-dashboard.component';
+import { EmployeeDashboardComponent } from './employee/employee-dashboard/employee-dashboard.component';
 
 export const routes: Routes = [
   {
@@ -17,11 +15,14 @@ export const routes: Routes = [
     component: RegistreComponent,
   },
   {
-    path: 'view-products',
-    component: ViewProductsComponent,
+    path: 'customer', component: CustomerDashboardComponent,
   },
   {
-    path: 'order-products',
-    component: OrderProductsComponent,
+    path: 'employee', component: EmployeeDashboardComponent,
   },
+  {
+    path: '',
+    redirectTo: '/login',
+    pathMatch: 'full'
+  }
 ];

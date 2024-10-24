@@ -1,11 +1,12 @@
 ﻿using BLL;
+using BLL.Interface;
 using DLL.Models;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddScoped<UserBLL>();
+builder.Services.AddScoped<IUser, UserBLL>();
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

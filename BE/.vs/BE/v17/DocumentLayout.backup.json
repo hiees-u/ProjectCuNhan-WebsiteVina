@@ -3,32 +3,28 @@
   "WorkspaceRootPath": "C:\\Users\\ADMIN\\Desktop\\DoAnWebsiteCaffeeVINA_MAIN\\BE\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{1D0D98A9-8C32-4F25-AA4F-2F66D6654FA5}|API\\API.csproj|c:\\users\\admin\\desktop\\doanwebsitecaffeevina_main\\be\\api\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1D0D98A9-8C32-4F25-AA4F-2F66D6654FA5}|API\\API.csproj|solutionrelative:api\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{DE969023-0A53-4B48-B5F6-48BF28880A70}|BLL\\BLL.csproj|c:\\users\\admin\\desktop\\doanwebsitecaffeevina_main\\be\\bll\\userbll.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{DE969023-0A53-4B48-B5F6-48BF28880A70}|BLL\\BLL.csproj|solutionrelative:bll\\userbll.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DE969023-0A53-4B48-B5F6-48BF28880A70}|BLL\\BLL.csproj|c:\\users\\admin\\desktop\\doanwebsitecaffeevina_main\\be\\bll\\connectionstringhelper\\connectionstringhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DE969023-0A53-4B48-B5F6-48BF28880A70}|BLL\\BLL.csproj|solutionrelative:bll\\connectionstringhelper\\connectionstringhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DE969023-0A53-4B48-B5F6-48BF28880A70}|BLL\\BLL.csproj|c:\\users\\admin\\desktop\\doanwebsitecaffeevina_main\\be\\bll\\interface\\iuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DE969023-0A53-4B48-B5F6-48BF28880A70}|BLL\\BLL.csproj|solutionrelative:bll\\interface\\iuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{1D0D98A9-8C32-4F25-AA4F-2F66D6654FA5}|API\\API.csproj|c:\\users\\admin\\desktop\\doanwebsitecaffeevina_main\\be\\api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1D0D98A9-8C32-4F25-AA4F-2F66D6654FA5}|API\\API.csproj|solutionrelative:api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3CABEDD8-6AA0-489D-85F4-0B26DB10AFCB}|DTO\\DTO.csproj|c:\\users\\admin\\desktop\\doanwebsitecaffeevina_main\\be\\dto\\user\\loginchangepassrequestmodule.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3CABEDD8-6AA0-489D-85F4-0B26DB10AFCB}|DTO\\DTO.csproj|solutionrelative:dto\\user\\loginchangepassrequestmodule.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{DE969023-0A53-4B48-B5F6-48BF28880A70}|BLL\\BLL.csproj|c:\\users\\admin\\desktop\\doanwebsitecaffeevina_main\\be\\bll\\connectionstringhelper\\connectionstringhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DE969023-0A53-4B48-B5F6-48BF28880A70}|BLL\\BLL.csproj|solutionrelative:bll\\connectionstringhelper\\connectionstringhelper.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3CABEDD8-6AA0-489D-85F4-0B26DB10AFCB}|DTO\\DTO.csproj|c:\\users\\admin\\desktop\\doanwebsitecaffeevina_main\\be\\dto\\baseresponsemodel\\baseresponsemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3CABEDD8-6AA0-489D-85F4-0B26DB10AFCB}|DTO\\DTO.csproj|solutionrelative:dto\\baseresponsemodel\\baseresponsemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{BDF23658-6A68-4D37-9972-B81B9EAA55B3}|DLL\\DLL.csproj|c:\\users\\admin\\desktop\\doanwebsitecaffeevina_main\\be\\dll\\models\\dbvina.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BDF23658-6A68-4D37-9972-B81B9EAA55B3}|DLL\\DLL.csproj|solutionrelative:dll\\models\\dbvina.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1D0D98A9-8C32-4F25-AA4F-2F66D6654FA5}|API\\API.csproj|c:\\users\\admin\\desktop\\doanwebsitecaffeevina_main\\be\\api\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1D0D98A9-8C32-4F25-AA4F-2F66D6654FA5}|API\\API.csproj|solutionrelative:api\\controllers\\usercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DE969023-0A53-4B48-B5F6-48BF28880A70}|BLL\\BLL.csproj|c:\\users\\admin\\desktop\\doanwebsitecaffeevina_main\\be\\bll\\interface\\iuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DE969023-0A53-4B48-B5F6-48BF28880A70}|BLL\\BLL.csproj|solutionrelative:bll\\interface\\iuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -38,31 +34,30 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "IUser.cs",
               "DocumentMoniker": "C:\\Users\\ADMIN\\Desktop\\DoAnWebsiteCaffeeVINA_MAIN\\BE\\BLL\\Interface\\IUser.cs",
               "RelativeDocumentMoniker": "BLL\\Interface\\IUser.cs",
               "ToolTip": "C:\\Users\\ADMIN\\Desktop\\DoAnWebsiteCaffeeVINA_MAIN\\BE\\BLL\\Interface\\IUser.cs",
               "RelativeToolTip": "BLL\\Interface\\IUser.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAABVAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwA0AAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-22T19:48:42.102Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "UserBLL.cs",
               "DocumentMoniker": "C:\\Users\\ADMIN\\Desktop\\DoAnWebsiteCaffeeVINA_MAIN\\BE\\BLL\\UserBLL.cs",
               "RelativeDocumentMoniker": "BLL\\UserBLL.cs",
               "ToolTip": "C:\\Users\\ADMIN\\Desktop\\DoAnWebsiteCaffeeVINA_MAIN\\BE\\BLL\\UserBLL.cs",
               "RelativeToolTip": "BLL\\UserBLL.cs",
-              "ViewState": "AgIAAFQAAAAAAAAAAAAYwIEAAAAcAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB0AAABCAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-21T17:49:54.484Z",
               "IsPinned": true,
@@ -70,34 +65,17 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 4,
               "Title": "UserController.cs",
               "DocumentMoniker": "C:\\Users\\ADMIN\\Desktop\\DoAnWebsiteCaffeeVINA_MAIN\\BE\\API\\Controllers\\UserController.cs",
               "RelativeDocumentMoniker": "API\\Controllers\\UserController.cs",
-              "ToolTip": "C:\\Users\\ADMIN\\Desktop\\DoAnWebsiteCaffeeVINA_MAIN\\BE\\API\\Controllers\\UserController.cs*",
-              "RelativeToolTip": "API\\Controllers\\UserController.cs*",
-              "ViewState": "AgIAACEAAAAAAAAAAAAYwCoAAAAqAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\ADMIN\\Desktop\\DoAnWebsiteCaffeeVINA_MAIN\\BE\\API\\Controllers\\UserController.cs",
+              "RelativeToolTip": "API\\Controllers\\UserController.cs",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAYwD0AAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-21T17:59:04.732Z",
               "IsPinned": true,
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\ADMIN\\Desktop\\DoAnWebsiteCaffeeVINA_MAIN\\BE\\API\\Program.cs",
-              "RelativeDocumentMoniker": "API\\Program.cs",
-              "ToolTip": "C:\\Users\\ADMIN\\Desktop\\DoAnWebsiteCaffeeVINA_MAIN\\BE\\API\\Program.cs",
-              "RelativeToolTip": "API\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAGAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-22T21:59:20.847Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
             },
             {
               "$type": "Document",
@@ -107,34 +85,40 @@
               "RelativeDocumentMoniker": "BLL\\ConnectionStringHelper\\ConnectionStringHelper.cs",
               "ToolTip": "C:\\Users\\ADMIN\\Desktop\\DoAnWebsiteCaffeeVINA_MAIN\\BE\\BLL\\ConnectionStringHelper\\ConnectionStringHelper.cs",
               "RelativeToolTip": "BLL\\ConnectionStringHelper\\ConnectionStringHelper.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-21T19:03:27.683Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "DBVINA.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Desktop\\DoAnWebsiteCaffeeVINA_MAIN\\BE\\DLL\\Models\\DBVINA.cs",
+              "RelativeDocumentMoniker": "DLL\\Models\\DBVINA.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\Desktop\\DoAnWebsiteCaffeeVINA_MAIN\\BE\\DLL\\Models\\DBVINA.cs",
+              "RelativeToolTip": "DLL\\Models\\DBVINA.cs",
+              "ViewState": "AgIAAD8AAAAAAAAAAIA1wE4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-24T01:28:45.201Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "BaseResponseModel.cs",
-              "DocumentMoniker": "C:\\Users\\ADMIN\\Desktop\\DoAnWebsiteCaffeeVINA_MAIN\\BE\\DTO\\BaseResponseModel\\BaseResponseModel.cs",
-              "RelativeDocumentMoniker": "DTO\\BaseResponseModel\\BaseResponseModel.cs",
-              "ToolTip": "C:\\Users\\ADMIN\\Desktop\\DoAnWebsiteCaffeeVINA_MAIN\\BE\\DTO\\BaseResponseModel\\BaseResponseModel.cs",
-              "RelativeToolTip": "DTO\\BaseResponseModel\\BaseResponseModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAABCAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Desktop\\DoAnWebsiteCaffeeVINA_MAIN\\BE\\API\\Program.cs",
+              "RelativeDocumentMoniker": "API\\Program.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\Desktop\\DoAnWebsiteCaffeeVINA_MAIN\\BE\\API\\Program.cs",
+              "RelativeToolTip": "API\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-21T18:48:06.555Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "LoginChangePassRequestModule.cs",
-              "DocumentMoniker": "C:\\Users\\ADMIN\\Desktop\\DoAnWebsiteCaffeeVINA_MAIN\\BE\\DTO\\User\\LoginChangePassRequestModule.cs",
-              "RelativeDocumentMoniker": "DTO\\User\\LoginChangePassRequestModule.cs",
-              "ToolTip": "C:\\Users\\ADMIN\\Desktop\\DoAnWebsiteCaffeeVINA_MAIN\\BE\\DTO\\User\\LoginChangePassRequestModule.cs",
-              "RelativeToolTip": "DTO\\User\\LoginChangePassRequestModule.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACAAAAAUAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-21T18:47:39.642Z",
+              "WhenOpened": "2024-10-22T21:59:20.847Z",
               "EditorCaption": ""
             }
           ]

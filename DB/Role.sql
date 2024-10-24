@@ -1,5 +1,6 @@
 ﻿go
 
+--Register
 CREATE PROCEDURE CreateCustomer
     @AccountName NVARCHAR(50),
     @Password NVARCHAR(50)
@@ -112,3 +113,5 @@ GRANT EXECUTE ON dbo.GetRoleByUserName TO Customer;
 select * from  Users
 
 SELECT 1 FROM sys.server_principals WHERE name = 'string'
+
+select * from EmployeeType

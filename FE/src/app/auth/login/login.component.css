@@ -1,0 +1,8 @@
+.container {
+    background-image: url(/assets/background/Designer.jpeg);
+    height: 100vh;
+    width: 100vw;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
