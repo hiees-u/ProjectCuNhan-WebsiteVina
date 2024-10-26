@@ -1,3 +1,38 @@
-<div class="container">
-    
+<div class="login-container">
+  <div class="login-content">
+    <h2>Đăng Nhập</h2>
+    <form (ngSubmit)="onLogin()" #loginForm="ngForm">
+      <div class="box-input">
+        <label for="username">Tên đăng nhập:</label>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          required
+          [(ngModel)]="loginData.userName"
+          #username="ngModel"
+        />
+        <div *ngIf="username.invalid && username.touched" class="error">
+          Vui lòng nhập tên đăng nhập
+        </div>
+      </div>
+
+      <div class="box-input">
+        <label for="password">Mật khẩu:</label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          required
+          [(ngModel)]="loginData.passWord"
+          #password="ngModel"
+        />
+        <div *ngIf="password.invalid && password.touched" class="error">
+          Vui lòng nhập mật khẩu
+        </div>
+      </div>
+
+      <button type="submit" [disabled]="loginForm.invalid">Đăng Nhập</button>
+    </form>
+  </div>
 </div>

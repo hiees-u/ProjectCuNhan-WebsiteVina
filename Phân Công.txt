@@ -2,7 +2,7 @@ Hiếu:
  - Đăng nhập, đăng xuất, đổi mật khẩu
  - Khách hàng:
 	+ Tra cứu sản phẩm, Loại sản phẩm, 
-	+ Đặt hàng, thanh toán, hủy hàng
+	+ Đặt hàng, hủy hàng
  - Quản lý danh mục:
 	- Loại hàng,
 	- Mặt hàng,
@@ -25,6 +25,7 @@ quản lý vị trí lưu trữ sản phẩm trên ngăn kệ
 
 Thịnh:
  - Quản trị người dùng
+ - thanh toán
  - Giao hàng (Tìm hiểu API giao hàng..)
  - Thống kê số lượng bán theo ngày, tuần của từng loại
 mặt hàng
