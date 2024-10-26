@@ -17,7 +17,7 @@
 }
 
 .login-content {
-  background-color: #ffffff2b;
+  background-color: #ffffff52;
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
@@ -48,16 +48,25 @@
 button {
   width: 100%;
   padding: 10px;
-  background-color: #007bff;
+  background-color: var(--main-color);
   color: white;
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+}
+
+button:hover {
+  transform: scale(1.05);
+  color: var(--main-color);
+  background-color: darken(var(--main-color), 10%);
 }
 
 button:disabled {
   background-color: #cccccc;
   cursor: not-allowed;
+  color: white;
+  transform: none;
 }
 
 .error {
@@ -66,6 +75,17 @@ button:disabled {
   padding-top: 5px;
   padding-left: 10px;
   font-size: 12px;
+  animation: fadeIn 0.5s ease-in;
+  opacity: 1;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .login-content {
@@ -83,4 +103,49 @@ button:disabled {
     opacity: 1; /* Cuối cùng độ mờ là 1 */
     transform: translateY(0); /* Cuối cùng vị trí trở về ban đầu */
   }
+}
+
+/* back to home -> buton */
+
+.button-back-to-home {
+  position: absolute;
+  width: 100px;
+  color: rgb(249, 246, 237);
+  top: 5%;
+  font-family: var(--main-style);
+  right: -100%;
+  background-color: #cccccc8e;
+  text-align: center;
+  font-style: italic;
+  animation: slide-in-right 1s forwards;
+}
+
+.button-back-to-home span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button-back-to-home span:after {
+  content: "\00bb";
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button-back-to-home:hover span {
+  padding-right: 20px;
+}
+
+.button-back-to-home:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+.register span {
+  color: #2411f6;
+  cursor: pointer;
 }

@@ -1,6 +1,6 @@
 ﻿go
 
---Register
+--Register -- Tạo 1 tài khoản Khách hàng
 CREATE PROCEDURE CreateCustomer
     @AccountName NVARCHAR(50),
     @Password NVARCHAR(50)
@@ -15,7 +15,7 @@ BEGIN
     SET @Sql = 'CREATE USER [' + @AccountName + '] FOR LOGIN [' + @AccountName + '];'
     EXEC sp_executesql @Sql
 
-    -- Gán quyền mặc định cho User (quyền đọc và ghi)
+    -- Gán quyền mặc định cho User (quyền Khách Hàng)
     EXEC sp_addrolemember N'Customer', @AccountName
 
 	 -- Gán Login vào server role 'CustomerServerRole'

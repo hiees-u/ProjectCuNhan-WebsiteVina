@@ -12,6 +12,8 @@ import { Router } from '@angular/router';
   styleUrl: './login.component.css',
 })
 export class LoginComponent {
+  // isLogin: boolean = false;
+
   loginData: Login = {
     userName: '',
     passWord: '',
@@ -29,5 +31,13 @@ export class LoginComponent {
     } else {
       console.log('Vui lòng nhập đầy đủ thông tin.');
     }
+  }
+
+  backToHomePage() {
+    this.router.navigate(['/customer']);
+  }
+
+  goToRegister() {
+    this.router.navigate(['/register']);
   }
 }

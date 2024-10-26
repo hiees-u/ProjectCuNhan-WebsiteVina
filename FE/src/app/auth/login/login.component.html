@@ -1,4 +1,11 @@
 <div class="login-container">
+  <button
+    (click)="backToHomePage()"
+    class="button-back-to-home"
+    style="vertical-align: middle"
+  >
+    <span>Home </span>
+  </button>
   <div class="login-content">
     <h2>Đăng Nhập</h2>
     <form (ngSubmit)="onLogin()" #loginForm="ngForm">
@@ -33,6 +40,10 @@
       </div>
 
       <button type="submit" [disabled]="loginForm.invalid">Đăng Nhập</button>
+      <p class="register">
+        Bạn chưa có tài khoản:
+        <span (click)="goToRegister()">Đăng ký</span>
+      </p>
     </form>
   </div>
 </div>

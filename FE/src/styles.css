@@ -1,4 +1,40 @@
 /* You can add global styles to this file, and also import other style files */
 body {
-    margin: 0;
+  margin: 0;
+  overflow: hidden;
+}
+
+:root {
+  --main-color: #7a4d0f;
+  --main-style: cursive;
+  --main-width: 1080px;
+  --secon-text-color: #767676;
+  --main-text-color: #383435;
+}
+
+
+/* Định nghĩa hiệu ứng cho animation */
+@keyframes slide-up {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-in-right {
+  0% {
+    right: -100%;
+    opacity: 0;
+  }
+  100% {
+    right: 5%;
+    opacity: 1;
+  }
+}
+
+.no-select {
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none;    /* Firefox */
+  -ms-user-select: none;     /* Internet Explorer/Edge */
+  user-select: none;         /* Standard syntax */
 }
