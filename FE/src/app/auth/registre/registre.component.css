@@ -58,8 +58,8 @@ button {
 
 button:hover {
   transform: scale(1.05);
-  color: var(--main-color2);
-  background-color: darken(var(--main-color), 1%);
+  color: var(--main-color);
+  background-color: darken(var(--main-color), 10%);
 }
 
 button:disabled {
@@ -138,6 +138,11 @@ button:disabled {
 }
 
 .login span {
-  color: #2411f6;
+  color: #6b4200eb;
   cursor: pointer;
+  transition: all .5s ease-in-out;
+}
+
+.login span:hover {
+  color: #000;
 }

@@ -6,7 +6,7 @@
     <ul class="menu-ul">
       <li class="no-select menu-li active">Home</li>
       <li class="no-select menu-li">About Us</li>
-      <li class="no-select menu-li">Shop</li>
+      <li class="no-select menu-li" (click)="showViewProduct()">Shop</li>
       <li class="no-select menu-li">Contacts</li>
       <li *ngIf="isLogin" class="no-select menu-li">
         <i class="fa-solid fa-cart-shopping"></i>
@@ -23,11 +23,21 @@
       </li>
     </ul>
   </div>
+
+  <div class="background-main">
+    
+  </div>
+
+  <router-outlet></router-outlet>
+
   <div class="footer">
-    <p class="copyright_text">
-      <a href="#">Nguyễn Minh Hiếu</a> © 2024. All rights reserved.
+    <p class="copyright-text">
+      <a href="https://www.facebook.com/profile.php?id=100037555039651">
+        Nguyễn Minh Hiếu
+      </a>
+      © 2024. All rights reserved.
     </p>
-    <div class="logo">
+    <div class="logo-ft">
       <img src="/assets/Logo/logo2.png" alt="logo" />
     </div>
     <div class="group-btn">

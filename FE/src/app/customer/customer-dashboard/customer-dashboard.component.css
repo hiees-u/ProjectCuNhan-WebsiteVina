@@ -1,6 +1,7 @@
 .container {
     width: 100vw;
     height: 100vh;
+    animation: left-to-right 0.75s ease-in-out;
 }
 
 .header {
@@ -48,14 +49,80 @@
 .login {
     color: #fff;
     background-color: var(--main-color);
-    border-radius: 8px;
+    border-radius: 5px;
+    text-align: center;
+    transition: all .5s ease-in-out;
+}
+
+.login:hover {
+    font-style: italic;
+    color: #4c4c4c;
 }
 
 /* FOOTER */
 
 .footer {
     width: var(--main-width);
-    height: 250px;
-    background-color: aqua;
+    height: 210px;
+    margin: auto;
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+}
+
+.copyright-text {
+    font-size: 0.7em;
+}
+
+.logo-ft {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 115px;
+}
+
+.logo-ft img {
+    width: 65%;
+}
+
+.group-btn {
+    width: 215px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.group-btn a {
+    margin: 0 10px;
+}
+
+.group-btn a i {
+    color: #4c4c4c;
+    font-size: 1.2em;
+    border-radius: 5px;
+    padding: 10px;
+    background-color: var(--main-color);
+    transition: all 0.5s ease;
+}
+
+.group-btn a:hover i {
+    background-color: #0000009e;
+    color: #ff9200;
+}
+
+@keyframes left-to-right {
+    0% {
+        margin-left: 100vw;
+    } 100% {
+        margin-left: 0vw;
+    }
+}
+
+/* background-main */
+
+.background-main {
+    background-image: url(/assets/background/snapedit_1730017847153.jpeg);
+    background-repeat: no-repeat;
+    width: 1200px;
+    height: 300px;
     margin: auto;
 }

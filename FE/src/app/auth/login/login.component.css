@@ -146,6 +146,11 @@ button:disabled {
 }
 
 .register span {
-  color: #2411f6;
+  color: #6b4200eb;
   cursor: pointer;
+  transition: all .5s ease-in-out;
+}
+
+.register span:hover {
+  color: #000;
 }

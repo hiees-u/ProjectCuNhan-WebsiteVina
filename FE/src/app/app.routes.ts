@@ -15,14 +15,16 @@ export const routes: Routes = [
     component: RegistreComponent,
   },
   {
-    path: 'customer', component: CustomerDashboardComponent,
+    path: 'customer',
+    component: CustomerDashboardComponent,
   },
   {
-    path: 'employee', component: EmployeeDashboardComponent,
+    path: 'employee',
+    component: EmployeeDashboardComponent,
   },
   {
     path: '',
     redirectTo: '/customer',
-    pathMatch: 'full'
-  }
+    pathMatch: 'full',
+  },
 ];
