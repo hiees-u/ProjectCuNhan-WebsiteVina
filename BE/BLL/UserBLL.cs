@@ -3,6 +3,7 @@ using BLL.LoginBLL;
 using DLL.Models;
 using DTO.Responses;
 using DTO.User;
+using Microsoft.EntityFrameworkCore;
 using System.Data.SqlClient;
 
 namespace BLL
@@ -20,7 +21,7 @@ namespace BLL
             }
 
             using (var conn = new DbVINA(ConnectionStringHelper.Set(module)))
-            {
+            {              
                 var user = conn.Users.FirstOrDefault(u => u.AccountName == module.AccountName);
 
                 if (user == null) {
@@ -31,10 +32,26 @@ namespace BLL
                     };
                 }
 
+                var command = conn.Database.GetDbConnection().CreateCommand();
+                command.CommandText = "GetRoleNameByCurrentUser";
+                command.CommandType = System.Data.CommandType.StoredProcedure;
+
+                conn.Database.OpenConnection();
+
+                string roleName = "";
+
+                using (var reader = command.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        roleName = reader.GetString(0);
+                    }
+                }
                 return new BaseResponseModel()
                 {
                     IsSuccess = true,
-                    Message = "Đăng Nhập Thành Công!"
+                    Message = $"Đăng Nhập Thành Công! Vai trò: {roleName}",
+                    Data = roleName
                 };
             }
         }

@@ -1,39 +1,4 @@
-﻿go
-
---Register -- Tạo 1 tài khoản Khách hàng
-CREATE PROCEDURE CreateCustomer
-    @AccountName NVARCHAR(50),
-    @Password NVARCHAR(50)
-AS
-BEGIN
-    -- Tạo Login
-    DECLARE @Sql NVARCHAR(MAX)
-    SET @Sql = 'CREATE LOGIN [' + @AccountName + '] WITH PASSWORD = ''' + @Password + ''';'
-    EXEC sp_executesql @Sql
-
-    -- Tạo User trong database hiện tại
-    SET @Sql = 'CREATE USER [' + @AccountName + '] FOR LOGIN [' + @AccountName + '];'
-    EXEC sp_executesql @Sql
-
-    -- Gán quyền mặc định cho User (quyền Khách Hàng)
-    EXEC sp_addrolemember N'Customer', @AccountName
-
-	 -- Gán Login vào server role 'CustomerServerRole'
-    SET @Sql = 'ALTER SERVER ROLE CustomerServerRole ADD MEMBER [' + @AccountName + '];'
-    EXEC sp_executesql @Sql
-
-    -- Lưu thông tin vào bảng Users
-    INSERT INTO Users (AccountName, role_id)
-    VALUES (@AccountName, 1)
-
-    -- Thông báo hoàn thành
-    PRINT N'Đăng ký khách hàng thành công!'
-END
-
-select * from Users
-
-EXEC CreateCustomer 'hieu1', '123@';
-
+﻿--##############################################################################################################################################################
 -- tạo nhóm quyền người dùng:
 go
 Create ROLE Customer;
@@ -52,7 +17,7 @@ Grant Select, Insert On dbo.Address to Customer
 
 --procedure change password user (customer)
 go
-
+--##############################################################################################################################################################
 CREATE PROCEDURE ChangePassword
     @NewPassword NVARCHAR(50)
 AS
@@ -88,7 +53,8 @@ EXEC dbo.ChangePassword '123';
 select r.role_name from Users u, Roles r where u.role_id = r.role_id
 
 go
-
+--##############################################################################################################################################################
+--không dùng
 CREATE FUNCTION dbo.GetRoleByUserName ( @AccountName NVARCHAR(50) )
 RETURNS NVARCHAR(30)
 AS
@@ -115,3 +81,58 @@ select * from  Users
 SELECT 1 FROM sys.server_principals WHERE name = 'string'
 
 select * from EmployeeType
+
+--##############################################################################################################################################################
+go
+--Lấy ra quyền của người dùng login vào sqlserver
+CREATE PROCEDURE GetRoleNameByCurrentUser
+AS
+BEGIN
+    DECLARE @AccountName NVARCHAR(50);
+    SET @AccountName = SUSER_NAME();
+    
+    SELECT r.role_name
+    FROM Users u
+    INNER JOIN Roles r ON r.role_id = u.role_id
+    WHERE u.AccountName = @AccountName;
+END
+--gán quyền 
+GRANT EXECUTE ON dbo.GetRoleNameByCurrentUser TO Customer;
+
+--thực thi
+EXEC GetRoleNameByCurrentUser;
+
+--##############################################################################################################################################################
+--Register -- Tạo 1 tài khoản Khách hàng
+CREATE PROCEDURE CreateCustomer
+    @AccountName NVARCHAR(50),
+    @Password NVARCHAR(50)
+AS
+BEGIN
+    -- Tạo Login
+    DECLARE @Sql NVARCHAR(MAX)
+    SET @Sql = 'CREATE LOGIN [' + @AccountName + '] WITH PASSWORD = ''' + @Password + ''';'
+    EXEC sp_executesql @Sql
+
+    -- Tạo User trong database hiện tại
+    SET @Sql = 'CREATE USER [' + @AccountName + '] FOR LOGIN [' + @AccountName + '];'
+    EXEC sp_executesql @Sql
+
+    -- Gán quyền mặc định cho User (quyền Khách Hàng)
+    EXEC sp_addrolemember N'Customer', @AccountName
+
+	 -- Gán Login vào server role 'CustomerServerRole'
+    SET @Sql = 'ALTER SERVER ROLE CustomerServerRole ADD MEMBER [' + @AccountName + '];'
+    EXEC sp_executesql @Sql
+
+    -- Lưu thông tin vào bảng Users
+    INSERT INTO Users (AccountName, role_id)
+    VALUES (@AccountName, 1)
+
+    -- Thông báo hoàn thành
+    PRINT N'Đăng ký khách hàng thành công!'
+END
+
+select * from Users
+
+EXEC CreateCustomer 'hieu1', '123@';
