@@ -1,4 +1,4 @@
-Hiếu:
+ Hiếu:
  - Đăng nhập, đăng xuất, đổi mật khẩu
  - Khách hàng:
 	+ Tra cứu sản phẩm, Loại sản phẩm, 
@@ -31,8 +31,13 @@ Thịnh:
 mặt hàng
  - Thống kê loại khách hàng tiêu thụ 
  - Thống kê số lượng khách hàng mới/cũ theo từng năm
-
-:- Nhân viên kho (Nhập/Xuất kho, Insert[Loại hàng, Mặt hàng], Read(Sản phẩm phẩm A được lưu ở những đâu));
-:- Nhân viên duyệt đơn (Xử lý đơn hàng, xuất hóa đơn);
-:- Nhân viên quản lý ( Insert / Update / Delete [Quản lý: Loại hàng, Mặt hàng, Khách hàng, Nhà Sản xuất, Loai khách hàng, Nhân viên, phòng ban]) 
+#################################################################################################################################################
+:- Nhân viên kho 'Warehouse Employee'
+	+	(Nhập/Xuất kho => Insert[WarehouseReceipt/ WarehouseReceiptDetail],
+	+	Insert[Loại hàng, Mặt hàng], 
+	+	Read(Sản phẩm phẩm A được lưu ở những đâu));
+:- Nhân viên duyệt đơn 'Order Approver' (Xử lý đơn hàng, xuất hóa đơn) 
+	=> [Insert DeliveryNote/ DeliveryNoteDetail];
+	=> [Update Order(state)]
+:- Nhân viên quản lý 'Moderator' ( Insert / Update / Delete [Quản lý: Loại hàng, Mặt hàng, Khách hàng, Nhà Sản xuất, Loai khách hàng, Nhân viên, phòng ban]) 
 và (Quản lý CRUD nhân viên, [thay đổi quyền của nhân viên])
