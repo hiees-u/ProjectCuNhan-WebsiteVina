@@ -134,3 +134,54 @@ select * from Supplier
 
 --
 --alter 
+
+select * From Users u, Roles r where u.role_id = r.role_id
+
+--####
+--insert EmployeeType:
+insert into EmployeeType(EmployeeTypeName, ModifiedBy, ModifiedTime)
+values ('Warehouse Employee', 'HiuDEV', GETDATE())
+
+insert into EmployeeType(EmployeeTypeName, ModifiedBy, ModifiedTime)
+values ('Order Approver', 'HiuDEV', GETDATE())
+
+insert into EmployeeType(EmployeeTypeName, ModifiedBy, ModifiedTime)
+values ('Moderator', 'HiuDEV', GETDATE())
+
+select * From EmployeeType
+
+select * from Employee
+
+select *From UserInfo
+
+alter table UserInfo
+alter column address_id int NULL
+
+alter table UserInfo
+alter column gender int NULL
+
+select * From CustomerType
+
+select * from Department
+
+ALTER TABLE EmployeeType
+ADD CONSTRAINT DF_EmployeeType_ModifiedTime DEFAULT GETDATE() FOR ModifiedTime;
+
+insert into Department (ModifiedBy, DepartmentName)
+values ('HiuDEV', N'Phòng IT')
+
+select * from EmployeeType
+
+select * from Employee e, EmployeeType et where e.EmployeeTypeID = et.EmployeeTypeID
+
+select * from Warehouse
+
+insert into Department(DepartmentName, ModifiedBy)
+values(N'Kho A', 'HiuDEV')
+
+insert into Department(DepartmentName, ModifiedBy)
+values(N'Kinh Doanh A1', 'HiuDEV')
+
+select * from Roles
+
+select * From Department
