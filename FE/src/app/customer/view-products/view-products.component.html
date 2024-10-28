@@ -1,3 +1,64 @@
-<p>view-products works!</p>
-<button (click)="ShowOrder()">Show order</button>
-<app-order-products *ngIf="isShowOrder"></app-order-products>
+<div class="container">
+  <div class="secon-content">
+    <div class="filet-price">
+      <p class="header-secon">Bộ lọc giá:</p>
+      <app-filter-price></app-filter-price>
+    </div>
+    <div class="br"></div>
+    <div class="categorys">
+      <p class="header-secon">Loại Sản Phẩm:</p>
+      <ul>
+        <li class="cate-item">
+          <i class="fa-solid fa-caret-right"></i>Cà phê hòa tan
+        </li>
+        <li class="cate-item">
+          <i class="fa-solid fa-caret-right"></i>Cà phê phin
+        </li>
+        <li class="cate-item">
+          <i class="fa-solid fa-caret-right"></i>Cà phê espresso
+        </li>
+        <li class="cate-item">
+          <i class="fa-solid fa-caret-right"></i>Cà phê cold brew
+        </li>
+      </ul>
+    </div>
+    <div class="br"></div>
+    <div class="sub-categorys">
+      <p class="header-secon">Loại Sản Phẩm Phụ:</p>
+      <ul>
+        <li class="sub-cate-item">
+          <i class="fa-solid fa-caret-right"></i>Cà phê decaf
+        </li>
+        <li class="sub-cate-item">
+          <i class="fa-solid fa-caret-right"></i>Cascara
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="content">
+    <div class="sort-content">
+      <label for="sort">Sắp Xếp:</label>
+      <select name="sort" id="sort">
+        <option value="0" selected>Giảm Dần Theo Tên</option>
+        <option value="1" selected>Tăng Dần Theo Tên</option>
+        <option value="2" selected>Giảm Dần Theo Giá</option>
+        <option value="3" selected>Tăng Dần Theo Giá</option>
+      </select>
+    </div>
+    <div class="content-wrapper">
+      <div class="wapper" *ngFor="let item of coffeeProducts">
+        <app-product-item [data]="item"></app-product-item>
+      </div>
+    </div>
+    <div class="pagination">
+      <span class="pagination-item">1</span>
+      <span class="pagination-item">2</span>
+      <span class="pagination-item">
+        <i class="fa-solid fa-ellipsis"></i>
+      </span>
+      <span class="pagination-item">
+        <i class="fa-solid fa-angles-right"></i>
+      </span>
+    </div>
+  </div>
+</div>

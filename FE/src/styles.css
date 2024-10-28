@@ -1,7 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 body {
   margin: 0;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 :root {
@@ -31,6 +31,31 @@ body {
     opacity: 1;
   }
 }
+
+@keyframes jumpUp {
+  0% {
+    margin-bottom: 0;
+  }
+  50% {
+    margin-bottom: 10px;
+  }
+  100% {
+    margin-bottom: 0;
+  }
+}
+
+@keyframes jumpLeft {
+  0% {
+    margin-left: 0;
+  }
+  50% {
+    margin-left: 10px;
+  }
+  100% {
+    margin-left: 0;
+  }
+}
+
 
 .no-select {
   -webkit-user-select: none; /* Safari */

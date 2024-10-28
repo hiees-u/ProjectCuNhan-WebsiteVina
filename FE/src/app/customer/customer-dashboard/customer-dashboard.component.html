@@ -1,34 +1,46 @@
 <div class="container">
-  <div class="header">
-    <div class="logo">
-      <img src="/assets/Logo/logo2.png" alt="logo" />
+  <div class="wrapper-header">
+    <div class="header">
+      <div class="logo">
+        <img src="/assets/Logo/logo2.png" alt="logo" />
+      </div>
+      <ul class="menu-ul">
+        <li class="no-select menu-li active">Home</li>
+        <li class="no-select menu-li" (click)="navigateToOrderProduct()">
+          About Us
+        </li>
+        <li class="no-select menu-li" (click)="navigateToViewProduct()">
+          Shop
+        </li>
+        <li class="no-select menu-li">Contacts</li>
+        <li *ngIf="isLogin" class="no-select menu-li">
+          <i class="fa-solid fa-cart-shopping"></i>
+        </li>
+        <li
+          *ngIf="!isLogin"
+          (click)="showLogin()"
+          class="no-select menu-li login"
+        >
+          Đăng Nhập
+        </li>
+        <li *ngIf="isLogin" class="no-select menu-li">
+          <i class="fa-solid fa-user"></i>
+        </li>
+      </ul>
     </div>
-    <ul class="menu-ul">
-      <li class="no-select menu-li active">Home</li>
-      <li class="no-select menu-li">About Us</li>
-      <li class="no-select menu-li" (click)="showViewProduct()">Shop</li>
-      <li class="no-select menu-li">Contacts</li>
-      <li *ngIf="isLogin" class="no-select menu-li">
-        <i class="fa-solid fa-cart-shopping"></i>
-      </li>
-      <li
-        *ngIf="!isLogin"
-        (click)="showLogin()"
-        class="no-select menu-li login"
-      >
-        Đăng Nhập
-      </li>
-      <li *ngIf="isLogin" class="no-select menu-li">
-        <i class="fa-solid fa-user"></i>
-      </li>
-    </ul>
   </div>
 
   <div class="background-main">
-    
+    <div class="text no-select">Chào Mừng Bạn Đến Với</div>
+
+    <div class="wrapper">
+      <p class="text-main no-select">VINA CAFFEE</p>
+    </div>
   </div>
 
-  <router-outlet></router-outlet>
+  <div class="content">
+    <router-outlet></router-outlet>
+  </div>
 
   <div class="footer">
     <p class="copyright-text">

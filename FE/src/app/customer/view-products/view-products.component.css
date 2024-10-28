@@ -1,0 +1,120 @@
+.container {
+  width: var(width);
+  /* background-color: aqua; */
+  margin: 100px auto;
+  /* height: 200vh; */
+  display: flex;
+  justify-content: space-between;
+}
+
+.secon-content {
+  width: 25%;
+  /* background-color: aquamarine; */
+  /* height: calc(100% - 5%); */
+  min-height: fit-content;
+  padding: 5%;
+}
+
+.content {
+  position: relative;
+  width: 70%;
+  /* background-color: blanchedalmond; */
+  /* height: calc(100% - 5%); */
+}
+
+.content-wrapper {
+  padding: 5%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.header-secon {
+  font-family: sans-serif;
+}
+
+.filet-price,
+.sub-categorys,
+.categorys {
+  margin: 50px 0;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+ul li {
+  font-size: 0.8em;
+  color: var(--secon-text-color);
+  font-family: var(--main-style);
+  margin: 10px 0;
+  cursor: pointer;
+  transition: all 0.5s ease;
+}
+
+ul li:hover {
+  color: var(--main-color);
+}
+
+li i {
+  color: var(--main-color);
+  margin-right: 20px;
+}
+
+.br {
+  width: 100%;
+  border-bottom: 1px solid #858484;
+}
+
+.sort-content {
+  position: absolute;
+  right: 100px;
+  top: 0;
+}
+
+.sort-content label {
+  font-family: monospace;
+  font-size: 1.4em;
+}
+
+.sort-content select {
+  padding: 5px;
+  margin-left: 15px;
+  outline: none;
+}
+
+.pagination {
+  height: 40px;
+  width: 40%;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pagination-item {
+  font-size: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 15px;
+  cursor: pointer;
+  height: 15px;
+  padding: 10px;
+  text-align: center;
+  background-color: var(--main-color);
+  font-weight: 600;
+  margin: 0 5px;
+  color: #000;
+  transition: all 0.5s ease;
+}
+
+.pagination-item:hover {
+  color: #fff;
+  animation: jumpUp 0.5s ease;
+}
+
+.cate-item:hover, .sub-cate-item:hover  {
+    animation: jumpLeft .5s ease;
+}
