@@ -1,11 +1,15 @@
 import { Component } from '@angular/core';
 import { CartItem } from '../../shared/module/cart/cart.module';
 import { CommonModule } from '@angular/common';
+import { CustomCurrencyPipe } from '../../shared/module/customCurrency';
 
 @Component({
   selector: 'app-cart-detail',
   standalone: true,
-  imports: [CommonModule],
+  imports: [
+    CommonModule,
+    CustomCurrencyPipe
+  ],
   templateUrl: './cart-detail.component.html',
   styleUrl: './cart-detail.component.css',
 })

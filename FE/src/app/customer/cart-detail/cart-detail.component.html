@@ -28,7 +28,7 @@
           {{ item.name }}
         </span>
       </div>
-      <div class="price-header">{{ item.price }}</div>
+      <div class="price-header">{{ item.price | customCurrency }}</div>
       <div class="quantity-header">
         <div class="box">
           <button class="btn-decrea" (click)="InDeCrease(item.CartId, -1)">
@@ -41,7 +41,7 @@
         </div>
       </div>
       <div class="total-price-header color-var-main">
-        {{ item.quantity * item.price }}
+        {{ item.quantity * item.price | customCurrency}}
       </div>
       <div class="operation-header">
         <button class="del-btn">Xóa</button>

@@ -7,20 +7,20 @@ import { RouterOutlet } from '@angular/router';
 @Component({
   selector: 'app-customer-dashboard',
   standalone: true,
-  imports: [
-    ViewProductsComponent,
-    CommonModule,
-    RouterOutlet,
-  ],
+  imports: [ViewProductsComponent, CommonModule, RouterOutlet],
   templateUrl: './customer-dashboard.component.html',
-  styleUrl: './customer-dashboard.component.css'
+  styleUrl: './customer-dashboard.component.css',
 })
-
 export class CustomerDashboardComponent {
   isLogin: boolean = true;
+  isActive: number = 1;
 
   constructor(private router: Router) {}
-  
+
+  changeActive(activeNumber: number) {
+    this.isActive = activeNumber;
+  }
+
   navigateToViewProduct() {
     this.router.navigate(['/customer/view-product']);
   }
@@ -30,17 +30,28 @@ export class CustomerDashboardComponent {
   }
 
   showCartDetail() {
-    this.router.navigate(['/customer/cart-details'])
+    this.isActive = -1;
+    this.router.navigate(['/customer/cart-details']);
   }
 
   showUserDetail() {
-    this.router.navigate(['/customer/user-details'])
+    this.isActive = -1;
+    if (this.isLogin) this.router.navigate(['/customer/user-details']);
+    else this.router.navigate(['/customer/view-product']);
   }
 
-  showLogin() {    
+  showLogin() {
+    this.isActive = -1;
     this.router.navigate(['/login']);
   }
   showRegister() {
+    this.isActive = -1;
     this.router.navigate(['/register']);
+  }
+
+  logOutHandler() {
+    this.isActive = 3;
+    this.router.navigate(['/customer/view-product']);
+    this.isLogin = !this.isLogin;
   }
 }

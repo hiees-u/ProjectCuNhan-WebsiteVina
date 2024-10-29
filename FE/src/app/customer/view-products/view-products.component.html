@@ -47,7 +47,10 @@
     </div>
     <div class="content-wrapper">
       <div class="wapper" *ngFor="let item of coffeeProducts">
-        <app-product-item [data]="item"></app-product-item>
+        <app-product-item
+          (dataChange)="handleDataChange($event)"
+          [data]="item"
+        ></app-product-item>
       </div>
     </div>
     <div class="pagination">
@@ -60,5 +63,12 @@
         <i class="fa-solid fa-angles-right"></i>
       </span>
     </div>
+  </div>
+  <div
+    class="product-detail"
+    [ngClass]="{ show: show === 1, hiden: show === -1, hiden2: show === 0 }"
+  >
+    <button (click)="handleClose()">x</button>
+    {{ receivedData }} HIEU
   </div>
 </div>

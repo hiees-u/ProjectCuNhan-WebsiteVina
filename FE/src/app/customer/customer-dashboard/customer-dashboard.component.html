@@ -5,18 +5,40 @@
         <img src="/assets/Logo/logo2.png" alt="logo" />
       </div>
       <ul class="menu-ul">
-        <li class="no-select menu-li active">Home</li>
-        <li class="no-select menu-li" (click)="navigateToOrderProduct()">
+        <li
+          class="no-select menu-li menu-li-content"
+          [ngClass]="{ active: isActive === 1 }"
+          (click)="changeActive(1)"
+        >
+          Home
+        </li>
+        <li
+          class="no-select menu-li menu-li-content"
+          (click)="navigateToOrderProduct()"
+          [ngClass]="{ active: isActive === 2 }"
+          (click)="changeActive(2)"
+        >
           About Us
         </li>
-        <li class="no-select menu-li" (click)="navigateToViewProduct()">
+        <li
+          class="no-select menu-li menu-li-content"
+          (click)="navigateToViewProduct()"
+          [ngClass]="{ active: isActive === 3 }"
+          (click)="changeActive(3)"
+        >
           Shop
         </li>
-        <li class="no-select menu-li">Contacts</li>
+        <li
+          class="no-select menu-li menu-li-content"
+          [ngClass]="{ active: isActive === 4 }"
+          (click)="changeActive(4)"
+        >
+          Contacts
+        </li>
         <li
           *ngIf="!isLogin"
           (click)="showLogin()"
-          class="no-select menu-li login"
+          class="no-select menu-li login menu-li-content"
         >
           Đăng Nhập
         </li>
@@ -24,10 +46,13 @@
           <div class="cart" (click)="showCartDetail()">
             <i class="fa-solid fa-cart-shopping"></i>
           </div>
-          <div class="user" (click)="showUserDetail()">
+          <div class="user">
             <i class="fa-solid fa-user"></i>
             <div class="box-user">
-              <button class="btn-logout">Đăng Xuất</button>
+              <button class="btn" (click)="showUserDetail()">
+                Tài khoản của tôi
+              </button>
+              <button class="btn" (click)="logOutHandler()">Đăng Xuất</button>
             </div>
           </div>
         </li>
@@ -36,10 +61,11 @@
   </div>
 
   <div class="background-main">
-    <div class="text no-select">Chào Mừng Bạn Đến Với</div>
-
-    <div class="wrapper">
-      <p class="text-main no-select">VINA CAFE</p>
+    <div class="wrapper-1">
+      <div class="text no-select">Chào Mừng Bạn Đến Với</div>
+      <div class="wrapper">
+        <p class="text-main no-select">VINA CAFE</p>
+      </div>
     </div>
   </div>
 
