@@ -43,17 +43,29 @@
   margin: 0;
   width: 50%;
   justify-content: space-around;
+  align-items: center;
 }
 
 .menu-li {
   padding: 8px;
   cursor: pointer;
   font-size: 0.9em;
+  display: flex;
+  justify-content: space-between;
   color: var(--secon-text-color);
 }
 
 .menu-li.active {
   color: var(--main-text-color);
+}
+
+.cart-user {
+  width: 75px;
+}
+
+.cart-user .user,
+.cart-user .cart {
+  font-size: 22px;
 }
 
 .login {
@@ -166,7 +178,7 @@
   border-right: 5px solid;
   white-space: nowrap;
   overflow: hidden;
-  animation: typing 2.5s steps(11), cursor 0.4s step-end infinite alternate;
+  animation: typing 2.5s steps(9), cursor 0.4s step-end infinite alternate;
 }
 
 .text,
@@ -191,5 +203,69 @@
 @keyframes typing {
   from {
     width: 0;
+  }
+}
+
+.user {
+  position: relative;
+}
+
+.user:hover .box-user {
+  display: flex;
+}
+
+.box-user {
+  position: absolute;
+  padding: 5px;
+  background-color: var(--main-color);
+  min-height: 50px;
+  width: 100px;
+  top: 35px;
+  transition: all 0.5s ease-in-out;
+  right: 0px;
+  left: -10px;
+  display: none;
+  animation: RightToLeft 0.5s ease-in-out;
+  /* display: flex; */
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border-radius: 5px;
+}
+
+.box-user::after {
+  content: "";
+  position: absolute;
+  top: -8px;
+  left: 10px;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 10px 10px 10px;
+  border-color: transparent transparent var(--main-color) transparent;
+}
+
+.btn-logout {
+  border: none;
+  outline: none;
+  width: 100%;
+  padding: 5px;
+  border-radius: 5px;
+  color: var(--main-color);
+  cursor: pointer;
+}
+
+.btn-logout:hover {
+  animation: jumpUp .5s ease-in-out infinite;
+}
+
+@keyframes RightToLeft {
+  0% {
+    left: 1000%;
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    left: -5px;
   }
 }

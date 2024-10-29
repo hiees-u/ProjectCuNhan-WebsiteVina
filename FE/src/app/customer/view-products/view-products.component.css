@@ -5,6 +5,7 @@
   /* height: 200vh; */
   display: flex;
   justify-content: space-between;
+  animation: slide-right-in .5s ease-in-out;
 }
 
 .secon-content {
@@ -69,7 +70,7 @@ li i {
 
 .sort-content {
   position: absolute;
-  right: 100px;
+  right: 0px;
   top: 0;
 }
 
@@ -115,6 +116,12 @@ li i {
   animation: jumpUp 0.5s ease;
 }
 
-.cate-item:hover, .sub-cate-item:hover  {
-    animation: jumpLeft .5s ease;
+.cate-item:hover,
+.sub-cate-item:hover {
+  animation: jumpLeft 0.5s ease;
+}
+
+.content-wrapper {
+  width: 100%;
+  animation: fadeInFromTop 1.5s ease-in-out;
 }
