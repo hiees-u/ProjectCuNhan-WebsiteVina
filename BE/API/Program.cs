@@ -18,7 +18,17 @@ builder.Services.AddDbContext<DbVINA>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DbVINA"))
 );
 
-//CORS
+// Thêm dịch vụ CORS
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAllOrigins",
+        builder =>
+        {
+            builder.AllowAnyOrigin() // cho phép tất cả các origin
+                   .AllowAnyMethod() // cho phép tất cả các phương thức
+                   .AllowAnyHeader(); // cho phép tất cả các header
+        });
+});
 
 var app = builder.Build();
 
