@@ -1,0 +1,169 @@
+.container {
+    padding: 50px;
+    margin: auto;
+    animation: slide-right-in .5s ease-in-out;
+}
+
+.header {
+    display: flex;
+    height: 20px;
+    justify-content: space-between;
+}
+
+.product-header, .check-all, .price-header, .quantity-header, .total-price-header, .operation-header {
+    color: rgba(0,0,0,.8);
+    font-size: 0.7em;
+    line-height: 20px;
+}
+
+.header .product-header {
+    padding-left: 30px;
+    width: calc(45% - 30px);
+}
+
+.product-header {
+    width: 45%;
+    text-align: left;
+}
+
+.check-all {
+    width: 3%;
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+.price-header, .quantity-header, .total-price-header, .operation-header {
+    width: 13%;
+    text-align: center;
+}
+
+/* ---- */
+.cart-item {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.product-header .img-content {
+    width: 25%;
+}
+
+.img-content img {
+    width: 100%;
+}
+
+.product-name-content {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.product-name {
+    font-size: 1.6em;
+}
+
+.del-btn {
+    border: none;
+    outline: none;
+    color: #fff;
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 5px;
+    background-color: var(--main-color);
+    transition: all 0.5s ease-in-out;
+}
+
+.del-btn:hover {
+    animation: jumpLeftRight .5s ease infinite;
+}
+
+.check-all input {
+    cursor: pointer;
+    outline: none;
+}
+
+/* -- footer cart */
+
+.footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.footer .check-all {
+    width: 30%;
+}
+
+.footer .check-all label {
+    font-size: 1.5em;
+    width: 100%;
+    text-align: center;
+}
+
+.thanhToan {
+    border: none;
+    outline: none;
+    color: #fff;
+    cursor: pointer;
+    font-size: 1.2em;
+    padding: 10px 20px;
+    border-radius: 5px;
+    background-color: var(--main-color);
+    transition: all 0.5s ease-in-out;
+}
+
+.operation-footer {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.thanhToan:hover {
+    animation: jumpLeftRight .5s ease infinite;
+}
+
+.btn-thanhtoan {
+    width: 150px;
+}
+
+.total-product-check {
+    font-size: 1.1em;
+}
+
+.content {
+    border-top: 1px solid #dbdbdb;
+    border-bottom: 1px solid #dbdbdb;
+    margin: 10px 0;
+}
+
+.quantity-header div button i {
+    font-size: 0.7em;
+}
+
+.quantity-header {
+    display: flex;
+    justify-content: space-around;
+}
+
+.quantity-header div button {
+    border: none;
+    cursor: pointer;
+    outline: none;
+}
+
+.box {
+    height: 20px;
+    display: flex;
+    border: 1px solid #000;
+}
+
+.quantity-header .box span {
+    width: 20px;
+    display: block;
+    height: 20px;
+    border-left: 1px solid #000;
+    border-right: 1px solid #000;
+}

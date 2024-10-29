@@ -5,13 +5,12 @@ body {
 }
 
 :root {
-  --main-color: #e59a21eb;
+  --main-color: #ca8922;
   --main-style: cursive;
   --main-width: 1080px;
   --secon-text-color: #767676;
   --main-text-color: #383435;
 }
-
 
 /* Định nghĩa hiệu ứng cho animation */
 @keyframes slide-up {
@@ -56,17 +55,59 @@ body {
   }
 }
 
+@keyframes jumpLeftRight {
+  0% {
+    margin-left: 0px;
+  }
+  25% {
+    margin-left: 10px;
+  }
+  50% {
+    margin-left: 0px;
+  }
+  75% {
+    margin-left: -10px;
+  }
+  100% {
+    margin-left: 0;
+  }
+}
+
+@keyframes slide-right-in {
+  0% {
+    margin-right: -100%;
+    opacity: 0;
+  }
+  100% {
+    margin-right: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInFromTop {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
 .no-select {
   -webkit-user-select: none; /* Safari */
-  -moz-user-select: none;    /* Firefox */
-  -ms-user-select: none;     /* Internet Explorer/Edge */
-  user-select: none;         /* Standard syntax */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Standard syntax */
 }
 
-
 a {
-  color: inherit;          /* Xóa màu sắc */
-  text-decoration: none;   /* Xóa gạch chân */
-  background: none;       /* Xóa nền */
+  color: inherit; /* Xóa màu sắc */
+  text-decoration: none; /* Xóa gạch chân */
+  background: none; /* Xóa nền */
+}
+
+.color-var-main {
+  color: var(--main-color) !important;
 }

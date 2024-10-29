@@ -17,7 +17,7 @@ import { RouterOutlet } from '@angular/router';
 })
 
 export class CustomerDashboardComponent {
-  isLogin: boolean = false;
+  isLogin: boolean = true;
 
   constructor(private router: Router) {}
   
@@ -27,6 +27,14 @@ export class CustomerDashboardComponent {
 
   navigateToOrderProduct() {
     this.router.navigate(['/customer/order-product']);
+  }
+
+  showCartDetail() {
+    this.router.navigate(['/customer/cart-details'])
+  }
+
+  showUserDetail() {
+    this.router.navigate(['/customer/user-details'])
   }
 
   showLogin() {    

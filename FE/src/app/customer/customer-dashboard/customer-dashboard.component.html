@@ -13,9 +13,6 @@
           Shop
         </li>
         <li class="no-select menu-li">Contacts</li>
-        <li *ngIf="isLogin" class="no-select menu-li">
-          <i class="fa-solid fa-cart-shopping"></i>
-        </li>
         <li
           *ngIf="!isLogin"
           (click)="showLogin()"
@@ -23,8 +20,16 @@
         >
           Đăng Nhập
         </li>
-        <li *ngIf="isLogin" class="no-select menu-li">
-          <i class="fa-solid fa-user"></i>
+        <li *ngIf="isLogin" class="no-select menu-li cart-user">
+          <div class="cart" (click)="showCartDetail()">
+            <i class="fa-solid fa-cart-shopping"></i>
+          </div>
+          <div class="user" (click)="showUserDetail()">
+            <i class="fa-solid fa-user"></i>
+            <div class="box-user">
+              <button class="btn-logout">Đăng Xuất</button>
+            </div>
+          </div>
         </li>
       </ul>
     </div>
@@ -34,7 +39,7 @@
     <div class="text no-select">Chào Mừng Bạn Đến Với</div>
 
     <div class="wrapper">
-      <p class="text-main no-select">VINA CAFFEE</p>
+      <p class="text-main no-select">VINA CAFE</p>
     </div>
   </div>
 
