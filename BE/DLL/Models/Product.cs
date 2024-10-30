@@ -37,7 +37,7 @@ public partial class Product
     [Column("SubCategoryID")]
     public int SubCategoryId { get; set; }
 
-    public DateOnly? ExpriryDate { get; set; }
+    public DateTime? ExpriryDate { get; set; }
 
     [StringLength(50)]
     public string? Description { get; set; }

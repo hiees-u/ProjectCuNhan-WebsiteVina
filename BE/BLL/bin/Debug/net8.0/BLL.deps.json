@@ -747,6 +747,9 @@
         }
       },
       "DTO/1.0.0": {
+        "dependencies": {
+          "DLL": "1.0.0"
+        },
         "runtime": {
           "DTO.dll": {
             "assemblyVersion": "1.0.0",
