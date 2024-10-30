@@ -14,6 +14,7 @@ Grant Select, Insert On dbo.District to Customer
 Grant Select, Insert On dbo.Commune to Customer
 Grant Select, Insert On dbo.Address to Customer
 
+
 go 
 --create role Moderator
 Create ROLE Moderator;
@@ -23,6 +24,7 @@ Grant Select On dbo.Users to Moderator
 Grant Select, Insert On dbo.District to Moderator
 Grant Select, Insert On dbo.Commune to Moderator
 Grant Select, Insert On dbo.Address to Moderator
+
 ----procedure update state Order
 
 --create role Warehouse Employee
@@ -33,6 +35,7 @@ Grant Select On dbo.Province to WarehouseEmployee
 Grant Select, Insert On dbo.District to WarehouseEmployee
 Grant Select, Insert On dbo.Commune to WarehouseEmployee
 Grant Select, Insert On dbo.Address to WarehouseEmployee
+
 --create role Order Approver
 Create ROLE OrderApprover;
 Grant Select On dbo.Users to OrderApprover
@@ -41,6 +44,7 @@ Grant Select On dbo.Province to OrderApprover
 Grant Select, Insert On dbo.District to OrderApprover
 Grant Select, Insert On dbo.Commune to OrderApprover
 Grant Select, Insert On dbo.Address to OrderApprover
+
 
 
 --procedure change password user (customer)
@@ -335,3 +339,21 @@ BEGIN
 END
 
 EXEC CreateOrderApprover 'HiusOrderApprover', '123@@';
+
+--#########################################################################PROCEDURE GET ALL PRODUCT DELETIME IS NULL#####################################################################################
+go
+
+CREATE PROCEDURE GETALLPRODUCT
+AS
+BEGIN
+    SELECT * 
+    FROM Product 
+    WHERE DeleteTime IS NULL;
+END;
+
+exec GETALLPRODUCT;
+
+GRANT EXECUTE ON GETALLPRODUCT TO OrderApprover;
+GRANT EXECUTE ON GETALLPRODUCT TO Customer;
+GRANT EXECUTE ON GETALLPRODUCT TO Moderator;
+GRANT EXECUTE ON GETALLPRODUCT TO WarehouseEmployee;

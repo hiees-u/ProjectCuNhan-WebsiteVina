@@ -32,3 +32,7 @@ C:\Users\ADMIN\Desktop\BE\DTO\obj\Debug\net8.0\DTO.dll
 C:\Users\ADMIN\Desktop\BE\DTO\obj\Debug\net8.0\refint\DTO.dll
 C:\Users\ADMIN\Desktop\BE\DTO\obj\Debug\net8.0\DTO.pdb
 C:\Users\ADMIN\Desktop\BE\DTO\obj\Debug\net8.0\ref\DTO.dll
+C:\Users\ADMIN\Desktop\DoAnWebsiteCaffeeVINA_MAIN\BE\DTO\bin\Debug\net8.0\DLL.dll
+C:\Users\ADMIN\Desktop\DoAnWebsiteCaffeeVINA_MAIN\BE\DTO\bin\Debug\net8.0\DLL.pdb
+C:\Users\ADMIN\Desktop\DoAnWebsiteCaffeeVINA_MAIN\BE\DTO\obj\Debug\net8.0\DTO.csproj.AssemblyReference.cache
+C:\Users\ADMIN\Desktop\DoAnWebsiteCaffeeVINA_MAIN\BE\DTO\obj\Debug\net8.0\DTO.csproj.Up2Date
