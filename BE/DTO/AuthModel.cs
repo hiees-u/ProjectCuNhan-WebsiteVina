@@ -2,7 +2,7 @@
 {
     public class AuthModel
     {
-        string userName = "";
-        string Roles = "";
+        public string userName = "";
+        public string Roles = "";
     }
 }
