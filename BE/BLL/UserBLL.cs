@@ -10,6 +10,13 @@ namespace BLL
 {
     public class UserBLL : IUser
     {
+        private readonly IAuthService _authService;
+
+        public UserBLL(IAuthService authService)
+        {
+            _authService = authService;
+        }
+
         public BaseResponseModel Login(LoginRequestModule module)
         {
             if (!module.Validate()) {
@@ -47,11 +54,18 @@ namespace BLL
                         roleName = reader.GetString(0);
                     }
                 }
+
+                var token = _authService.GenerateJwtToken(new DTO.AuthModel
+                {
+                    userName = module.AccountName,
+                    Roles = roleName
+                });
+
                 return new BaseResponseModel()
                 {
                     IsSuccess = true,
                     Message = $"Đăng Nhập Thành Công! Vai trò: {roleName}",
-                    Data = roleName
+                    Data = token
                 };
             }
         }

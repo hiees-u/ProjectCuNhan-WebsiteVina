@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using DTO.Responses;
 using BLL.Interface;
+using Microsoft.AspNetCore.Authorization;
 
 namespace API.Controllers
 {
@@ -48,6 +49,7 @@ namespace API.Controllers
             }
         }
 
+        [Authorize]
         [HttpPost("ChangePassword")]
         public IActionResult ChangePassword([FromBody] LoginChangePassRequestModule module)
         {
@@ -59,6 +61,7 @@ namespace API.Controllers
             return BadRequest(res);
         }
 
+        [Authorize(Roles = "Customer")]
         [HttpPost("LogOut")]
         public IActionResult LogOut()
         {
