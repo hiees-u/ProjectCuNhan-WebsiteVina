@@ -10,7 +10,11 @@ namespace BLL
 {
     public class UserBLL : IUser
     {
+        private readonly string[] Roles = new[] { "Customer", "Development", "Moderator", "Order Approver", "Warehouse Employee" };
+        
         private readonly IAuthService _authService;
+
+        private int role = -1;
 
         public UserBLL(IAuthService authService)
         {
@@ -168,7 +172,24 @@ namespace BLL
             };
         }
 
-        //Get role User
+        //Get role (int) User
+        public BaseResponseModel GetRole(string token)
+        {
+            var roleName = _authService.DecodeToken(token);
 
+            for (int i = 0; i < Roles.Length; i++)
+            {
+                if(roleName.Role.Equals(Roles[i], StringComparison.OrdinalIgnoreCase))
+                {
+                    role = i;
+                    break;
+                }
+            }
+            return new BaseResponseModel
+            {
+                IsSuccess = true,
+                Data = role,
+            };
+        }
     }
 }

@@ -343,17 +343,19 @@ EXEC CreateOrderApprover 'HiusOrderApprover', '123@@';
 --#########################################################################PROCEDURE GET ALL PRODUCT DELETIME IS NULL#####################################################################################
 go
 
-CREATE PROCEDURE GETALLPRODUCT
+CREATE PROCEDURE GetAllProducts
 AS
 BEGIN
-    SELECT * 
-    FROM Product 
-    WHERE DeleteTime IS NULL;
+	select p.* , ph.price 
+	from Product p, PriceHistory ph 
+	where p.product_id = ph.product_id and ph. isActive = 0
+	Order By p.CreateTime Desc
 END;
 
-exec GETALLPRODUCT;
+exec GetAllProducts;
 
-GRANT EXECUTE ON GETALLPRODUCT TO OrderApprover;
-GRANT EXECUTE ON GETALLPRODUCT TO Customer;
-GRANT EXECUTE ON GETALLPRODUCT TO Moderator;
-GRANT EXECUTE ON GETALLPRODUCT TO WarehouseEmployee;
+GRANT EXECUTE ON GetAllProducts TO Customer;
+
+GRANT EXECUTE ON GetAllProducts TO OrderApprover;
+GRANT EXECUTE ON GetAllProducts TO Moderator;
+GRANT EXECUTE ON GetAllProducts TO WarehouseEmployee;

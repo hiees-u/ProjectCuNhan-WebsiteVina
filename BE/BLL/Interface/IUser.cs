@@ -12,5 +12,7 @@ namespace BLL.Interface
         public BaseResponseModel ChangePassword(LoginChangePassRequestModule module);
 
         public BaseResponseModel LogOut();
+
+        public BaseResponseModel GetRole(string token);
     }
 }

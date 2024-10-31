@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using DTO.Responses;
 using BLL.Interface;
 using Microsoft.AspNetCore.Authorization;
+using BLL;
 
 namespace API.Controllers
 {
@@ -67,5 +68,36 @@ namespace API.Controllers
         {
             return Ok(userBll.LogOut());
         }
+
+        [Authorize]
+        [HttpGet("GetRole")]
+        public IActionResult GetRole()
+        {
+            if (!Request.Headers.ContainsKey("Authorization"))
+            {
+                return BadRequest("Authorization header is missing.");
+            }
+
+            var authorizationHeader = Request.Headers["Authorization"].ToString();
+            if (string.IsNullOrWhiteSpace(authorizationHeader))
+            {
+                return BadRequest("Authorization header is empty.");
+            }
+
+            var token = authorizationHeader.Replace("Bearer ", "");
+            if (string.IsNullOrWhiteSpace(token))
+            {
+                return BadRequest("Token is empty.");
+            }
+
+            // You can safely decode the token now
+            //var roleName = _authService.DecodeToken(token);
+
+            // Further processing...
+
+            return Ok(userBll.GetRole(token));
+        }
+
+
     }
 }

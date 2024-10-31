@@ -3,7 +3,6 @@ using DTO;
 using System.Security.Claims;
 using System;
 using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
 using System.Text;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.Extensions.Configuration;
@@ -56,8 +55,8 @@ namespace BLL
             }
 
             // Giải mã lại userName và role
-            var userName = Encoding.UTF8.GetString(Convert.FromBase64String(jsonToken.Claims.First(c => c.Type == "userName").Value));
-            var role = Encoding.UTF8.GetString(Convert.FromBase64String(jsonToken.Claims.First(c => c.Type == "role").Value));
+            var userName = Encoding.UTF8.GetString(Convert.FromBase64String(jsonToken.Claims.First(c => c.Type == ClaimTypes.Name).Value));
+            var role = jsonToken.Claims.First(c => c.Type == ClaimTypes.Role).Value;
 
             return (userName, role);
         }
