@@ -68,6 +68,16 @@
   },
   {
     "ContainingType": "API.Controllers.UserController",
+    "Method": "GetRole",
+    "RelativePath": "api/User/GetRole",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.UserController",
     "Method": "Login",
     "RelativePath": "api/User/Login",
     "HttpMethod": "POST",

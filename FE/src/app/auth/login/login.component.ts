@@ -32,8 +32,13 @@ export class LoginComponent {
         if (res.isSuccess) {
           // lưu vào localstorage
           localStorage.setItem('token', res.data as string);
-          // login thành công          
-          this.router.navigate(['/customer']);
+          // login thành công
+          if ((await this.authService.getRole()).data == 0) {
+            this.router.navigate(['/customer']);
+          }
+          if ((await this.authService.getRole()).data == 4) {
+            this.router.navigate(['/employee']);
+          }
         } else {
           console.log(res.isSuccess + ' / ' + res.message);
           this.response = res.message;
