@@ -12,7 +12,7 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './customer-dashboard.component.css',
 })
 export class CustomerDashboardComponent {
-  isLogin: boolean = true;
+  isLogin: boolean = false;
   isActive: number = 1;
 
   constructor(private router: Router) {}

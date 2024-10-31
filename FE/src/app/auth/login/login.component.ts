@@ -1,8 +1,11 @@
 import { Component } from '@angular/core';
-import { Login } from '../../shared/module/login/login.module';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+
+import { AuthService } from '../auth.service';
+import { Login } from '../../shared/module/login/login.module';
+import { error } from 'console';
 
 @Component({
   selector: 'app-login',
@@ -13,23 +16,35 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent {
   // isLogin: boolean = false;
+  response: string | undefined;
 
   loginData: Login = {
-    userName: '',
-    passWord: '',
+    accountName: '',
+    password: '',
   };
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private authService: AuthService) {}
 
-  onLogin() {
-    if (this.loginData.userName && this.loginData.passWord) {
-      // Xử lý logic đăng nhập
-      console.log('Username:', this.loginData.userName);
-      console.log('Password:', this.loginData.passWord);
-      // Thực hiện API call để kiểm tra đăng nhập
-      this.router.navigate(['/customer']);
+  async onLogin() {
+    if (this.loginData.accountName && this.loginData.password) {
+      try {
+        const res = await this.authService.login(this.loginData);
+        if (res.isSuccess) {
+          // lưu vào localstorage
+          localStorage.setItem('token', res.data as string);
+          // login thành công          
+          this.router.navigate(['/customer']);
+        } else {
+          console.log(res.isSuccess + ' / ' + res.message);
+          this.response = res.message;
+        }
+      } catch (error) {
+        this.response = 'Đã xảy ra lỗi trong quá trình đăng nhập.';
+        console.error('Login error:', error);
+      }
     } else {
-      console.log('Vui lòng nhập đầy đủ thông tin.');
+      this.response = 'Vui lòng nhập đầy đủ thông tin.';
+      console.log(this.response);
     }
   }
 

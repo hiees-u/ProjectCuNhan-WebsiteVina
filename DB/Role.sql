@@ -346,14 +346,13 @@ go
 CREATE PROCEDURE GETALLPRODUCT
 AS
 BEGIN
-    SELECT * 
-    FROM Product 
-    WHERE DeleteTime IS NULL;
+	select p.* , ph.price from Product p, PriceHistory ph where p.product_id = ph.product_id and ph. isActive = 0 and p.DeleteTime is null;
 END;
 
 exec GETALLPRODUCT;
 
-GRANT EXECUTE ON GETALLPRODUCT TO OrderApprover;
 GRANT EXECUTE ON GETALLPRODUCT TO Customer;
+
+GRANT EXECUTE ON GETALLPRODUCT TO OrderApprover;
 GRANT EXECUTE ON GETALLPRODUCT TO Moderator;
 GRANT EXECUTE ON GETALLPRODUCT TO WarehouseEmployee;

@@ -16,7 +16,7 @@
           id="username"
           name="username"
           required
-          [(ngModel)]="loginData.userName"
+          [(ngModel)]="loginData.accountName"
           #username="ngModel"
         />
         <div *ngIf="username.invalid && username.touched" class="error">
@@ -31,7 +31,7 @@
           id="password"
           name="password"
           required
-          [(ngModel)]="loginData.passWord"
+          [(ngModel)]="loginData.password"
           #password="ngModel"
         />
         <div *ngIf="password.invalid && password.touched" class="error">
@@ -39,7 +39,8 @@
         </div>
       </div>
 
-      <button type="submit" [disabled]="loginForm.invalid">Đăng Nhập</button>
+      <button type="submit" (click)="onLogin()" [disabled]="loginForm.invalid">Đăng Nhập</button>
+      <p class="error" *ngIf="response">{{ response }}</p>
       <p class="register">
         Bạn chưa có tài khoản:
         <span (click)="goToRegister()">Đăng ký</span>
