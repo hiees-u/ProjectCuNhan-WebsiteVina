@@ -124,14 +124,17 @@ li i {
 
 .product-detail {
   top: 50%;
-  right: calc(50% - 40vw);
-  height: 50vh;
-  width: 40vw;
-  background-color: aqua;
+  right: calc(50% - calc(55vw - 30px));
+  height: calc(60vh - 30px);
+  width: calc(55vw - 30px);
+  background-color: #cfcfcff0;
   transform: translate(-50%, -50%);
   position: fixed;
   z-index: 99999;
+  border-radius: 5%;
   opacity: 0;
+  display: flex;
+  justify-content: space-between;
 }
 
 .product-detail.show {
@@ -147,4 +150,83 @@ li i {
 .product-detail.hiden2 {
   margin-right: -100%;
   /* animation: slide-right-out 1s ease-in-out; */
+}
+
+/* product detail */
+.product-detail {
+  /* position: relative; */
+  padding: 15px;
+}
+
+.product-detail-close-btn {
+  top: 15px;
+  right: 15px;
+  position: fixed;
+  filter: opacity(0.5);
+  border: none;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  padding: 20px;
+  cursor: pointer;
+  font-size: 20px;
+  align-items: center;
+  border-radius: 10px;
+  justify-content: center;
+  transition: all 0.5s ease-in-out;
+  background-color: #9d9d9dc4;
+  color: #fff;
+}
+
+.product-detail-close-btn:hover {
+  filter: none;
+  background: var(--secon-color);
+  animation: jumpUp-position 0.5s ease-in-out infinite;
+}
+
+.product-detail-left {
+  /* background-color: #858484; */
+  width: 40%;
+  display: flex;
+  justify-content: center; /* Horizontal centering */
+  align-items: center;
+}
+
+.product-detail-left,
+.product-detail-right {
+  height: 100%;
+  overflow: hidden;
+}
+
+.product-detail-right {
+  width: 55%;
+}
+
+.product-detail-left img {
+  /* width: 100%; */
+  height: 100%;
+}
+
+.product-detail-name {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  font-size: 1.9em;
+  font-family: var(--main-style);
+  color: var(--main-color);
+}
+
+.product-detail-price {
+  font-size: 1.2em;
+  color: #000000ab;
+  font-family: cursive;
+  margin: 15px 0;
+  display: block;
+  font-style: italic;
+}
+
+.product-detail-description {
+  font-size: 1.2em;
+  font-family: monospace;
+  color: #3c3b3b;
 }

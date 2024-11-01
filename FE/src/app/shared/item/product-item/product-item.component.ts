@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CustomCurrencyPipe } from '../../module/customCurrency';
+import { Product } from '../../module/product/product.module';
 
 @Component({
   selector: 'app-product-item',
@@ -13,7 +14,7 @@ import { CustomCurrencyPipe } from '../../module/customCurrency';
   styleUrl: './product-item.component.css'
 })
 export class ProductItemComponent {
-  @Input() data: { name: string; image: string; price: number; } | undefined;
+  @Input() data: Product | undefined;
   @Output() dataChange: EventEmitter<any> = new EventEmitter<any>();
 
   sendData(Product: string | undefined) {

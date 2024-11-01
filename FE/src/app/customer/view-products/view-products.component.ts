@@ -1,70 +1,67 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, HostListener, Renderer2 } from '@angular/core';
 import { OrderProductsComponent } from '../order-products/order-products.component';
 import { NgIf } from '@angular/common';
 import { NgFor } from '@angular/common';
 import { NgClass } from '@angular/common';
+import { CommonModule } from '@angular/common';
+
+import { CustomCurrencyPipe } from '../../shared/module/customCurrency';
 
 import { ProductItemComponent } from '../../shared/item/product-item/product-item.component';
 import { FilterPriceComponent } from '../../shared/item/filter-price/filter-price.component';
+import { CustomerService } from '../customer.service';
 import { Product } from '../../shared/module/product/product.module';
-
-interface CoffeeProduct {
-  name: string;
-  image: string;
-  price: number;
-  description: string;
-}
 
 @Component({
   selector: 'app-view-products',
   standalone: true,
   imports: [
     OrderProductsComponent,
+    CommonModule,
     NgIf,
     NgFor,
     NgClass,
     FilterPriceComponent,
     ProductItemComponent,
+    CustomCurrencyPipe,
   ],
   templateUrl: './view-products.component.html',
   styleUrl: './view-products.component.css',
 })
 export class ViewProductsComponent {
   show: number = 0;
-  // face data products
-  coffeeProducts: CoffeeProduct[] = [
-    {
-      name: 'Classic Espresso',
-      image: 'p1.png',
-      price: 150000,
-      description: 'A rich, bold espresso made with premium Arabica beans.',
-    },
-    {
-      name: 'Vanilla Latte',
-      image: 'p2.png',
-      price: 170000,
-      description: 'Smooth latte with a touch of vanilla flavor.',
-    },
-    {
-      name: 'Mocha Delight',
-      image: 'p3.png',
-      price: 180000,
-      description: 'A creamy blend of espresso and chocolate.',
-    },
-    {
-      name: 'Caramel Macchiato',
-      image: 'p4.png',
-      price: 175000,
-      description: 'Bold espresso with caramel and steamed milk.',
-    },
-    {
-      name: 'Iced Americano',
-      image: 'p5.png',
-      price: 140000,
-      description: 'Chilled coffee with a smooth and refreshing flavor.',
-    },
-  ];
-  receivedData: any;
+  receivedData: Product | undefined;
+  products: Product[] = [];
+  responseMessage: string | undefined;
+
+  constructor(
+    private customer_service: CustomerService,
+  ) {
+  }
+
+  async ngOnInit(): Promise<void> {
+    try {
+      const response = await this.customer_service.getProducts(
+        null,
+        null,
+        null,
+        null,
+        1,
+        10,
+        0,
+        0
+      );
+      if (response.isSuccess) {
+        this.products = response.data;
+        this.responseMessage = response.message;
+      } else {
+        this.responseMessage = 'Failed to get products.';
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      this.responseMessage = 'An error occurred while fetching the products.';
+    }
+  }
 
   handleDataChange(data: any) {
     this.show = 1;

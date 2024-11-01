@@ -46,9 +46,9 @@
       </select>
     </div>
     <div class="content-wrapper">
-      <div class="wapper" *ngFor="let item of coffeeProducts">
+      <div class="wapper" *ngFor="let item of products">
         <app-product-item
-          (dataChange)="handleDataChange($event)"
+          (dataChange)="handleDataChange(item)"
           [data]="item"
         ></app-product-item>
       </div>
@@ -68,7 +68,23 @@
     class="product-detail"
     [ngClass]="{ show: show === 1, hiden: show === -1, hiden2: show === 0 }"
   >
-    <button (click)="handleClose()">x</button>
-    {{ receivedData }} HIEU
+    <button class="product-detail-close-btn" (click)="handleClose()">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+    
+    <div class="product-detail-left">
+      <img [src]="'/assets/Products/' + receivedData?.image" />
+    </div>
+
+    <div class="product-detail-right">
+      <p class="product-detail-name no-select">
+        {{receivedData?.productName}}
+      </p>
+      <span class="product-detail-price">{{receivedData?.price ?? 0 | customCurrency}}</span>
+      <p class="product-detail-description">
+        {{receivedData?.description}}
+      </p>
+    </div>
+
   </div>
 </div>
