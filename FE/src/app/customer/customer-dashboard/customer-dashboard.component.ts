@@ -15,7 +15,23 @@ export class CustomerDashboardComponent {
   isLogin: boolean = false;
   isActive: number = 1;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router) {
+    this.checkLogin();
+
+  }
+
+  OnInit() {
+  }
+
+  checkLogin() {
+    const token = localStorage.getItem('token');
+    if(token) {
+      this.isLogin = true;
+    }
+
+    console.log(this.isLogin);
+    
+  }
 
   changeActive(activeNumber: number) {
     this.isActive = activeNumber;
@@ -53,5 +69,6 @@ export class CustomerDashboardComponent {
     this.isActive = 3;
     this.router.navigate(['/customer/view-product']);
     this.isLogin = !this.isLogin;
+    localStorage.removeItem('token');
   }
 }

@@ -6,6 +6,7 @@ body {
 
 :root {
   --main-color: #ca8922;
+  --secon-color: #eab35a;
   --main-style: cursive;
   --main-width: 1080px;
   --secon-text-color: #767676;
@@ -41,6 +42,24 @@ body {
   100% {
     margin-bottom: 0;
   }
+}
+
+@keyframes jumpUp-position {
+  /* 0% {
+    right: 3%;
+  } */
+  25% {
+    right: 2.5%;
+  }
+  50% {
+    right: 2%;
+  }
+  75% {
+    right: 1.5%;
+  }
+  /* 100% {
+    right: 3%;
+  } */
 }
 
 @keyframes jumpLeft {

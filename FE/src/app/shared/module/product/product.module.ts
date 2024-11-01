@@ -4,23 +4,22 @@ import { CommonModule } from '@angular/common';
 export interface Product {
   productId: number;
   productName: string;
-  image?: string;
-  totalQuantity?: number;
+  image: string;
+  totalQuantity: number;
   categoryId: number;
   supplier: number;
   subCategoryId: number;
-  expriryDate?: Date;
-  description?: string;
-  modifiedBy?: string;
+  description: string;
+  modifiedBy: string;
+  price: number;
+  expriryDate: Date;
   createTime: Date;
-  modifiedTime?: Date;
-  deleteTime?: Date;
+  modifiedTime: Date;
+  deleteTime: Date | null;
 }
 
 @NgModule({
   declarations: [],
-  imports: [
-    CommonModule
-  ]
+  imports: [CommonModule],
 })
-export class ProductModule { }
+export class ProductModule {}

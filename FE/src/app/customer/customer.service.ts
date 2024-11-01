@@ -1,9 +1,42 @@
 import { Injectable } from '@angular/core';
+import { BaseResponseModel } from '../shared/module/base-response/base-response.module';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CustomerService {
+  private apiUrl = 'https://localhost:7060/api/Product';
 
-  constructor() { }
+  async getProducts(
+    productId: number | null,
+    cateId: number | null,
+    subCateId: number | null,
+    productName: string | null,
+    pageNumber: number | 1,
+    pageSize: number | 10,
+    sortByName: number | 0,
+    sortByPrice: number | 0
+  ): Promise<BaseResponseModel> {
+    const url = 'https://localhost:7060/api/Product?pageNumber=1&pageSize=10&sortByName=0&sortByPrice=0'
+    const token = localStorage.getItem('token');
+
+    try {
+      const response = await fetch(url, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      return await response.json();
+    } catch (error) {
+      console.error('Error:', error);
+      throw error;
+    }
+  }
 }
