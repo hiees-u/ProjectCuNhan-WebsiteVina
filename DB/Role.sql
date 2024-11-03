@@ -358,3 +358,95 @@ GRANT EXECUTE ON GetAllProducts TO Customer;
 GRANT EXECUTE ON GetAllProducts TO OrderApprover;
 GRANT EXECUTE ON GetAllProducts TO Moderator;
 GRANT EXECUTE ON GetAllProducts TO WarehouseEmployee;
+--#########################################################################PROCEDURE GET CATE BY PRODUCT NAME DELETIME IS NULL#####################################################################################
+go
+CREATE FUNCTION dbo.GetCategoryName (
+    @ProductID INT
+)
+RETURNS NVARCHAR(100)
+AS
+BEGIN
+    DECLARE @CategoryName NVARCHAR(100);
+
+    SELECT @CategoryName = c.category_name
+    FROM Category c
+    JOIN Product p ON c.category_id = p.Category_id
+    WHERE p.product_id = @ProductID AND c.DeleteTime IS NULL;
+
+    RETURN @CategoryName;
+END;
+
+go
+
+SELECT dbo.GetCategoryName(3) AS CategoryName;
+
+GRANT EXECUTE ON GetCategoryName TO Customer;
+GRANT EXECUTE ON GetCategoryName TO OrderApprover;
+GRANT EXECUTE ON GetCategoryName TO Moderator;
+GRANT EXECUTE ON GetCategoryName TO WarehouseEmployee;
+--#########################################################################PROCEDURE GET SUB CATE BY PRODUCT NAME DELETIME IS NULL#####################################################################################
+go
+CREATE FUNCTION dbo.GetSubCategoryName (
+    @ProductID INT
+)
+RETURNS NVARCHAR(100)
+AS
+BEGIN
+    DECLARE @SubCategoryName NVARCHAR(100);
+
+    SELECT @SubCategoryName = sc.SubCategoryName
+    FROM SubCategory sc
+    JOIN Product p ON sc.SubCategoryID = p.SubCategoryID
+    WHERE p.product_id = @ProductID AND sc.DeleteTime IS NULL;
+
+    RETURN @SubCategoryName;
+END;
+
+
+go
+
+SELECT dbo.GetSubCategoryName(3)
+
+GRANT EXECUTE ON GetSubCategoryName TO Customer;
+GRANT EXECUTE ON GetSubCategoryName TO OrderApprover;
+GRANT EXECUTE ON GetSubCategoryName TO Moderator;
+GRANT EXECUTE ON GetSubCategoryName TO WarehouseEmployee;
+--#########################################################################PROCEDURE GET TOP 10 SUB CATE BY PRODUCT NAME DELETIME IS NULL#####################################################################################
+go
+
+CREATE FUNCTION dbo.GetTop10SubCategories ()
+RETURNS TABLE
+AS
+RETURN
+(
+    SELECT TOP 10 sc.*
+	FROM SubCategory sc
+	WHERE sc.DeleteTime IS NULL
+	Order by sc.CreateTime
+);
+
+SELECT * FROM dbo.GetTop10SubCategories()
+
+GRANT SELECT ON OBJECT::dbo.GetTop10SubCategories TO  Customer;
+GRANT SELECT ON OBJECT::dbo.GetTop10SubCategories TO  OrderApprover;
+GRANT SELECT ON OBJECT::dbo.GetTop10SubCategories TO  Moderator;
+GRANT SELECT ON OBJECT::dbo.GetTop10SubCategories TO  WarehouseEmployee;
+--#########################################################################PROCEDURE GET TOP 10 CATE BY PRODUCT NAME DELETIME IS NULL#####################################################################################
+go
+CREATE FUNCTION dbo.GetTop10Categories ()
+RETURNS TABLE
+AS
+RETURN
+(
+    SELECT TOP 10 c.*
+	FROM Category c
+	WHERE c.DeleteTime IS NULL
+	Order by c.CreateTime
+);
+
+SELECT * FROM dbo.GetTop10Categories()
+
+GRANT SELECT ON OBJECT::dbo.GetTop10Categories TO  Customer;
+GRANT SELECT ON OBJECT::dbo.GetTop10Categories TO  OrderApprover;
+GRANT SELECT ON OBJECT::dbo.GetTop10Categories TO  Moderator;
+GRANT SELECT ON OBJECT::dbo.GetTop10Categories TO  WarehouseEmployee;

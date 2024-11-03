@@ -90,11 +90,6 @@ namespace API.Controllers
                 return BadRequest("Token is empty.");
             }
 
-            // You can safely decode the token now
-            //var roleName = _authService.DecodeToken(token);
-
-            // Further processing...
-
             return Ok(userBll.GetRole(token));
         }
 

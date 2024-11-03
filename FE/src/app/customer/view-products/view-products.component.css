@@ -264,9 +264,43 @@ li i {
   max-width: 200px;
   padding: 15px;
   font-size: 1em;
-  transition: all .5s ease-in-out;
+  transition: all 0.5s ease-in-out;
 }
 
 .product-detail-btn .btn:hover {
   font-weight: 600;
+}
+
+.product-detail-quantity-box button {
+  height: 100%;
+  outline: none;
+  border: 0;
+  background-color: transparent;
+  cursor: pointer;
+  padding: 0 15px;
+}
+
+.product-detail-quantity-box .btn-decrea {
+  border-right: 1px solid #0000007d;
+}
+.product-detail-quantity-box .btn-increa {
+  border-left: 1px solid #0000007d;
+}
+
+.product-detail-bottom-box span {
+  margin: 0 15px;
+  line-height: 40px;
+  font-size: 1.4em;
+}
+
+.product-detail-quantity-box {
+  font-size: 1em;
+  transition: all .5s ease;
+  font-family: monospace;
+  /* width: 40%; */
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  border: 1px solid #0000007d;
+  margin: auto;
 }

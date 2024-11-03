@@ -27,6 +27,7 @@ export class LoginComponent {
 
   async onLogin() {
     if (this.loginData.accountName && this.loginData.password) {
+    localStorage.removeItem('token');
       try {
         const res = await this.authService.login(this.loginData);
         if (res.isSuccess) {

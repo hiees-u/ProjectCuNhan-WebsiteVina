@@ -1,5 +1,31 @@
 [
   {
+    "ContainingType": "API.Controllers.CategoryController",
+    "Method": "GetCateNameByProductID",
+    "RelativePath": "api/Category",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "productID",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.CategoryController",
+    "Method": "GetTop10CateName",
+    "RelativePath": "api/Category/Get 10 Category",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "API.Controllers.ProductController",
     "Method": "Get",
     "RelativePath": "api/Product",
@@ -44,6 +70,32 @@
       },
       {
         "Name": "sortByPrice",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.SubCategoryController",
+    "Method": "GetTop10CateName",
+    "RelativePath": "api/SubCategory/Get 10 Sub Category",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.SubCategoryController",
+    "Method": "GetCateNameByProductID",
+    "RelativePath": "api/SubCategory/Get By Product Id",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "productID",
         "Type": "System.Int32",
         "IsRequired": false
       }

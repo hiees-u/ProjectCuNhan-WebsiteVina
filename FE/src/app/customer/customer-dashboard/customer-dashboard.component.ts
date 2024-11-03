@@ -32,7 +32,6 @@ export class CustomerDashboardComponent {
       console.log(this.isLogin);
     }
     return false;
-    console.log(this.isLogin);
   }
 
   changeActive(activeNumber: number) {

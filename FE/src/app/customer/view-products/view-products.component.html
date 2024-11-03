@@ -8,17 +8,8 @@
     <div class="categorys">
       <p class="header-secon">Loại Sản Phẩm:</p>
       <ul>
-        <li class="cate-item">
-          <i class="fa-solid fa-caret-right"></i>Cà phê hòa tan
-        </li>
-        <li class="cate-item">
-          <i class="fa-solid fa-caret-right"></i>Cà phê phin
-        </li>
-        <li class="cate-item">
-          <i class="fa-solid fa-caret-right"></i>Cà phê espresso
-        </li>
-        <li class="cate-item">
-          <i class="fa-solid fa-caret-right"></i>Cà phê cold brew
+        <li *ngFor="let item of cate" class="cate-item">
+          <i class="fa-solid fa-caret-right"></i>{{item.categoryName}}
         </li>
       </ul>
     </div>
@@ -26,11 +17,8 @@
     <div class="sub-categorys">
       <p class="header-secon">Loại Sản Phẩm Phụ:</p>
       <ul>
-        <li class="sub-cate-item">
-          <i class="fa-solid fa-caret-right"></i>Cà phê decaf
-        </li>
-        <li class="sub-cate-item">
-          <i class="fa-solid fa-caret-right"></i>Cascara
+        <li *ngFor="let item of subCate" class="sub-cate-item">
+          <i class="fa-solid fa-caret-right"></i>{{item.subCategoryName}}
         </li>
       </ul>
     </div>
@@ -88,23 +76,23 @@
       </p>
       <ul>
         <li class="cate-item">
-          <i class="fa-solid fa-caret-right"></i>Cà phê hòa tan
+          <i class="fa-solid fa-caret-right"></i>{{cateProductDetail}}
         </li>
       </ul>
       <ul>
         <li class="sub-cate-item">
-          <i class="fa-solid fa-caret-right"></i>Cà phê decaf
+          <i class="fa-solid fa-caret-right"></i>{{subCateProductDetail}}
         </li>
       </ul>
       <div class="product-detail-bottom-box">
           <div class="product-detail-quantity-box">
-            <!-- <button class="btn-decrea" (click)="InDeCrease(item.CartId, -1)"> -->
-              <!-- <i class="fa-solid fa-minus"></i> -->
-            <!-- </button> -->
-            <!-- <span>{{ item.quantity }}</span> -->
-            <!-- <button class="btn-increa" (click)="InDeCrease(item.CartId, 1)"> -->
-              <!-- <i class="fa-solid fa-plus"></i> -->
-            <!-- </button> -->
+            <button class="btn-decrea" (click)="InDeCrease(-1)">
+              <i class="fa-solid fa-minus"></i>
+            </button>
+            <span>{{ cart.quantity }}</span>
+            <button class="btn-increa" (click)="InDeCrease(1)">
+              <i class="fa-solid fa-plus"></i>
+            </button>
         </div>
         <div class="product-detail-btn">
           <button class="add-cart btn">Thêm vào giỏ hàng</button>
