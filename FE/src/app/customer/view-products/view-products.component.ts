@@ -11,6 +11,7 @@ import { ProductItemComponent } from '../../shared/item/product-item/product-ite
 import { FilterPriceComponent } from '../../shared/item/filter-price/filter-price.component';
 import { CustomerService } from '../customer.service';
 import { Product } from '../../shared/module/product/product.module';
+import { CartItem, CartModule } from '../../shared/module/cart/cart.module';
 
 @Component({
   selector: 'app-view-products',
@@ -33,6 +34,8 @@ export class ViewProductsComponent {
   receivedData: Product | undefined;
   products: Product[] = [];
   responseMessage: string | undefined;
+
+  cart: CartItem | undefined;
 
   constructor(
     private customer_service: CustomerService,
@@ -71,6 +74,20 @@ export class ViewProductsComponent {
 
   handleClose() {
     this.show = -1;
-    this.receivedData = undefined;
+    // this.receivedData = undefined;
+  }
+
+  InDeCrease(CartId: number, InDe: number) {
+    // for (let index = 0; index < this.receivedData?.length; index++) {
+    //   if (this.cartItems[index].CartId === CartId) {
+    //     this.cartItems[index].quantity += InDe;
+    //     // Đảm bảo số lượng không bao giờ nhỏ hơn 0
+    //     if (this.cartItems[index].quantity < 0) {
+    //       this.cartItems[index].quantity = 0;
+    //     }
+    //     // Tính lại tổng giá sau khi thay đổi số lượng
+    //     this.cartItems[index].totalPrice = this.cartItems[index].quantity * this.cartItems[index].price;
+    //   }
+    // }
   }
 }

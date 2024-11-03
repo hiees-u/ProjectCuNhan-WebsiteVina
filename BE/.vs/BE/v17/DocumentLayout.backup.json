@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "C:\\Users\\ADMIN\\Desktop\\DoAnWebsiteCaffeeVINA_MAIN\\BE\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{DE969023-0A53-4B48-B5F6-48BF28880A70}|BLL\\BLL.csproj|c:\\users\\admin\\desktop\\doanwebsitecaffeevina_main\\be\\bll\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DE969023-0A53-4B48-B5F6-48BF28880A70}|BLL\\BLL.csproj|solutionrelative:bll\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{DE969023-0A53-4B48-B5F6-48BF28880A70}|BLL\\BLL.csproj|c:\\users\\admin\\desktop\\doanwebsitecaffeevina_main\\be\\bll\\userbll.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{DE969023-0A53-4B48-B5F6-48BF28880A70}|BLL\\BLL.csproj|solutionrelative:bll\\userbll.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -21,10 +25,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{DE969023-0A53-4B48-B5F6-48BF28880A70}|BLL\\BLL.csproj|c:\\users\\admin\\desktop\\doanwebsitecaffeevina_main\\be\\bll\\productbll.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{DE969023-0A53-4B48-B5F6-48BF28880A70}|BLL\\BLL.csproj|solutionrelative:bll\\productbll.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DE969023-0A53-4B48-B5F6-48BF28880A70}|BLL\\BLL.csproj|c:\\users\\admin\\desktop\\doanwebsitecaffeevina_main\\be\\bll\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DE969023-0A53-4B48-B5F6-48BF28880A70}|BLL\\BLL.csproj|solutionrelative:bll\\authservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{3CABEDD8-6AA0-489D-85F4-0B26DB10AFCB}|DTO\\DTO.csproj|c:\\users\\admin\\desktop\\doanwebsitecaffeevina_main\\be\\dto\\baseresponsemodel\\baseresponsemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -46,21 +46,20 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "UserBLL.cs",
               "DocumentMoniker": "C:\\Users\\ADMIN\\Desktop\\DoAnWebsiteCaffeeVINA_MAIN\\BE\\BLL\\UserBLL.cs",
               "RelativeDocumentMoniker": "BLL\\UserBLL.cs",
               "ToolTip": "C:\\Users\\ADMIN\\Desktop\\DoAnWebsiteCaffeeVINA_MAIN\\BE\\BLL\\UserBLL.cs",
               "RelativeToolTip": "BLL\\UserBLL.cs",
-              "ViewState": "AgIAABsAAAAAAAAAAAAYwLAAAAAIAAAAAAAAAA==",
+              "ViewState": "AgIAAEUAAAAAAAAAAAAgwLAAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-21T17:49:54.484Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Bookmark",
@@ -68,7 +67,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "ProductController.cs",
               "DocumentMoniker": "C:\\Users\\ADMIN\\Desktop\\DoAnWebsiteCaffeeVINA_MAIN\\BE\\API\\Controllers\\ProductController.cs",
               "RelativeDocumentMoniker": "API\\Controllers\\ProductController.cs",
@@ -76,12 +75,11 @@
               "RelativeToolTip": "API\\Controllers\\ProductController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-01T05:50:33.503Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-01T05:50:33.503Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "IUser.cs",
               "DocumentMoniker": "C:\\Users\\ADMIN\\Desktop\\DoAnWebsiteCaffeeVINA_MAIN\\BE\\BLL\\Interface\\IUser.cs",
               "RelativeDocumentMoniker": "BLL\\Interface\\IUser.cs",
@@ -89,12 +87,11 @@
               "RelativeToolTip": "BLL\\Interface\\IUser.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAuwA8AAAA1AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-31T17:57:44.652Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-31T17:57:44.652Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "UserController.cs",
               "DocumentMoniker": "C:\\Users\\ADMIN\\Desktop\\DoAnWebsiteCaffeeVINA_MAIN\\BE\\API\\Controllers\\UserController.cs",
               "RelativeDocumentMoniker": "API\\Controllers\\UserController.cs",
@@ -102,18 +99,17 @@
               "RelativeToolTip": "API\\Controllers\\UserController.cs",
               "ViewState": "AgIAAEMAAAAAAAAAAAAQwF8AAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-31T17:56:12.579Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-31T17:56:12.579Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 0,
               "Title": "AuthService.cs",
               "DocumentMoniker": "C:\\Users\\ADMIN\\Desktop\\DoAnWebsiteCaffeeVINA_MAIN\\BE\\BLL\\AuthService.cs",
               "RelativeDocumentMoniker": "BLL\\AuthService.cs",
               "ToolTip": "C:\\Users\\ADMIN\\Desktop\\DoAnWebsiteCaffeeVINA_MAIN\\BE\\BLL\\AuthService.cs",
               "RelativeToolTip": "BLL\\AuthService.cs",
-              "ViewState": "AgIAABsAAAAAAAAAAAAYwC8AAAAIAAAAAAAAAA==",
+              "ViewState": "AgIAABkAAAAAAAAAAAAAABkAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-31T17:49:49.248Z",
               "EditorCaption": ""
@@ -144,7 +140,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "ProductBLL.cs",
               "DocumentMoniker": "C:\\Users\\ADMIN\\Desktop\\DoAnWebsiteCaffeeVINA_MAIN\\BE\\BLL\\ProductBLL.cs",
               "RelativeDocumentMoniker": "BLL\\ProductBLL.cs",
@@ -152,8 +148,7 @@
               "RelativeToolTip": "BLL\\ProductBLL.cs",
               "ViewState": "AgIAACIAAAAAAAAAAAAQwBAAAABSAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-31T15:09:09.566Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-31T15:09:09.566Z"
             },
             {
               "$type": "Document",

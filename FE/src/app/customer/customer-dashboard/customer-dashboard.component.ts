@@ -17,20 +17,22 @@ export class CustomerDashboardComponent {
 
   constructor(private router: Router) {
     this.checkLogin();
-
   }
 
   OnInit() {
+    this.checkLogin();
   }
 
   checkLogin() {
-    const token = localStorage.getItem('token');
-    if(token) {
-      this.isLogin = true;
+    if (typeof window !== 'undefined') {
+      const token = localStorage.getItem('token');
+      if (token) {
+        this.isLogin = true;
+      }
+      console.log(this.isLogin);
     }
-
+    return false;
     console.log(this.isLogin);
-    
   }
 
   changeActive(activeNumber: number) {

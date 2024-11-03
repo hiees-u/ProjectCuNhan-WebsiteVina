@@ -59,8 +59,7 @@
               "ViewState": "AgIAAEUAAAAAAAAAAAAgwLAAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-21T17:49:54.484Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Bookmark",
@@ -76,8 +75,7 @@
               "RelativeToolTip": "API\\Controllers\\ProductController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-01T05:50:33.503Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-01T05:50:33.503Z"
             },
             {
               "$type": "Document",
@@ -89,8 +87,7 @@
               "RelativeToolTip": "BLL\\Interface\\IUser.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAuwA8AAAA1AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-31T17:57:44.652Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-31T17:57:44.652Z"
             },
             {
               "$type": "Document",
@@ -102,8 +99,7 @@
               "RelativeToolTip": "API\\Controllers\\UserController.cs",
               "ViewState": "AgIAAEMAAAAAAAAAAAAQwF8AAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-31T17:56:12.579Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-31T17:56:12.579Z"
             },
             {
               "$type": "Document",
@@ -113,7 +109,7 @@
               "RelativeDocumentMoniker": "BLL\\AuthService.cs",
               "ToolTip": "C:\\Users\\ADMIN\\Desktop\\DoAnWebsiteCaffeeVINA_MAIN\\BE\\BLL\\AuthService.cs",
               "RelativeToolTip": "BLL\\AuthService.cs",
-              "ViewState": "AgIAABoAAAAAAAAAAAAwwC8AAAAIAAAAAAAAAA==",
+              "ViewState": "AgIAABkAAAAAAAAAAAAAABkAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-10-31T17:49:49.248Z",
               "EditorCaption": ""
@@ -152,8 +148,7 @@
               "RelativeToolTip": "BLL\\ProductBLL.cs",
               "ViewState": "AgIAACIAAAAAAAAAAAAQwBAAAABSAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-31T15:09:09.566Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-10-31T15:09:09.566Z"
             },
             {
               "$type": "Document",

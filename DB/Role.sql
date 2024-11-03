@@ -348,14 +348,13 @@ AS
 BEGIN
 	select p.* , ph.price 
 	from Product p, PriceHistory ph 
-	where p.product_id = ph.product_id and ph. isActive = 0
+	where p.product_id = ph.product_id and ph. isActive = 0 and totalQuantity > 0
 	Order By p.CreateTime Desc
 END;
 
 exec GetAllProducts;
 
 GRANT EXECUTE ON GetAllProducts TO Customer;
-
 GRANT EXECUTE ON GetAllProducts TO OrderApprover;
 GRANT EXECUTE ON GetAllProducts TO Moderator;
 GRANT EXECUTE ON GetAllProducts TO WarehouseEmployee;
