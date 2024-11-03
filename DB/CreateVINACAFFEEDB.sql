@@ -725,3 +725,25 @@ begin
     END
 
 end
+
+--triger Update lại Số lượng sản phẩm đã giao của phiếu đặt khi insert update phiếu nhập kho:
+create trigger trg_up_QuanttityDelivered
+on WarehouseReceiptDetail
+after UPDATE, INSERT
+as 
+begin
+	
+	SET NOCOUNT ON;
+
+	DECLARE	@QuantityDelivered int;
+
+	select @QuantityDelivered = SUM(w.quantity) 
+	from WarehouseReceiptDetail w
+	join inserted i on w.PurchaseOrderID = i.PurchaseOrderID and w.priceHistoryId = i.priceHistoryId;
+
+	UPDATE pod
+    SET pod.QuantityDelivered = @QuantityDelivered
+    FROM PurchaseOrderDetail pod
+    INNER JOIN inserted i ON pod.PurchaseOrderID = i.PurchaseOrderID;
+
+end

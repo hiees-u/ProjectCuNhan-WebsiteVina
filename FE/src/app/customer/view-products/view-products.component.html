@@ -71,20 +71,46 @@
     <button class="product-detail-close-btn" (click)="handleClose()">
       <i class="fa-solid fa-xmark"></i>
     </button>
-    
+
     <div class="product-detail-left">
       <img [src]="'/assets/Products/' + receivedData?.image" />
     </div>
 
     <div class="product-detail-right">
       <p class="product-detail-name no-select">
-        {{receivedData?.productName}}
+        {{ receivedData?.productName }}
       </p>
-      <span class="product-detail-price">{{receivedData?.price ?? 0 | customCurrency}}</span>
+      <span class="product-detail-price">Giá: {{
+        receivedData?.price ?? 0 | customCurrency
+      }}</span>
       <p class="product-detail-description">
-        {{receivedData?.description}}
+        {{ receivedData?.description }}
       </p>
+      <ul>
+        <li class="cate-item">
+          <i class="fa-solid fa-caret-right"></i>Cà phê hòa tan
+        </li>
+      </ul>
+      <ul>
+        <li class="sub-cate-item">
+          <i class="fa-solid fa-caret-right"></i>Cà phê decaf
+        </li>
+      </ul>
+      <div class="product-detail-bottom-box">
+          <div class="product-detail-quantity-box">
+            <!-- <button class="btn-decrea" (click)="InDeCrease(item.CartId, -1)"> -->
+              <!-- <i class="fa-solid fa-minus"></i> -->
+            <!-- </button> -->
+            <!-- <span>{{ item.quantity }}</span> -->
+            <!-- <button class="btn-increa" (click)="InDeCrease(item.CartId, 1)"> -->
+              <!-- <i class="fa-solid fa-plus"></i> -->
+            <!-- </button> -->
+        </div>
+        <div class="product-detail-btn">
+          <button class="add-cart btn">Thêm vào giỏ hàng</button>
+          <button class="buy-product btn">Mua ngay</button>
+        </div>
+      </div>
     </div>
-
   </div>
 </div>

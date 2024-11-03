@@ -35,6 +35,7 @@
   font-family: var(--main-style);
   font-weight: 400;
   z-index: 999;
+  max-width: 100%;
 }
 
 .wapper .price-product {

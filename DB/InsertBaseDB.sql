@@ -185,3 +185,50 @@ values(N'Kinh Doanh A1', 'HiuDEV')
 select * from Roles
 
 select * From Department
+
+--
+select * from PriceHistory
+
+select * from Product
+
+insert into PriceHistory(product_id, price, ModifiedBy)
+values	(5, 10000, 'HiuDev'),
+		(4, 150000, 'HiuDev')
+
+update PriceHistory
+set isActive = 0
+where priceHistoryId = 2
+
+update PriceHistory
+set isActive = 0
+where priceHistoryId = 3
+
+select * from PurchaseOrderDetail
+
+insert into PurchaseOrderDetail (PurchaseOrderID, priceHistoryId, quantity, Address)
+values  (1, 2, 10, 10),
+		(1, 3, 15, 10)
+
+select * from PriceHistory ph, Product p where p.product_id = ph.product_id
+
+select * From WarehouseReceipt
+
+insert into WarehouseReceipt (EmployeeID, WarehouseID)
+values ( 13, 2)
+
+select * From WarehouseReceiptDetail
+
+insert into WarehouseReceiptDetail(WarehouseReceiptID, CellID, product_id, PurchaseOrderID, priceHistoryId, quantity, UpdateBy)
+values	(4,11, 5, 1, 2, 1, 9),
+		--(4,12, 4, 1, 3, 1, 9)
+
+Select * from Cells
+
+insert into Cells (CellName, ShelvesID, ModifiedBy)
+values(N'Ô 1- 2', 3, 'HiuDev')
+
+insert into Cells (CellName, ShelvesID, ModifiedBy)
+values(N'Ô 1- 3', 3, 'HiuDev')
+
+select * from Users u, Roles r, UserInfo uf, Employee e
+where u.role_id = r.role_id and uf.AccountName =u.AccountName and e.EmployeeID = uf.Employ_ID

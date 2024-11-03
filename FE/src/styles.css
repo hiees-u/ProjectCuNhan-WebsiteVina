@@ -159,3 +159,22 @@ a {
 .color-var-main {
   color: var(--main-color) !important;
 }
+
+.none-margin {
+  margin: 0 !important;
+}
+
+.btn {
+  border: none;
+  outline: none;
+  width: 100%;
+  padding: 5px;
+  border-radius: 5px;
+  margin: 5px 0;
+  color: var(--main-color);
+  cursor: pointer;
+}
+
+.btn:hover {
+  animation: shake .5s ease-in-out infinite;
+}
