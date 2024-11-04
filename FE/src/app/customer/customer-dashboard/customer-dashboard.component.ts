@@ -29,7 +29,6 @@ export class CustomerDashboardComponent {
       if (token) {
         this.isLogin = true;
       }
-      console.log(this.isLogin);
     }
     return false;
   }
@@ -61,6 +60,7 @@ export class CustomerDashboardComponent {
     this.isActive = -1;
     this.router.navigate(['/login']);
   }
+  
   showRegister() {
     this.isActive = -1;
     this.router.navigate(['/register']);

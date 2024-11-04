@@ -15,6 +15,7 @@ builder.Services.AddScoped<IProduct, ProductBLL>();
 builder.Services.AddSingleton<IAuthService,AuthService>();
 builder.Services.AddScoped<ICategory, CategoryBLL>();
 builder.Services.AddScoped<ISubCategory, SubCategoryBLL>();
+builder.Services.AddScoped<ISupplier, SupplierBLL>();
 
 
 builder.Services.AddControllers();

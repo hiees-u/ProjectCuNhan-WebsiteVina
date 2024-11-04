@@ -348,7 +348,7 @@ AS
 BEGIN
 	select p.* , ph.price 
 	from Product p, PriceHistory ph 
-	where p.product_id = ph.product_id and ph. isActive = 0 and totalQuantity > 0
+	where p.product_id = ph.product_id and ph. isActive = 0 and totalQuantity > 0 and p.DeleteTime is NULL
 	Order By p.CreateTime Desc
 END;
 
@@ -450,3 +450,25 @@ GRANT SELECT ON OBJECT::dbo.GetTop10Categories TO  Customer;
 GRANT SELECT ON OBJECT::dbo.GetTop10Categories TO  OrderApprover;
 GRANT SELECT ON OBJECT::dbo.GetTop10Categories TO  Moderator;
 GRANT SELECT ON OBJECT::dbo.GetTop10Categories TO  WarehouseEmployee;
+--#########################################################################PROCEDURE GET Supplier BY ID#####################################################################################
+go
+CREATE FUNCTION dbo.GetSupplierById (
+    @SupplierID INT
+)
+RETURNS TABLE
+AS
+RETURN
+(
+    SELECT * 
+    FROM Supplier 
+    WHERE SupplierID = @SupplierID 
+      AND DeleteTime IS NULL
+);
+
+
+select * from dbo.GetSupplierById(11)
+
+GRANT SELECT ON OBJECT::dbo.GetSupplierById TO  Customer;
+GRANT SELECT ON OBJECT::dbo.GetSupplierById TO  OrderApprover;
+GRANT SELECT ON OBJECT::dbo.GetSupplierById TO  Moderator;
+GRANT SELECT ON OBJECT::dbo.GetSupplierById TO  WarehouseEmployee;

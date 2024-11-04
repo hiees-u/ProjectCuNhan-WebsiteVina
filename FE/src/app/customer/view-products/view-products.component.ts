@@ -18,6 +18,7 @@ import {
 import { Category } from '../../shared/module/category/category.module';
 import { BaseResponseModel } from '../../shared/module/base-response/base-response.module';
 import { SubCategory } from '../../shared/module/sub-category/sub-category.module';
+import { Supplier } from '../../shared/module/supplier/supplier.module';
 
 @Component({
   selector: 'app-view-products',
@@ -33,7 +34,7 @@ import { SubCategory } from '../../shared/module/sub-category/sub-category.modul
     CustomCurrencyPipe,
   ],
   templateUrl: './view-products.component.html',
-  styleUrl: './view-products.component.css',
+  styleUrls: ['./view-products.component.css', './product-detail.css'],
 })
 export class ViewProductsComponent {
   show: number = 0;
@@ -45,8 +46,33 @@ export class ViewProductsComponent {
   cart: CartItem = constructorCartItem();
   cateProductDetail: string = '';
   subCateProductDetail: string = '';
+  supplierProductDetail: Supplier | undefined;
+
+  //--
+  cateActive: any = null;
+  subCateActive: any = null;
+  //--
+  pageActive: number = 1;
+  pages = [1, 2, 3];
+  //--
+  logError: string = '';
 
   constructor(private customer_service: CustomerService) {}
+
+  handleCateActiveCate(CateId: number) {
+    this.cateActive = CateId === this.cateActive ? null : CateId;
+    this.getProduct(null, this.cateActive, this.subCateActive, null, null, this.pageActive, 8, 0, 0);
+  }
+
+  handlePageClick(page: number) {
+    this.pageActive = page;
+    this.getProduct(null, this.cateActive, this.subCateActive, null, null, this.pageActive, 8, 0, 0);
+  }
+
+  handleSubCateActiveCate(CateId: number) {
+    this.subCateActive = CateId === this.subCateActive ? null : CateId;
+    this.getProduct(null, this.cateActive, this.subCateActive, null, null, this.pageActive, 8, 0, 0);
+  }
 
   async getTop10SubCategories() {
     try {
@@ -80,19 +106,44 @@ export class ViewProductsComponent {
     }
   }
 
-  async ngOnInit(): Promise<void> {
-    this.getTop10Categories();
-    this.getTop10SubCategories();
+  async getSupplier(supplierId: number) {
+    try {
+      const response: BaseResponseModel =
+        await this.customer_service.getSupplierByID(supplierId);
+      if (response.isSuccess) {
+        this.supplierProductDetail = response.data;
+        this.responseMessage = response.message;
+      } else {
+        this.responseMessage = 'Failed to get categories';
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      this.responseMessage = 'An error occurred while fetching the categories';
+    }
+  }
+
+  async getProduct(
+    productId: number | null = null,
+    cateId: number | null = null,
+    subCateId: number | null = null,
+    supplierId: number | null = null,
+    productName: string | null = null,
+    pageNumber: number | 1 = 1,
+    pageSize: number | 1 = 8,
+    sortByName: number | 0 = 0,
+    sortByPrice: number | 0 = 0
+  ) {
     try {
       const response = await this.customer_service.getProducts(
-        null,
-        null,
-        null,
-        null,
-        1,
-        10,
-        0,
-        0
+        productId,
+        cateId,
+        subCateId,
+        supplierId,
+        productName,
+        pageNumber,
+        pageSize,
+        sortByName,
+        sortByPrice
       );
       if (response.isSuccess) {
         this.products = response.data;
@@ -106,6 +157,16 @@ export class ViewProductsComponent {
     }
   }
 
+  async ngOnInit(): Promise<void> {
+    this.getTop10Categories();
+    this.getTop10SubCategories();
+    this.getProduct();
+
+    if (this.products.length === 0) {
+      this.logError = 'Không có sản phẩm nào...';
+    }
+  }
+
   handleDataChange(data: any) {
     this.show = 1;
     this.receivedData = data;
@@ -115,6 +176,9 @@ export class ViewProductsComponent {
     this.cart.images = this.receivedData?.image || '';
     this.getSubCateProductDetail(this.receivedData?.subCategoryId!);
     this.getCateProductDetail(this.receivedData?.categoryId!);
+    console.log(this.receivedData);
+
+    this.getSupplier(this.receivedData?.supplier!);
   }
 
   async getSubCateProductDetail(productID: number) {
@@ -123,7 +187,7 @@ export class ViewProductsComponent {
         await this.customer_service.getSubCateByProductID(productID);
       if (response.isSuccess) {
         this.subCateProductDetail = response.data;
-        this.responseMessage = response.message;        
+        this.responseMessage = response.message;
       } else {
         this.responseMessage = 'Failed to get categories';
       }
@@ -132,7 +196,7 @@ export class ViewProductsComponent {
       this.responseMessage = 'An error occurred while fetching the categories';
     }
   }
-  
+
   async getCateProductDetail(productID: number) {
     try {
       const response: BaseResponseModel =

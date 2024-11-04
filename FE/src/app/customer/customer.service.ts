@@ -7,6 +7,29 @@ import { BaseResponseModel } from '../shared/module/base-response/base-response.
 export class CustomerService {
   private apiUrl = 'https://localhost:7060/api/';
 
+  async getSupplierByID(supplierId: number): Promise<BaseResponseModel> {
+    const url = `${this.apiUrl}Supplier/Get Supplier By Id?id=${supplierId}`;
+    const token = localStorage.getItem('token');
+    try {
+      const response = await fetch(url, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      return (await response.json()) as BaseResponseModel;
+    } catch (error) {
+      console.error('Error:', error);
+      throw error;
+    }
+  }
+
   async getCateByProductID(productId: number): Promise<BaseResponseModel> {
     const url = `${this.apiUrl}Category?productID=${productId}`;
     const token = localStorage.getItem('token');
@@ -17,14 +40,14 @@ export class CustomerService {
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${token}`,
-        }
-      })
+        },
+      });
 
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
 
-      return (await response.json())as BaseResponseModel;
+      return (await response.json()) as BaseResponseModel;
     } catch (error) {
       console.error('Error:', error);
       throw error;
@@ -41,14 +64,14 @@ export class CustomerService {
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${token}`,
-        }
-      })
+        },
+      });
 
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
 
-      return (await response.json())as BaseResponseModel;
+      return (await response.json()) as BaseResponseModel;
     } catch (error) {
       console.error('Error:', error);
       throw error;
@@ -65,14 +88,14 @@ export class CustomerService {
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${token}`,
-        }
-      })
+        },
+      });
 
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
 
-      return (await response.json())as BaseResponseModel;
+      return (await response.json()) as BaseResponseModel;
     } catch (error) {
       console.error('Error:', error);
       throw error;
@@ -89,14 +112,14 @@ export class CustomerService {
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${token}`,
-        }
-      })
+        },
+      });
 
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
 
-      return (await response.json())as BaseResponseModel;
+      return (await response.json()) as BaseResponseModel;
     } catch (error) {
       console.error('Error:', error);
       throw error;
@@ -107,13 +130,33 @@ export class CustomerService {
     productId: number | null,
     cateId: number | null,
     subCateId: number | null,
+    supplierId: number | null,
     productName: string | null,
     pageNumber: number | 1,
-    pageSize: number | 10,
+    pageSize: number | 1,
     sortByName: number | 0,
     sortByPrice: number | 0
   ): Promise<BaseResponseModel> {
-    const url = `${this.apiUrl}Product?pageNumber=1&pageSize=10&sortByName=0&sortByPrice=0`
+    const params: { [key: string]: any } = {
+      productId,
+      cateId,
+      subCateId,
+      supplierId,
+      productName,
+      pageNumber,
+      pageSize,
+      sortByName,
+      sortByPrice,
+    };
+    const queryString = Object.keys(params)
+      .filter((key) => params[key] !== null && params[key] !== undefined)
+      .map(
+        (key) => `${encodeURIComponent(key)}=${encodeURIComponent(params[key])}`
+      )
+      .join('&');
+    const url = `${this.apiUrl}Product?${queryString}`;
+    console.log(url);
+    
     const token = localStorage.getItem('token');
 
     try {
@@ -128,7 +171,6 @@ export class CustomerService {
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
-
       return await response.json();
     } catch (error) {
       console.error('Error:', error);
