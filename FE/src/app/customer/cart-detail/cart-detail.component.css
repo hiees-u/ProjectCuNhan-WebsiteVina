@@ -12,7 +12,7 @@
 
 .product-header, .check-all, .price-header, .quantity-header, .total-price-header, .operation-header {
     color: rgba(0,0,0,.8);
-    font-size: 0.7em;
+    font-size: 1em;
     line-height: 20px;
 }
 
@@ -152,18 +152,21 @@
     border: none;
     cursor: pointer;
     outline: none;
+    background-color: transparent;
 }
 
 .box {
     height: 20px;
     display: flex;
-    border: 1px solid #000;
+    border: 1px solid #616161b6;
 }
 
 .quantity-header .box span {
     width: 20px;
     display: block;
     height: 20px;
-    border-left: 1px solid #000;
-    border-right: 1px solid #000;
+    border-left: 1px solid #616161b6;
+    border-right: 1px solid #616161b6;
+    text-align: center;
+    padding: 0 5px;
 }

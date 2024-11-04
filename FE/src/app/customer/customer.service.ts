@@ -1,11 +1,37 @@
 import { Injectable } from '@angular/core';
 import { BaseResponseModel } from '../shared/module/base-response/base-response.module';
+import { CartResponse } from '../shared/module/cart-response-module/cart-response-module.module';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CustomerService {
   private apiUrl = 'https://localhost:7060/api/';
+
+  async getCart(): Promise<BaseResponseModel> {
+    const url = `${this.apiUrl}Cart`;
+    const token = localStorage.getItem('token');
+    try {
+      const response = await fetch(url, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      // const data: CartResponse[] = await response.json();
+
+      return (await response.json());
+    } catch (error) {
+      console.error('Error:', error);
+      throw error;
+    }
+  }
 
   async getSupplierByID(supplierId: number): Promise<BaseResponseModel> {
     const url = `${this.apiUrl}Supplier/Get Supplier By Id?id=${supplierId}`;
@@ -156,7 +182,7 @@ export class CustomerService {
       .join('&');
     const url = `${this.apiUrl}Product?${queryString}`;
     console.log(url);
-    
+
     const token = localStorage.getItem('token');
 
     try {

@@ -1,5 +1,15 @@
 [
   {
+    "ContainingType": "API.Controllers.CartController",
+    "Method": "Get",
+    "RelativePath": "api/Cart",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "API.Controllers.CategoryController",
     "Method": "GetCateNameByProductID",
     "RelativePath": "api/Category",

@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 export interface CartItem {
   CartId: number,
-  images: string;
+  image: string;
   name: string;
   price: number;
   quantity: number;
@@ -20,7 +20,7 @@ export interface CartItem {
 export function constructorCartItem(): CartItem {
   return {
     CartId: 0, // or assign a specific ID
-    images: '', // provide a default image path or leave as empty string
+    image: '', // provide a default image path or leave as empty string
     name: '', // default name or empty
     price: 0, // default price
     quantity: 1, // default quantity
