@@ -4,6 +4,8 @@ go
 Create ROLE Customer;
 
 Grant Select On dbo.Product to Customer
+Grant Select, Insert On dbo.Customer to Customer
+Grant Select, Update, Insert On dbo.Cart to Customer
 Grant Select, Update, Insert On dbo.UserInfo to Customer
 Grant Select, Update, Insert, Delete On dbo.Cart to Customer
 Grant Select, Update, Insert On dbo.[Order] to Customer
@@ -472,3 +474,60 @@ GRANT SELECT ON OBJECT::dbo.GetSupplierById TO  Customer;
 GRANT SELECT ON OBJECT::dbo.GetSupplierById TO  OrderApprover;
 GRANT SELECT ON OBJECT::dbo.GetSupplierById TO  Moderator;
 GRANT SELECT ON OBJECT::dbo.GetSupplierById TO  WarehouseEmployee;
+go
+--#########################################################################Create Cart Customer#####################################################################################
+CREATE PROCEDURE SP_AddToCart
+    @ProductID INT,
+    @Quantity INT
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    DECLARE @UserName VARCHAR(25);
+    SET @UserName = SUSER_NAME();
+
+    DECLARE @CustomerID INT;
+
+    -- Gán giá trị cho biến @CustomerID
+    SELECT @CustomerID = c.customerId
+    FROM UserInfo uf
+    JOIN Customer c ON uf.customer_Id = c.customerId
+    WHERE uf.AccountName = @UserName;
+
+    -- Chèn dữ liệu vào bảng Cart
+    INSERT INTO Cart (customerId, product_id, quantity)
+    VALUES (@CustomerID, @ProductID, @Quantity);
+END;
+
+--phân quyền
+GRANT EXECUTE ON OBJECT::dbo.SP_AddToCart TO  Customer;
+go
+--#########################################################################Select Cart Customer#####################################################################################
+CREATE PROCEDURE SP_GetCartByUser
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    DECLARE @UserName VARCHAR(25);
+	SET @UserName = SUSER_NAME();
+
+	DECLARE @CustomerID INT;
+
+	-- Gán giá trị cho biến @CustomerID
+	SELECT @CustomerID = c.customerId
+	FROM UserInfo uf
+	JOIN Customer c ON uf.customer_Id = c.customerId
+	WHERE uf.AccountName = @UserName;
+
+	-- Truy vấn giỏ hàng của khách hàng
+	SELECT p.product_id, p.product_name, ph.price, c.quantity, p.image
+	FROM Cart c
+	Join Product p on c.product_id = p.product_id
+	join PriceHistory ph on ph.product_id = p.product_id
+	WHERE c.customerId = @CustomerID;
+END;
+
+--gán quyền
+GRANT EXECUTE ON OBJECT::dbo.SP_GetCartByUser TO Customer;
+
+EXEC SP_GetCartByUser;

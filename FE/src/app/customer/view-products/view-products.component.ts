@@ -173,7 +173,7 @@ export class ViewProductsComponent {
     this.cart.price = this.receivedData?.price || 0;
     this.cart.quantity = 1;
     this.cart.name = this.receivedData?.productName || '';
-    this.cart.images = this.receivedData?.image || '';
+    this.cart.image = this.receivedData?.image || '';
     this.getSubCateProductDetail(this.receivedData?.subCategoryId!);
     this.getCateProductDetail(this.receivedData?.categoryId!);
     console.log(this.receivedData);

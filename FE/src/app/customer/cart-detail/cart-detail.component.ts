@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { CartItem } from '../../shared/module/cart/cart.module';
 import { CommonModule } from '@angular/common';
 import { CustomCurrencyPipe } from '../../shared/module/customCurrency';
+import { CustomerService } from '../customer.service';
+import { BaseResponseModel } from '../../shared/module/base-response/base-response.module';
 
 @Component({
   selector: 'app-cart-detail',
@@ -14,21 +16,22 @@ import { CustomCurrencyPipe } from '../../shared/module/customCurrency';
   styleUrl: './cart-detail.component.css',
 })
 export class CartDetailComponent {
-  cartItems: CartItem[] = [{
-    CartId: 1,
-    images: 'p1.png',
-    name: 'Classic Espresso',
-    price: 150000,
-    quantity: 1,
-    totalPrice: 150.0,
-  }, {
-    CartId: 2,
-    images: 'p2.png',
-    name: 'French Roast', 
-    price: 130.0, 
-    quantity: 2, 
-    totalPrice:130
-  }];
+  cartItems: CartItem[] = [];
+
+  constructor(private Customer: CustomerService) {}
+
+  ngOnInit(): void {
+    this.getCart();     
+  }
+
+  async getCart() {
+    const response : BaseResponseModel = await this.Customer.getCart();
+    if(response.isSuccess) {
+      this.cartItems = response.data;
+      console.log('Success');
+      console.log(this.cartItems[0].image);
+    }    
+  }
 
   toggleAllChecks(event: any) {
     const checkAll = event.target.checked;
