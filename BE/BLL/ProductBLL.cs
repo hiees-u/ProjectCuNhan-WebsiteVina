@@ -1,6 +1,5 @@
 ﻿using BLL.Interface;
 using BLL.LoginBLL;
-using DLL.Models;
 using DTO.Product;
 using DTO.Responses;
 using System.Data.SqlClient;
@@ -9,7 +8,7 @@ namespace BLL
 {
     public class ProductBLL : IProduct
     {
-        public BaseResponseModel GetProducts(int? productId, int? cateId, int? subCateId, string? productName, int pageNumber = 1, int pageSize = 10, int sortByName = 0 /*1: tăng, -1: giảm, 0:*/, int sortByPrice = 0)
+        public BaseResponseModel GetProducts(int? productId, int? cateId, int? subCateId, int? supplierId, string? productName, int pageNumber = 1, int pageSize = 10, int sortByName = 0 /*1: tăng, -1: giảm, 0:*/, int sortByPrice = 0)
         {
             List<ProductViewUserResponseModel> products = new List<ProductViewUserResponseModel>();
             try
@@ -63,6 +62,11 @@ namespace BLL
                         if (cateId.HasValue)
                         {
                             products = products.Where(p => p.CategoryId == cateId).ToList();
+                        }
+
+                        if (supplierId.HasValue)
+                        {
+                            products = products.Where(p => p.Supplier == supplierId).ToList();
                         }
 
                         //check if productName has value

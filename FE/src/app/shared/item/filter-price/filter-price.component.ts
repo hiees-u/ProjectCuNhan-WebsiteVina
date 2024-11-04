@@ -36,7 +36,6 @@ export class FilterPriceComponent implements AfterViewInit {
     this.upperValue = parseInt(this.upperSlider.nativeElement.value);
     this.oneInput.nativeElement.value = this.lowerValue;
     this.twoInput.nativeElement.value = this.upperValue;
-    console.log(this.lowerValue, this.updateValues);
   }
 
   handleUpperInput() {

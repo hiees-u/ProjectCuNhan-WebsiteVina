@@ -17,8 +17,7 @@ export class ProductItemComponent {
   @Input() data: Product | undefined;
   @Output() dataChange: EventEmitter<any> = new EventEmitter<any>();
 
-  sendData(Product: string | undefined) {
-    console.log("Đã Click product " + Product);    
+  sendData(Product: string | undefined) {   
     this.dataChange.emit(Product);
   }
 

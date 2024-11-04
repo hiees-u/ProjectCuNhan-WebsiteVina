@@ -5,7 +5,6 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
-using Microsoft.AspNetCore.Cors;
 using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -14,6 +13,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddScoped<IUser, UserBLL>();
 builder.Services.AddScoped<IProduct, ProductBLL>();
 builder.Services.AddSingleton<IAuthService,AuthService>();
+builder.Services.AddScoped<ICategory, CategoryBLL>();
+builder.Services.AddScoped<ISubCategory, SubCategoryBLL>();
+builder.Services.AddScoped<ISupplier, SupplierBLL>();
 
 
 builder.Services.AddControllers();

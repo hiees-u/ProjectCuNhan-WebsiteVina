@@ -18,7 +18,7 @@ export class CartDetailComponent {
     CartId: 1,
     images: 'p1.png',
     name: 'Classic Espresso',
-    price: 150.0,
+    price: 150000,
     quantity: 1,
     totalPrice: 150.0,
   }, {
