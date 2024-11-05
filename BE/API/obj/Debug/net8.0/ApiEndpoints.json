@@ -26,6 +26,38 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "API.Controllers.CartController",
+    "Method": "Delete",
+    "RelativePath": "api/Cart",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.CartController",
+    "Method": "Put",
+    "RelativePath": "api/Cart",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "DTO.Cart.CartRequestModule",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "API.Controllers.CategoryController",
     "Method": "GetCateNameByProductID",
     "RelativePath": "api/Category",

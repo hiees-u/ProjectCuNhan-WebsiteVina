@@ -1,10 +1,12 @@
 export interface CartItem {
   CartId: number,
   image: string;
-  name: string;
+  productName: string;
   price: number;
   quantity: number;
   totalPrice: number;
+  productId: number;
+  checked?: boolean;
 }
 
 export interface CartResponse {
@@ -23,10 +25,11 @@ export function constructorCartItem(): CartItem {
   return {
     CartId: 0, // or assign a specific ID
     image: '', // provide a default image path or leave as empty string
-    name: '', // default name or empty
+    productName: '', // default name or empty
     price: 0, // default price
     quantity: 1, // default quantity
-    totalPrice: 0 // calculated total price based on quantity * price
+    totalPrice: 0,
+    productId: 0
   }
 }
 

@@ -1,60 +1,132 @@
 import { Component } from '@angular/core';
-import { CartItem } from '../../shared/module/cart/cart.module';
+import { CartItem, CartResponse } from '../../shared/module/cart/cart.module';
 import { CommonModule } from '@angular/common';
 import { CustomCurrencyPipe } from '../../shared/module/customCurrency';
 import { CustomerService } from '../customer.service';
 import { BaseResponseModel } from '../../shared/module/base-response/base-response.module';
+import { NotificationComponent } from '../../shared/item/notification/notification.component';
+import {
+  ConstructerNotification,
+  Notification,
+} from '../../shared/module/notification/notification.module';
 
 @Component({
   selector: 'app-cart-detail',
   standalone: true,
   imports: [
     CommonModule,
-    CustomCurrencyPipe
-  ],
+    CustomCurrencyPipe,
+    NotificationComponent
+],
   templateUrl: './cart-detail.component.html',
   styleUrl: './cart-detail.component.css',
 })
 export class CartDetailComponent {
-  cartItems: CartItem[] = [];
 
+  isDisabled: boolean = false;
+
+  trigger: any;
+  dataNotification: Notification = ConstructerNotification();
+
+  cartItems: CartItem[] = [];
   constructor(private Customer: CustomerService) {}
 
   ngOnInit(): void {
     this.getCart();     
   }
 
+  async updateCart(productId: number, quantity: number) {
+    const cartRequest: CartResponse = {
+      productId,
+      quantity
+    }
+    try {
+      const response = await this.Customer.updateCart(cartRequest);
+      if(response.isSuccess) {
+        this.trigger = Date.now();
+        this.dataNotification.messages = 'Cập nhật giỏ hàng thành công!';
+        this.dataNotification.status = 'success';
+        this.getCart();
+      } else {
+        this.trigger = Date.now();
+        this.dataNotification.messages = 'Cập nhật giỏ hàng thất bại!';
+        this.dataNotification.status = 'error';
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  }
+
+  async deleteCart(productId: number) {
+    try {
+      const response = await this.Customer.deleteCart(productId);
+      if(response.isSuccess) {
+        this.dataNotification.messages = 'Xóa sản phẩm khỏi giỏ hàng thành công!';
+        this.dataNotification.status = 'success';
+        this.trigger = Date.now();
+        this.getCart();
+      } else {
+        console.log('ERRROR');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  }
+
   async getCart() {
     const response : BaseResponseModel = await this.Customer.getCart();
     if(response.isSuccess) {
       this.cartItems = response.data;
-      console.log('Success');
-      console.log(this.cartItems[0].image);
-    }    
+    }
+
+    if(this.cartItems.length <= 0) {
+      this.isDisabled = true;
+    } else {
+      this.isDisabled = false;
+    }
+
+    console.log(this.isDisabled);
+    
   }
 
-  toggleAllChecks(event: any) {
-    const checkAll = event.target.checked;
-    const checkboxes = document.getElementsByName(
-      'check'
-    ) as NodeListOf<HTMLInputElement>;
-    checkboxes.forEach((checkbox) => {
-      checkbox.checked = checkAll;
+  InDeCrease(productId: number, InDe: number) {
+    this.cartItems.forEach(cart => {
+      if(cart.productId === productId) {
+        cart.quantity += InDe;
+        // Đảm bảo số lượng không bao giờ nhỏ hơn 0
+        if(cart.quantity <= 0) {
+          cart.quantity = 0;
+        }
+        // Tính lại tổng giá sau khi thay đổi số lượng
+        cart.totalPrice = cart.price * cart.quantity;
+      }
     });
   }
 
-  InDeCrease(CartId: number, InDe: number) {
-    for (let index = 0; index < this.cartItems.length; index++) {
-      if (this.cartItems[index].CartId === CartId) {
-        this.cartItems[index].quantity += InDe;
-        // Đảm bảo số lượng không bao giờ nhỏ hơn 0
-        if (this.cartItems[index].quantity < 0) {
-          this.cartItems[index].quantity = 0;
-        }
-        // Tính lại tổng giá sau khi thay đổi số lượng
-        this.cartItems[index].totalPrice = this.cartItems[index].quantity * this.cartItems[index].price;
-      }
+  onCheckAll(event: any) {
+    if(event.target.checked) {
+      this.cartItems.forEach(item => {
+        item.checked = true;
+      });
+    } else {
+      this.cartItems.forEach(item => {
+        item.checked = false;
+      });
     }
   }
   
+  onCheckboxChange(item: CartItem, event: any): void {
+    item.checked = event.target.checked;
+    console.log(item.productId + 'is' + (item.checked ? 'checked' : 'uncheck'));    
+  }
+
+  onOrder() {
+    this.cartItems.forEach(item => {
+      if(item.checked) {
+        console.log(item.productId + 'is' + (item.checked ? 'checked' : 'uncheck'));   
+      }
+    });
+  }
+
 }
+

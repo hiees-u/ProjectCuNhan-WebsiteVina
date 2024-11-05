@@ -10,7 +10,7 @@
           [ngClass]="{ active: isActive === 1 }"
           (click)="changeActive(1)"
         >
-          Home
+          Trang Chủ
         </li>
         <li
           class="no-select menu-li menu-li-content"
@@ -18,7 +18,7 @@
           [ngClass]="{ active: isActive === 2 }"
           (click)="changeActive(2)"
         >
-          About Us
+          Về Chúng Tôi
         </li>
         <li
           class="no-select menu-li menu-li-content"
@@ -26,14 +26,14 @@
           [ngClass]="{ active: isActive === 3 }"
           (click)="changeActive(3)"
         >
-          Shop
+          Sản Phẩm
         </li>
         <li
           class="no-select menu-li menu-li-content"
           [ngClass]="{ active: isActive === 4 }"
           (click)="changeActive(4)"
         >
-          Contacts
+          Liên Hệ
         </li>
         <li
           *ngIf="!isLogin"
@@ -62,7 +62,8 @@
 
   <div class="background-main">
     <div class="wrapper-1">
-      <div class="text no-select">Chào Mừng Bạn Đến Với</div>
+      <marquee class="text no-select" behavior="" direction="">Chào Mừng Bạn Đến Với</marquee>
+      <!-- <div class="text no-select">Chào Mừng Bạn Đến Với</div> -->
       <div class="wrapper">
         <p class="text-main no-select">VINA CAFE</p>
       </div>

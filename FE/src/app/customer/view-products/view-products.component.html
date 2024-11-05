@@ -18,7 +18,7 @@
                 : 'var(--secon-text-color)',
             'margin-left': cateActive === item.categoryId ? '10px' : '0'
           }"
-          (click)="handleCateActiveCate(item.categoryId)"
+          (click)="handleCateActive(item.categoryId)"
         >
           <i class="fa-solid fa-caret-right"></i>{{ item.categoryName }}
         </li>
@@ -38,7 +38,7 @@
                 : 'var(--secon-text-color)',
             'margin-left': subCateActive === item.subCategoryId ? '10px' : '0'
           }"
-          (click)="handleSubCateActiveCate(item.subCategoryId)"
+          (click)="handleSubCateActive(item.subCategoryId)"
         >
           <i class="fa-solid fa-caret-right"></i>{{ item.subCategoryName }}
         </li>
@@ -82,8 +82,7 @@
       </span>
     </div>
   </div>
-  <div
-    class="product-detail"
+  <div class="product-detail"
     [ngClass]="{ show: show === 1, hiden: show === -1, hiden2: show === 0 }"
   >
     <button class="product-detail-close-btn" (click)="handleClose()">
@@ -138,4 +137,8 @@
       </div>
     </div>
   </div>
+  <div class="notification">
+    <app-notification [data]="dataNotification" [trigger]="trigger"></app-notification>
+  </div>
+
 </div>

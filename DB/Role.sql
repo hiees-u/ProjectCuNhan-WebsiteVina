@@ -5,7 +5,7 @@ Create ROLE Customer;
 
 Grant Select On dbo.Product to Customer
 Grant Select, Insert On dbo.Customer to Customer
-Grant Select, Update, Insert On dbo.Cart to Customer
+Grant Select, Update, Insert, DELETE  On dbo.Cart to Customer
 Grant Select, Update, Insert On dbo.UserInfo to Customer
 Grant Select, Update, Insert, Delete On dbo.Cart to Customer
 Grant Select, Update, Insert On dbo.[Order] to Customer
@@ -15,6 +15,7 @@ Grant Select On dbo.Province to Customer
 Grant Select, Insert On dbo.District to Customer
 Grant Select, Insert On dbo.Commune to Customer
 Grant Select, Insert On dbo.Address to Customer
+
 
 
 go 
@@ -513,6 +514,8 @@ END;
 
 --phân quyền
 GRANT EXECUTE ON OBJECT::dbo.SP_AddToCart TO  Customer;
+
+EXEC SP_AddToCart @ProductID = 4, @Quantity = 1
 go
 --#########################################################################Select Cart Customer#####################################################################################
 CREATE PROCEDURE SP_GetCartByUser
@@ -543,3 +546,58 @@ END;
 GRANT EXECUTE ON OBJECT::dbo.SP_GetCartByUser TO Customer;
 
 EXEC SP_GetCartByUser;
+go
+--#########################################################################Drop Cart Customer#####################################################################################
+CREATE PROCEDURE SP_DeleteProductFromCart
+    @ProductID INT
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    DECLARE @UserName VARCHAR(25);
+    SET @UserName = SUSER_NAME();
+
+    DECLARE @CustomerID INT;
+
+    -- Gán giá trị cho biến @CustomerID
+    SELECT @CustomerID = c.customerId
+    FROM UserInfo uf
+    JOIN Customer c ON uf.customer_Id = c.customerId
+    WHERE uf.AccountName = @UserName;
+
+    -- Xóa sản phẩm từ giỏ hàng
+    DELETE FROM Cart
+    WHERE product_id = @ProductID AND customerId = @CustomerID;
+END;
+
+--gán quyền
+GRANT EXECUTE ON OBJECT::dbo.SP_DeleteProductFromCart TO Customer;
+
+EXEC SP_DeleteProductFromCart @ProductID = 1;
+go
+--#########################################################################Update Cart Customer#####################################################################################
+CREATE PROCEDURE SP_UpdateCart
+    @ProductID INT,
+    @Quantity INT
+AS
+BEGIN
+    DECLARE @UserName VARCHAR(25); 
+	SET @UserName = SUSER_NAME(); 
+
+	DECLARE @CustomerID INT;
+
+	SELECT @CustomerID = c.customerId 
+	FROM UserInfo uf 
+	JOIN Customer c ON uf.customer_Id = c.customerId 
+	WHERE uf.AccountName = @UserName;
+
+	UPDATE Cart
+	SET quantity = @Quantity
+	WHERE customerId = @CustomerID and product_id = @ProductID
+END;
+
+
+--phân quyền
+GRANT EXECUTE ON OBJECT::dbo.SP_UpdateCart TO  Customer;
+
+EXEC SP_UpdateCart @ProductID = 4, @Quantity = 1

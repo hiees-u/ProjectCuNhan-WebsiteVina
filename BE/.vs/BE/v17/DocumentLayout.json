@@ -11,6 +11,10 @@
       "RelativeMoniker": "D:0:0:{DE969023-0A53-4B48-B5F6-48BF28880A70}|BLL\\BLL.csproj|solutionrelative:bll\\cartbll.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{3CABEDD8-6AA0-489D-85F4-0B26DB10AFCB}|DTO\\DTO.csproj|c:\\users\\admin\\desktop\\doanwebsitecaffeevina_main\\be\\dto\\cart\\cartrequestmodule.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3CABEDD8-6AA0-489D-85F4-0B26DB10AFCB}|DTO\\DTO.csproj|solutionrelative:dto\\cart\\cartrequestmodule.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{DE969023-0A53-4B48-B5F6-48BF28880A70}|BLL\\BLL.csproj|c:\\users\\admin\\desktop\\doanwebsitecaffeevina_main\\be\\bll\\interface\\icart.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{DE969023-0A53-4B48-B5F6-48BF28880A70}|BLL\\BLL.csproj|solutionrelative:bll\\interface\\icart.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
@@ -22,11 +26,24 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "CartRequestModule.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\Desktop\\DoAnWebsiteCaffeeVINA_MAIN\\BE\\DTO\\Cart\\CartRequestModule.cs",
+              "RelativeDocumentMoniker": "DTO\\Cart\\CartRequestModule.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\Desktop\\DoAnWebsiteCaffeeVINA_MAIN\\BE\\DTO\\Cart\\CartRequestModule.cs",
+              "RelativeToolTip": "DTO\\Cart\\CartRequestModule.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-05T19:10:04.4Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -36,7 +53,7 @@
               "RelativeDocumentMoniker": "API\\Controllers\\CartController.cs",
               "ToolTip": "C:\\Users\\ADMIN\\Desktop\\DoAnWebsiteCaffeeVINA_MAIN\\BE\\API\\Controllers\\CartController.cs",
               "RelativeToolTip": "API\\Controllers\\CartController.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAABUAAAAiAAAAAAAAAA==",
+              "ViewState": "AgIAACcAAAAAAAAAAAAAADoAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-04T20:26:57.305Z",
               "EditorCaption": ""
@@ -49,20 +66,20 @@
               "RelativeDocumentMoniker": "BLL\\CartBLL.cs",
               "ToolTip": "C:\\Users\\ADMIN\\Desktop\\DoAnWebsiteCaffeeVINA_MAIN\\BE\\BLL\\CartBLL.cs",
               "RelativeToolTip": "BLL\\CartBLL.cs",
-              "ViewState": "AgIAAC4AAAAAAAAAAAAQwEEAAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAAFMAAAAAAAAAAAAAAIUAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-04T19:49:35.705Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "ICart.cs",
               "DocumentMoniker": "C:\\Users\\ADMIN\\Desktop\\DoAnWebsiteCaffeeVINA_MAIN\\BE\\BLL\\Interface\\ICart.cs",
               "RelativeDocumentMoniker": "BLL\\Interface\\ICart.cs",
               "ToolTip": "C:\\Users\\ADMIN\\Desktop\\DoAnWebsiteCaffeeVINA_MAIN\\BE\\BLL\\Interface\\ICart.cs",
               "RelativeToolTip": "BLL\\Interface\\ICart.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAABCAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAABBAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-04T19:49:12.683Z",
               "EditorCaption": ""
