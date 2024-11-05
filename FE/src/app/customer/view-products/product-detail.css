@@ -184,3 +184,10 @@
   border: 1px solid #0000007d;
   margin: auto;
 }
+
+.notification {
+  position: fixed;
+  top: 130px;
+  right: 0;
+  z-index: 9999;
+}

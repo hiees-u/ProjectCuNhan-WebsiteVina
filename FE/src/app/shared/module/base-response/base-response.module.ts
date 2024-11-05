@@ -14,3 +14,10 @@ export interface BaseResponseModel {
   ]
 })
 export class BaseResponseModule { }
+
+export function constructorBaseResponseModule() {
+  return {
+    isSuccess: true,
+    message: '',
+  }
+}

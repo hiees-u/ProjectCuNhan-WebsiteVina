@@ -120,17 +120,17 @@
 }
 
 .group-btn a i {
-  color: #4c4c4c;
+  color: #fff;
   font-size: 1.2em;
   border-radius: 5px;
   padding: 10px;
   background-color: var(--main-color);
-  transition: all 0.5s ease;
+  transition: all 1s ease;
 }
 
 .group-btn a:hover i {
-  background-color: #0000009e;
-  color: #ff9200;
+  background-color: #fff;
+  color: var(--main-color);
 }
 
 @keyframes left-to-right {
@@ -170,9 +170,10 @@
 }
 
 .wrapper-1 {
-  width: fit-content;
-  padding: 5px 10px;
+  /* width: fit-content; */
+  padding: 10px 25px;
   backdrop-filter: blur(5px);
+  width: 520px;
 }
 
 .text-main {

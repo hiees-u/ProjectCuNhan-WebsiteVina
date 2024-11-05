@@ -8,15 +8,58 @@ import { CartResponse } from '../shared/module/cart/cart.module';
 export class CustomerService {
   private apiUrl = 'https://localhost:7060/api/';
 
+  async updateCart(cart: CartResponse) : Promise<BaseResponseModel> {
+    //https://localhost:7060/api/Cart
+    const url = `${this.apiUrl}Cart`;
+    const token = localStorage.getItem('token');   
+    
+    const response = await fetch(url, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`,
+      },
+      body: JSON.stringify(cart)
+    });
+    
+    if(!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    return response.json();
+  }
+
+  async deleteCart(productId: number): Promise<BaseResponseModel> {
+    const url = `${this.apiUrl}Cart`;
+    const token = localStorage.getItem('token');
+
+    try {
+      const response = await fetch(url, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`,
+        },
+        body: JSON.stringify(productId)
+      });
+
+      if(!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const data: BaseResponseModel = await response.json();
+
+      return data;
+    } catch (error) {
+      console.error('ERROR:', error);
+      throw error;
+    }
+  }
+
   async postCart(response: CartResponse): Promise<BaseResponseModel> {
     //https://localhost:7060/api/Cart
     const url = `${this.apiUrl}Cart`;
     const token = localStorage.getItem('token');
     const body = { productId: response.productId, quantity: response.quantity };
-
-    console.log(response);
-    
-
     try {
       const response = await fetch(url, {
         method: 'POST',
@@ -27,7 +70,7 @@ export class CustomerService {
         body: JSON.stringify(body),
       });
 
-      if(!response.ok) {
+      if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
 

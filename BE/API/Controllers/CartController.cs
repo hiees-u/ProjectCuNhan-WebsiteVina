@@ -40,5 +40,29 @@ namespace API.Controllers
             }
             return BadRequest(response);
         }
+
+        [HttpDelete]
+        [Authorize(Roles = "Customer")]
+        public IActionResult Delete([FromBody] int request)
+        {
+            BaseResponseModel response = icart.Delete(request);
+            if (response.IsSuccess)
+            {
+                return Ok(response);
+            }
+            return BadRequest(response);
+        }
+
+        [HttpPut]
+        [Authorize(Roles = "Customer")]
+        public IActionResult Put([FromBody] CartRequestModule request)
+        {
+            BaseResponseModel response = icart.Put(request);
+            if(response.IsSuccess)
+            {
+                return Ok(response);
+            }
+            return BadRequest(response);
+        }
     }
 }

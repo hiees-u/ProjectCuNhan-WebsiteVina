@@ -120,7 +120,7 @@ li i {
 }
 
 .content-wrapper {
-  width: 100%;
+  width: 90%;
   animation: fadeInFromTop 1.5s ease-in-out;
 }
 
