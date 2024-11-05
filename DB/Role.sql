@@ -494,10 +494,22 @@ BEGIN
     JOIN Customer c ON uf.customer_Id = c.customerId
     WHERE uf.AccountName = @UserName;
 
-    -- Chèn dữ liệu vào bảng Cart
-    INSERT INTO Cart (customerId, product_id, quantity)
-    VALUES (@CustomerID, @ProductID, @Quantity);
+    -- Kiểm tra xem sản phẩm đã tồn tại trong giỏ hàng chưa
+    IF EXISTS (SELECT 1 FROM Cart WHERE customerId = @CustomerID AND product_id = @ProductID)
+    BEGIN
+        -- Nếu tồn tại, cập nhật số lượng
+        UPDATE Cart
+        SET quantity = quantity + @Quantity
+        WHERE customerId = @CustomerID AND product_id = @ProductID;
+    END
+    ELSE
+    BEGIN
+        -- Nếu chưa tồn tại, chèn bản ghi mới
+        INSERT INTO Cart (customerId, product_id, quantity)
+        VALUES (@CustomerID, @ProductID, @Quantity);
+    END
 END;
+
 
 --phân quyền
 GRANT EXECUTE ON OBJECT::dbo.SP_AddToCart TO  Customer;

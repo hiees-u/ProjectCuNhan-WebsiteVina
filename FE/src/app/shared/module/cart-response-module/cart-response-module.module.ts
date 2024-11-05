@@ -1,18 +1,18 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+// import { NgModule } from '@angular/core';
+// import { CommonModule } from '@angular/common';
 
-export interface CartResponse {
-  productId: number;
-  quantity: number;
-  productName: string;
-  image: string;
-  price: number;
-}
+// export interface CartResponse {
+//   productId: number;
+//   quantity: number;
+//   productName: string;
+//   image: string;
+//   price: number;
+// }
 
-@NgModule({
-  declarations: [],
-  imports: [
-    CommonModule
-  ]
-})
-export class CartResponseModuleModule { }
+// @NgModule({
+//   declarations: [],
+//   imports: [
+//     CommonModule
+//   ]
+// })
+// export class CartResponseModuleModule { }

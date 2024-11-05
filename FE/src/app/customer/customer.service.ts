@@ -1,12 +1,44 @@
 import { Injectable } from '@angular/core';
 import { BaseResponseModel } from '../shared/module/base-response/base-response.module';
-import { CartResponse } from '../shared/module/cart-response-module/cart-response-module.module';
+import { CartResponse } from '../shared/module/cart/cart.module';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CustomerService {
   private apiUrl = 'https://localhost:7060/api/';
+
+  async postCart(response: CartResponse): Promise<BaseResponseModel> {
+    //https://localhost:7060/api/Cart
+    const url = `${this.apiUrl}Cart`;
+    const token = localStorage.getItem('token');
+    const body = { productId: response.productId, quantity: response.quantity };
+
+    console.log(response);
+    
+
+    try {
+      const response = await fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(body),
+      });
+
+      if(!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const data: BaseResponseModel = await response.json();
+
+      return data;
+    } catch (error) {
+      console.error('Error:', error);
+      throw error;
+    }
+  }
 
   async getCart(): Promise<BaseResponseModel> {
     const url = `${this.apiUrl}Cart`;
@@ -26,7 +58,7 @@ export class CustomerService {
 
       // const data: CartResponse[] = await response.json();
 
-      return (await response.json());
+      return await response.json();
     } catch (error) {
       console.error('Error:', error);
       throw error;
