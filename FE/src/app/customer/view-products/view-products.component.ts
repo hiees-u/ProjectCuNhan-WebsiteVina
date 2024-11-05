@@ -1,4 +1,4 @@
-import { Component, ElementRef, HostListener, Renderer2 } from '@angular/core';
+import { Component } from '@angular/core';
 import { OrderProductsComponent } from '../order-products/order-products.component';
 import { NgIf } from '@angular/common';
 import { NgFor } from '@angular/common';
@@ -12,8 +12,8 @@ import { FilterPriceComponent } from '../../shared/item/filter-price/filter-pric
 import { CustomerService } from '../customer.service';
 import { Product } from '../../shared/module/product/product.module';
 import {
-  CartItem,
-  constructorCartItem,
+  CartResponse,
+  constructorCartResponse,
 } from '../../shared/module/cart/cart.module';
 import { Category } from '../../shared/module/category/category.module';
 import { BaseResponseModel } from '../../shared/module/base-response/base-response.module';
@@ -43,7 +43,7 @@ export class ViewProductsComponent {
   responseMessage: string | undefined;
   cate: Category[] = [];
   subCate: SubCategory[] = [];
-  cart: CartItem = constructorCartItem();
+  cart: CartResponse = constructorCartResponse();
   cateProductDetail: string = '';
   subCateProductDetail: string = '';
   supplierProductDetail: Supplier | undefined;
@@ -59,19 +59,65 @@ export class ViewProductsComponent {
 
   constructor(private customer_service: CustomerService) {}
 
+  async handleAddCart() {
+    try {
+      const response =await this.customer_service.postCart(this.cart);
+      if(response.isSuccess) {
+        console.log('Product added to cart successfully');
+      }
+      else {
+        console.log('ERRROR');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      this.responseMessage =
+        'An error occurred while adding the product to cart.';
+    }
+  }
+
   handleCateActiveCate(CateId: number) {
     this.cateActive = CateId === this.cateActive ? null : CateId;
-    this.getProduct(null, this.cateActive, this.subCateActive, null, null, this.pageActive, 8, 0, 0);
+    this.getProduct(
+      null,
+      this.cateActive,
+      this.subCateActive,
+      null,
+      null,
+      this.pageActive,
+      8,
+      0,
+      0
+    );
   }
 
   handlePageClick(page: number) {
     this.pageActive = page;
-    this.getProduct(null, this.cateActive, this.subCateActive, null, null, this.pageActive, 8, 0, 0);
+    this.getProduct(
+      null,
+      this.cateActive,
+      this.subCateActive,
+      null,
+      null,
+      this.pageActive,
+      8,
+      0,
+      0
+    );
   }
 
   handleSubCateActiveCate(CateId: number) {
     this.subCateActive = CateId === this.subCateActive ? null : CateId;
-    this.getProduct(null, this.cateActive, this.subCateActive, null, null, this.pageActive, 8, 0, 0);
+    this.getProduct(
+      null,
+      this.cateActive,
+      this.subCateActive,
+      null,
+      null,
+      this.pageActive,
+      8,
+      0,
+      0
+    );
   }
 
   async getTop10SubCategories() {
@@ -167,18 +213,16 @@ export class ViewProductsComponent {
     }
   }
 
-  handleDataChange(data: any) {
+  handleDataChange(data: Product) {
     this.show = 1;
     this.receivedData = data;
-    this.cart.price = this.receivedData?.price || 0;
     this.cart.quantity = 1;
-    this.cart.name = this.receivedData?.productName || '';
-    this.cart.image = this.receivedData?.image || '';
+    this.cart.productId = data.productId;
     this.getSubCateProductDetail(this.receivedData?.subCategoryId!);
     this.getCateProductDetail(this.receivedData?.categoryId!);
-    console.log(this.receivedData);
-
     this.getSupplier(this.receivedData?.supplier!);
+    console.log(this.cart);
+    
   }
 
   async getSubCateProductDetail(productID: number) {
@@ -233,7 +277,7 @@ export class ViewProductsComponent {
         this.cart.quantity = 1;
       }
       // Tính lại tổng giá sau khi thay đổi số lượng
-      this.cart.totalPrice = this.cart.quantity * this.cart.price;
+      // this.cart.totalPrice = this.cart.quantity * this.cart.price;
     }
   }
 }

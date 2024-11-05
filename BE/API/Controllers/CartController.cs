@@ -1,4 +1,5 @@
 ﻿using BLL.Interface;
+using DTO.Cart;
 using DTO.Responses;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -22,6 +23,18 @@ namespace API.Controllers
         {
             BaseResponseModel response = icart.Get();
             if(response.IsSuccess)
+            {
+                return Ok(response);
+            }
+            return BadRequest(response);
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "Customer")]
+        public IActionResult Post([FromBody] CartRequestModule request)
+        {
+            BaseResponseModel response = icart.Post(request);
+            if (response.IsSuccess)
             {
                 return Ok(response);
             }

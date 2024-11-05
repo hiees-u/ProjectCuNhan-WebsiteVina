@@ -1,6 +1,3 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-
 export interface CartItem {
   CartId: number,
   image: string;
@@ -10,12 +7,17 @@ export interface CartItem {
   totalPrice: number;
 }
 
-// @NgModule({
-//   declarations: [],
-//   imports: [
-//     CommonModule
-//   ]
-// })
+export interface CartResponse {
+  productId: number,
+  quantity: number;
+}
+
+export function constructorCartResponse(): CartResponse {
+  return {
+    productId: 0,
+    quantity: 0
+  }
+}
 
 export function constructorCartItem(): CartItem {
   return {
@@ -28,4 +30,3 @@ export function constructorCartItem(): CartItem {
   }
 }
 
-// export class CartModule { }

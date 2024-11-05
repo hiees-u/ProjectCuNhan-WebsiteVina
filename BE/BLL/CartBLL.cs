@@ -2,7 +2,6 @@
 using BLL.LoginBLL;
 using DTO.Cart;
 using DTO.Responses;
-using System.Data;
 using System.Data.SqlClient;
 
 namespace BLL
@@ -52,6 +51,40 @@ namespace BLL
 
                 return response;
 
+            }
+            catch (Exception ex)
+            {
+                return new BaseResponseModel()
+                {
+                    IsSuccess = false,
+                    Message = $"Lỗi trong quá trình lấy Giỏ Hàng: {ex}"
+                };
+            }
+        }
+        
+        public BaseResponseModel Post(CartRequestModule resquest)
+        {
+            try
+            {
+                using (var conn = new SqlConnection(ConnectionStringHelper.Get()))
+                {
+                    conn.Open();
+                    using (SqlCommand cmd = new SqlCommand("SP_AddToCart", conn))
+                    {
+                        cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                        cmd.Parameters.AddWithValue("@ProductID", resquest.ProductId);
+                        cmd.Parameters.AddWithValue("@Quantity", resquest.Quantity);
+
+                        //-- thực thi SP
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+
+                return new BaseResponseModel()
+                {
+                    IsSuccess = true,
+                    Message = "Thành Công"
+                };
             }
             catch (Exception ex)
             {
