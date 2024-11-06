@@ -36,13 +36,13 @@
           Liên Hệ
         </li>
         <li
-          *ngIf="!isLogin"
+          *ngIf="isLogin"
           (click)="showLogin()"
           class="no-select menu-li login menu-li-content"
         >
           Đăng Nhập
         </li>
-        <li *ngIf="isLogin" class="no-select menu-li cart-user">
+        <li *ngIf="!isLogin" class="no-select menu-li cart-user">
           <div class="cart" (click)="showCartDetail()">
             <i class="fa-solid fa-cart-shopping"></i>
           </div>

@@ -30,6 +30,7 @@
 
 .filet-price,
 .sub-categorys,
+.search-box,
 .categorys {
   margin: 50px 0;
 }
@@ -133,4 +134,11 @@ ul li .Active {
   text-align: center;
   width: 100%;
   display: block;
+}
+
+.search-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
 }

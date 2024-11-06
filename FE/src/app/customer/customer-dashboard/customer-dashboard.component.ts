@@ -12,7 +12,7 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './customer-dashboard.component.css',
 })
 export class CustomerDashboardComponent {
-  isLogin: boolean = false;
+  isLogin: boolean = true;
   isActive: number = 1;
 
   constructor(private router: Router) {
@@ -27,7 +27,7 @@ export class CustomerDashboardComponent {
     if (typeof window !== 'undefined') {
       const token = localStorage.getItem('token');
       if (token) {
-        this.isLogin = true;
+        this.isLogin = false;
       }
     }
     return false;

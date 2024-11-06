@@ -6,23 +6,29 @@ import { CartResponse } from '../shared/module/cart/cart.module';
   providedIn: 'root',
 })
 export class CustomerService {
+  private token:string = ''
   private apiUrl = 'https://localhost:7060/api/';
+  constructor() {
+    if (typeof window !== 'undefined') {
+      this.token =localStorage.getItem('token') || ''
+    }
+  }
 
-  async updateCart(cart: CartResponse) : Promise<BaseResponseModel> {
+  async updateCart(cart: CartResponse): Promise<BaseResponseModel> {
     //https://localhost:7060/api/Cart
     const url = `${this.apiUrl}Cart`;
-    const token = localStorage.getItem('token');   
-    
+    // const token = localStorage.getItem('token');
+
     const response = await fetch(url, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}`,
+        Authorization: `Bearer ${this.token}`,
       },
-      body: JSON.stringify(cart)
+      body: JSON.stringify(cart),
     });
-    
-    if(!response.ok) {
+
+    if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
     return response.json();
@@ -30,19 +36,19 @@ export class CustomerService {
 
   async deleteCart(productId: number): Promise<BaseResponseModel> {
     const url = `${this.apiUrl}Cart`;
-    const token = localStorage.getItem('token');
+    // const token = localStorage.getItem('token');
 
     try {
       const response = await fetch(url, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`,
+          Authorization: `Bearer ${this.token}`,
         },
-        body: JSON.stringify(productId)
+        body: JSON.stringify(productId),
       });
 
-      if(!response.ok) {
+      if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
 
@@ -58,14 +64,14 @@ export class CustomerService {
   async postCart(response: CartResponse): Promise<BaseResponseModel> {
     //https://localhost:7060/api/Cart
     const url = `${this.apiUrl}Cart`;
-    const token = localStorage.getItem('token');
+    // const token = localStorage.getItem('token');
     const body = { productId: response.productId, quantity: response.quantity };
     try {
       const response = await fetch(url, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${this.token}`,
         },
         body: JSON.stringify(body),
       });
@@ -85,13 +91,13 @@ export class CustomerService {
 
   async getCart(): Promise<BaseResponseModel> {
     const url = `${this.apiUrl}Cart`;
-    const token = localStorage.getItem('token');
+    // const token = localStorage.getItem('token');
     try {
       const response = await fetch(url, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${this.token}`,
         },
       });
 
@@ -110,13 +116,13 @@ export class CustomerService {
 
   async getSupplierByID(supplierId: number): Promise<BaseResponseModel> {
     const url = `${this.apiUrl}Supplier/Get Supplier By Id?id=${supplierId}`;
-    const token = localStorage.getItem('token');
+    // const token = localStorage.getItem('token');
     try {
       const response = await fetch(url, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${this.token}`,
         },
       });
 
@@ -133,14 +139,14 @@ export class CustomerService {
 
   async getCateByProductID(productId: number): Promise<BaseResponseModel> {
     const url = `${this.apiUrl}Category?productID=${productId}`;
-    const token = localStorage.getItem('token');
+    // const token = localStorage.getItem('token');
 
     try {
       const response = await fetch(url, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${this.token}`,
         },
       });
 
@@ -157,14 +163,14 @@ export class CustomerService {
 
   async getSubCateByProductID(productId: number): Promise<BaseResponseModel> {
     const url = `${this.apiUrl}SubCategory/Get By Product Id?productID=${productId}`;
-    const token = localStorage.getItem('token');
+    // const token = localStorage.getItem('token');
 
     try {
       const response = await fetch(url, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${this.token}`,
         },
       });
 
@@ -181,14 +187,14 @@ export class CustomerService {
 
   async getTop10SubCate(): Promise<BaseResponseModel> {
     const url = `${this.apiUrl}SubCategory/Get 10 Sub Category`;
-    const token = localStorage.getItem('token');
+    // const token = localStorage.getItem('token');
 
     try {
       const response = await fetch(url, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${this.token}`,
         },
       });
 
@@ -205,14 +211,14 @@ export class CustomerService {
 
   async getTop10Cate(): Promise<BaseResponseModel> {
     const url = `${this.apiUrl}Category/Get 10 Category`;
-    const token = localStorage.getItem('token');
+    // const token = localStorage.getItem('token');
 
     try {
       const response = await fetch(url, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${this.token}`,
         },
       });
 
@@ -258,14 +264,14 @@ export class CustomerService {
     const url = `${this.apiUrl}Product?${queryString}`;
     console.log(url);
 
-    const token = localStorage.getItem('token');
+    // const token = localStorage.getItem('token');
 
     try {
       const response = await fetch(url, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${this.token}`,
         },
       });
 

@@ -42,8 +42,7 @@
               "RelativeToolTip": "DTO\\Cart\\CartRequestModule.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-05T19:10:04.4Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-05T19:10:04.4Z"
             },
             {
               "$type": "Document",
@@ -68,8 +67,7 @@
               "RelativeToolTip": "BLL\\CartBLL.cs",
               "ViewState": "AgIAAFMAAAAAAAAAAAAAAIUAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-04T19:49:35.705Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-04T19:49:35.705Z"
             },
             {
               "$type": "Document",
@@ -81,8 +79,7 @@
               "RelativeToolTip": "BLL\\Interface\\ICart.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAABBAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-04T19:49:12.683Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-11-04T19:49:12.683Z"
             }
           ]
         }
