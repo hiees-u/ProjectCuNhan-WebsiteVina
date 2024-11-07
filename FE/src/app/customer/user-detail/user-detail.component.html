@@ -56,13 +56,22 @@
           </div>
         </div>
         <div class="box-content">
-          <label for="address">Địa chỉ:</label>
+          <label>Địa chỉ:</label>
           <div class="box-input">
-            <input type="text" id="address" [(ngModel)]="userInfo.address" />
-            <span class="edit-adress" (click)="changeEditAddress()">
-              Chỉnh sửa địa chỉ
-            </span>
-            <div class="box-edit-address" *ngIf="isEditAddress">
+            <div class="box-edit-address">
+              <app-address
+                [AddressId]="userInfo.addressId"
+              ></app-address>
+              <app-commune
+              [selectedCommuneId]="userInfo.commune!"
+              (selectedCommuneIdChange)="onSelectedCommunesIdChange($event)"
+              [selectedDistrictId]="userInfo.district!"
+              ></app-commune>
+              <app-district
+              [selectedDistrictId]="userInfo.district!"
+              (selectedDistrictIdChange)="onSelectedDistrictsIdChange($event)"
+              [selectedProvinceId]="userInfo.province!"
+              ></app-district>
               <app-province
                 [selectedProvinceId]="userInfo.province!"
                 (selectedProvinceIdChange)="onSelectedProvinceIdChange($event)"
@@ -86,12 +95,12 @@
           </div>
         </div>
         <div class="box-content">
-          <label for="sdt">Khách hàng:</label>
+          <label for="typeCus">Khách hàng:</label>
           <div class="box-input">
             <input
               type="text"
               disabled="true"
-              id="sdt"
+              id="typeCus"
               [(ngModel)]="userInfo.customerType"
             />
           </div>

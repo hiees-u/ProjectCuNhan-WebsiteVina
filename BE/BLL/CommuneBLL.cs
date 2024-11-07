@@ -1,8 +1,6 @@
 ﻿using BLL.Interface;
 using BLL.LoginBLL;
-using DLL.Models;
 using DTO.Commune;
-using DTO.Provinces;
 using DTO.Responses;
 using System.Data.SqlClient;
 

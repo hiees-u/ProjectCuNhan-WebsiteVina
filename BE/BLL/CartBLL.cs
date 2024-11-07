@@ -1,5 +1,4 @@
-﻿using Azure.Core;
-using BLL.Interface;
+﻿using BLL.Interface;
 using BLL.LoginBLL;
 using DTO.Cart;
 using DTO.Responses;

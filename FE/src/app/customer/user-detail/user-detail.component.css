@@ -4,23 +4,24 @@
   display: flex;
   justify-content: space-between;
   animation: slide-right-in 0.5s ease-in-out;
-  transition: all .6s ease-in-out;
+  transition: all 0.6s ease-in-out;
 }
 
 .content-f {
   background-color: #fff;
   width: 20%;
-  transition: all .6s ease-in-out;
+  transition: all 0.6s ease-in-out;
 }
 
 .User-header {
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 150px;
+  /* height: 150px; */
 }
 
 .User-header i {
+  display: none;
   font-size: 4em;
   background-color: #c6c4c4;
   padding: 25px;
@@ -30,14 +31,18 @@
 }
 
 .User-header span {
-  font-size: 1.8em;
+  font-size: 2.8em;
+  font-style: italic;
+  color: var(--main-color);
+  font-weight: 600;
+  font-family: monospace;
 }
 
 .content-f ul {
   list-style-type: none;
   margin: 10px 0 0 0;
   padding: 0;
-  transition: all .6s ease-in-out;
+  transition: all 0.6s ease-in-out;
 }
 
 .content-f ul li {
@@ -62,7 +67,7 @@
 }
 
 .dashboard-item span {
-    font-size: .7em;
+  font-size: 0.7em;
   transition: all 0.7s ease-in-out;
 }
 
@@ -93,7 +98,7 @@
   min-height: 50vh;
   overflow: hidden;
   background-color: transparent;
-  transition: all .6s ease-in-out;
+  transition: all 0.6s ease-in-out;
 }
 
 .content {
@@ -102,7 +107,7 @@
   padding: 15px;
   background-color: #c6c4c4;
   animation: slide-left-in 1s ease-in-out;
-  transition: all .6s ease-in-out;
+  transition: all 0.6s ease-in-out;
   border-radius: 15px;
 }
 
@@ -125,7 +130,7 @@ p {
   margin-top: 30px;
   border-radius: 15px;
   padding: 5px;
-  transition: all .6s ease-in-out;
+  transition: all 0.6s ease-in-out;
   width: calc(100% - 10px);
 }
 
@@ -135,7 +140,7 @@ p {
   justify-content: center;
   align-items: flex-start;
   margin: 15px 0;
-  transition: all .6s ease-in-out;
+  transition: all 0.6s ease-in-out;
 }
 
 .box-content label {
@@ -148,7 +153,9 @@ p {
   padding-right: 5%;
 }
 
-.box-content input, .box-input, .box-input  select {
+.box-content input,
+.box-input,
+.box-input select {
   width: calc(80% - 20px);
   padding: 8px 10px;
   font-size: 0.7em;
@@ -159,51 +166,61 @@ p {
 }
 
 select {
-    width: calc(100% + 2px) !important;
+  width: calc(100% + 2px) !important;
 }
 
 .box-input {
-    border: none;
-    padding: 0;
+  border: none;
+  padding: 0;
 }
 
-.box-input input, .box-input select {
-    height: 100%;
-    width: calc(100% - 20px);
+.box-input input,
+.box-input select {
+  height: 100%;
+  width: calc(100% - 20px);
 }
 
 .button-main {
-    width: fit-content;
-    margin: 0 0 0 auto;
-    padding: 10px 40px;
-    color: var(--secon-text-color);
-    background-color: var(--secon-color);
-    border-radius: 10px;
-    cursor: pointer;
-    transition: all .6s ease-in-out;
+  width: fit-content;
+  margin: 0 0 0 auto;
+  padding: 10px 40px;
+  color: var(--secon-text-color);
+  background-color: var(--secon-color);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.6s ease-in-out;
 }
 
 .button-main:hover {
-    color: #fff;
-    background-color: var(--main-color);
+  color: #fff;
+  background-color: var(--main-color);
 }
 
 .edit-adress {
-    font-size: .7em;
-    padding: 10px;
-    font-style: italic;
-    cursor: pointer;
-    color: var(--main-color);
-    transition: all .5s ease-in-out;
+  font-size: 0.7em;
+  padding: 10px;
+  font-style: italic;
+  cursor: pointer;
+  color: var(--main-color);
+  transition: all 0.5s ease-in-out;
 }
 
 .edit-adress:hover {
-    color: var(--secon-color);
+  color: var(--secon-color);
 }
 
 .box-edit-address {
-    transition: all .5s ease-in-out;
-    /* background-color: aqua; */
-    height: 100px;
-    width: 100px;
+  transition: all 0.5s ease-in-out;
+  /* background-color: aqua; */
+  height: 100px;
+  width: 100px;
+  color: var(--main-text-color);
+  font-size: 0.6em;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: row;
+  align-items: center;
+  height: 31px;
+  border: 1px solid var(--secon-text-color);
+  width: 100%;
 }
