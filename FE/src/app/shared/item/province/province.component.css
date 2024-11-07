@@ -1,0 +1,10 @@
+.container {
+    width: fit-content;
+}
+
+select {
+    padding: 5px 10px;
+    border: none;
+    background-color: transparent;
+    outline: none;
+}

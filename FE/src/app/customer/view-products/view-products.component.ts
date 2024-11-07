@@ -15,6 +15,7 @@ import {
   CartResponse,
   constructorCartResponse,
 } from '../../shared/module/cart/cart.module';
+import { SearchBoxComponent } from '../../shared/item/search-box/search-box.component';
 import { Category } from '../../shared/module/category/category.module';
 import {
   BaseResponseModel,
@@ -39,6 +40,7 @@ import {
     NgClass,
     FilterPriceComponent,
     ProductItemComponent,
+    SearchBoxComponent,
     CustomCurrencyPipe,
     NotificationComponent,
   ],
@@ -213,6 +215,8 @@ export class ViewProductsComponent {
       );
       if (response.isSuccess) {
         this.products = response.data;
+        console.log(this.products);
+        
       } else {
         console.log('Failed to get products');
       }

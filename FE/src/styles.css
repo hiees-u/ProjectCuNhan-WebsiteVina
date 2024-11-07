@@ -103,6 +103,17 @@ body {
   }
 }
 
+@keyframes slide-left-in {
+  0% {
+    margin-left: 100%;
+    opacity: 0;
+  }
+  100% {
+    margin-left: 0;
+    opacity: 1;
+  }
+}
+
 @keyframes slide-right-out {
   0% {
     margin-right: 0;
@@ -143,6 +154,15 @@ body {
   }
 }
 
+@keyframes colorChange {
+  from {
+    color: inherit; /* Màu ban đầu */
+  }
+  to {
+    color: var(--main-color); /* Màu sau khi thay đổi */
+  }
+}
+
 .no-select {
   -webkit-user-select: none; /* Safari */
   -moz-user-select: none; /* Firefox */
@@ -177,4 +197,9 @@ a {
 
 .btn:hover {
   animation: shake 0.5s ease-in-out infinite;
+}
+
+.br {
+  width: 100%;
+  border-bottom: 1px solid #858484;
 }

@@ -12,7 +12,7 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './customer-dashboard.component.css',
 })
 export class CustomerDashboardComponent {
-  isLogin: boolean = false;
+  isLogin: boolean = true;
   isActive: number = 1;
 
   constructor(private router: Router) {
@@ -51,16 +51,21 @@ export class CustomerDashboardComponent {
   }
 
   showUserDetail() {
+    console.log('show user detail');
+
     this.isActive = -1;
-    if (this.isLogin) this.router.navigate(['/customer/user-details']);
-    else this.router.navigate(['/customer/view-product']);
+    if (this.isLogin) {
+      this.router.navigate(['/customer/user-details']);
+    } else {
+      this.router.navigate(['/customer/view-product']);
+    }
   }
 
   showLogin() {
     this.isActive = -1;
     this.router.navigate(['/login']);
   }
-  
+
   showRegister() {
     this.isActive = -1;
     this.router.navigate(['/register']);

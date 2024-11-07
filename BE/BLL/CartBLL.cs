@@ -31,6 +31,7 @@ namespace BLL
                                     Image = reader["image"] as string ?? string.Empty,
                                     Price = Convert.ToDecimal(reader["price"]),
                                     Quantity = Convert.ToInt32(reader["quantity"]),
+                                    priceHistoryId = Convert.ToInt32(reader["priceHistoryId"])
                                 };
                                 listCart.Add(cartResponseModel);
                             }

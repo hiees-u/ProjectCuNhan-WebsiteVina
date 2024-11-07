@@ -39,7 +39,8 @@ namespace BLL
                                     CreateTime = Convert.ToDateTime(reader["CreateTime"]),
                                     ModifiedTime = Convert.ToDateTime(reader["ModifiedTime"]),
                                     DeleteTime = reader["DeleteTime"] != DBNull.Value ? Convert.ToDateTime(reader["DeleteTime"]) : null,
-                                    Price = Convert.ToDecimal(reader["price"])
+                                    Price = Convert.ToDecimal(reader["price"]),
+                                    priceHistoryId = Convert.ToInt32(reader["priceHistoryId"])
                                 };
 
                                 products.Add(product);

@@ -123,6 +123,8 @@ export class CartDetailComponent {
   onOrder() {
     this.cartItems.forEach(item => {
       if(item.checked) {
+        console.log(item);
+        
         console.log(item.productId + 'is' + (item.checked ? 'checked' : 'uncheck'));   
       }
     });

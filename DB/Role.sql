@@ -14,9 +14,11 @@ Grant Select On dbo.PriceHistory to Customer
 Grant Select On dbo.Province to Customer
 Grant Select, Insert On dbo.District to Customer
 Grant Select, Insert On dbo.Commune to Customer
-Grant Select, Insert On dbo.Address to Customer
-
-
+Grant Select, Insert On dbo.Address to Customer;
+Grant Select On CustomerType to Customer;
+Grant Select On Commune to Customer
+Grant Select On District to Customer
+Grant Select On Province to Customer
 
 go 
 --create role Moderator
@@ -190,6 +192,7 @@ BEGIN
 END
 
 select * from Users
+select * from UserInfo
 
 EXEC CreateCustomer 'hieu3', '123@@@';
 
@@ -349,7 +352,7 @@ go
 CREATE PROCEDURE GetAllProducts
 AS
 BEGIN
-	select p.* , ph.price 
+	select p.* , ph.price, ph.priceHistoryId
 	from Product p, PriceHistory ph 
 	where p.product_id = ph.product_id and ph. isActive = 0 and totalQuantity > 0 and p.DeleteTime is NULL
 	Order By p.CreateTime Desc
@@ -378,8 +381,6 @@ BEGIN
 
     RETURN @CategoryName;
 END;
-
-go
 
 SELECT dbo.GetCategoryName(3) AS CategoryName;
 
@@ -535,7 +536,7 @@ BEGIN
 	WHERE uf.AccountName = @UserName;
 
 	-- Truy vấn giỏ hàng của khách hàng
-	SELECT p.product_id, p.product_name, ph.price, c.quantity, p.image
+	SELECT p.product_id, p.product_name, ph.price, ph.priceHistoryId, c.quantity, p.image
 	FROM Cart c
 	Join Product p on c.product_id = p.product_id
 	join PriceHistory ph on ph.product_id = p.product_id
@@ -601,3 +602,145 @@ END;
 GRANT EXECUTE ON OBJECT::dbo.SP_UpdateCart TO  Customer;
 
 EXEC SP_UpdateCart @ProductID = 4, @Quantity = 1
+--#########################################################################Create Order Customer#####################################################################################
+--#########################################################################Update User Info#####################################################################################
+CREATE PROCEDURE SP_UpdateUserInfo
+    @FullName NVARCHAR(100),
+    @Phone VARCHAR(20),
+    @Email VARCHAR(100),
+    @AddressID INT,
+    @Gender INT
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    DECLARE @UserName VARCHAR(25);
+    SET @UserName = SUSER_NAME();
+    
+    -- Hiển thị tên người dùng
+    SELECT @UserName AS UserName;
+
+    -- Cập nhật thông tin người dùng
+    UPDATE UserInfo
+    SET full_name = @FullName, 
+        phone = @Phone, 
+        email = @Email, 
+        address_id = @AddressID, 
+        gender = @Gender,
+		ModifiedBy = @UserName,
+		ModifiedTime = GETDATE()
+    WHERE AccountName = @UserName;
+END;
+--phân quyền
+GRANT EXECUTE ON OBJECT::dbo.SP_UpdateUserInfo TO  Customer;
+
+--RUN
+EXEC SP_UpdateUserInfo @FullName = N'Tên đầy đủu', @Phone = '09876543210', @Email = 'email@example.com', @AddressID = 1, @Gender = 1;
+--#########################################################################GET User Info#####################################################################################
+CREATE PROCEDURE SP_GetUserInfoByUserName
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    DECLARE @UserName VARCHAR(25);
+	SET @UserName = SUSER_NAME();
+
+	SELECT 
+	uf.AccountName as 'Tên Đăng Nhập',
+	uf.full_name as 'Họ Tên', 
+	uf.email as 'Email', 
+	uf.phone as 'Số Điện Thoại',
+	uf.gender AS N'Giới Tính',
+	ct.type_customer_name as N'Loại Khách Hàng',
+	a.AddressID AS N'Địa Chỉ ID',
+	a.CommuneID AS N'Xã',
+	co.DistrictID AS N'Quận',
+	di.ProvinceID AS N'Tỉnh',
+	a.Note + N', Xã ' + co.CommuneName + N', Quận/Huyện ' + di.DistrictName + N', Tỉnh/Thành Phố ' + pr.ProvinceName as N'Địa Chỉ'
+	FROM UserInfo uf
+	JOIN Customer c ON uf.customer_Id = c.customerId
+	JOIN CustomerType ct ON c.type_customer_id = ct.type_customer_id
+	JOIN Address a ON a.AddressID = uf.address_id
+	JOIN Commune co ON a.CommuneID = co.CommuneID
+	JOIN District di ON co.DistrictID = di.DistrictID
+	JOIN Province pr ON di.ProvinceID = pr.ProvinceID
+	WHERE uf.AccountName = @UserName;
+END;
+--phân quyền
+GRANT EXECUTE ON OBJECT::dbo.SP_GetUserInfoByUserName TO  Customer;
+
+--RUN
+EXEC SP_GetUserInfoByUserName;
+go
+--#########################################################################GET User Province#####################################################################################
+CREATE PROCEDURE SP_GetProvinces
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    SELECT ProvinceID, ProvinceName
+    FROM Province;
+END;
+
+--phân quyền
+GRANT EXECUTE ON OBJECT::dbo.SP_GetProvinces TO  Customer;
+--RUN
+EXEC SP_GetProvinces;
+go
+--#########################################################################GET User Communers#####################################################################################
+
+CREATE PROCEDURE SP_GetCommunes
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    SELECT CommuneID, CommuneName, DistrictID
+    FROM Commune;
+END;
+--phân quyền
+GRANT EXECUTE ON OBJECT::dbo.SP_GetCommunes TO  Customer;
+--RUN
+EXEC SP_GetCommunes;
+go
+--#########################################################################GET User Communers by ID District#####################################################################################
+CREATE PROCEDURE SP_GetCommunesByDistrictID
+@DistrictID INT
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    SELECT CommuneID, CommuneName, DistrictID
+    FROM Commune
+	WHERE DistrictID = @DistrictID
+END;
+--phân quyền
+GRANT EXECUTE ON OBJECT::dbo.SP_GetCommunesByDistrictID TO  Customer;
+--RUN
+EXEC SP_GetCommunesByDistrictID @DistrictID = 8
+--#########################################################################GET User District#####################################################################################
+go
+CREATE PROCEDURE SP_GetDistrict
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    select DistrictID, DistrictName, ProvinceID from District
+END;
+--phân quyền
+GRANT EXECUTE ON OBJECT::dbo.SP_GetDistrict TO  Customer;
+--RUN
+EXEC SP_GetDistrict;
+go
+--#########################################################################GET User District by ProvinceID#####################################################################################
+CREATE PROCEDURE SP_GetDistrictByProvinceID
+@ProvinceID INT
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    select DistrictID, DistrictName, ProvinceID from District where ProvinceID = @ProvinceID;
+END;
+--phân quyền
+GRANT EXECUTE ON OBJECT::dbo.SP_GetDistrictByProvinceID TO  Customer;
+--RUN
+EXEC SP_GetDistrictByProvinceID @ProvinceID = 62

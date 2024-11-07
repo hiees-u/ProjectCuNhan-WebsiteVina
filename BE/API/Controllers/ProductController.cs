@@ -15,7 +15,7 @@ namespace API.Controllers
         }
 
         [HttpGet]
-        public IActionResult Get(int? productId, int? cateId, int? subCateId, int? supplierId, string? productName, int pageNumber = 1, int pageSize = 1, int sortByName = 0, int sortByPrice = 0)
+        public IActionResult Get(int? productId, int? cateId, int? subCateId, int? supplierId, string? productName, int pageNumber = 1, int pageSize = 10, int sortByName = 0, int sortByPrice = 0)
         {
             return Ok(_product.GetProducts(productId, cateId, subCateId, supplierId, productName, pageNumber, pageSize, sortByName, sortByPrice));
         }
