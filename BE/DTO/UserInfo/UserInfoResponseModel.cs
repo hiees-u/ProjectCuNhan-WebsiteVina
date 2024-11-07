@@ -1,5 +1,4 @@
-﻿using DLL.Models;
-namespace DTO.UserInfo
+﻿namespace DTO.UserInfo
 {
     public class UserInfoResponseModel
     {

@@ -1,11 +1,14 @@
 <div class="container">
   <select
     name="province"
-    id="province"
     [(ngModel)]="selectedProvinceId"
     (change)="onProvinceChange()"
   >
-    <option *ngFor="let item of provinces" [value]="item.provinceId">
+    <option
+      *ngFor="let item of provinces"
+      [value]="item.provinceId"
+      id="{{ item.provinceId }}"
+    >
       {{ item.provinceName }}
     </option>
   </select>

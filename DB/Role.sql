@@ -744,3 +744,18 @@ END;
 GRANT EXECUTE ON OBJECT::dbo.SP_GetDistrictByProvinceID TO  Customer;
 --RUN
 EXEC SP_GetDistrictByProvinceID @ProvinceID = 62
+--#########################################################################GET ADDRESS BY ID#####################################################################################
+go
+CREATE PROCEDURE SP_GetAddressById
+    @AddressId INT
+WITH EXECUTE AS OWNER
+AS
+BEGIN
+    SELECT * 
+    FROM Address 
+    WHERE AddressID = @AddressId;
+END;
+
+GRANT EXECUTE ON SP_GetAddressById TO Customer;
+
+EXEC SP_GetAddressById @AddressId = 1;

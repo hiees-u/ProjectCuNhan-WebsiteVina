@@ -1,1 +1,15 @@
-<p>commune works!</p>
+<div class="container">
+  <select
+    name="province"
+    [(ngModel)]="selectedCommuneId"
+    (change)="onCommuneChange()"
+  >
+    <option
+      *ngFor="let item of communes"
+      [value]="item.communeId"
+      id="{{ item.communeId }}"
+    >
+      {{ item.communeName }}
+    </option>
+  </select>
+</div>

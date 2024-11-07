@@ -5,6 +5,9 @@ import { ConstructerUserInfoResponseModel, UserInfoResponseModel } from '../../s
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ProvinceComponent } from "../../shared/item/province/province.component";
+import { DistrictComponent } from "../../shared/item/district/district.component";
+import { CommuneComponent } from "../../shared/item/commune/commune.component";
+import { AddressComponent } from "../../shared/item/address/address.component";
 
 @Component({
   selector: 'app-user-detail',
@@ -12,13 +15,15 @@ import { ProvinceComponent } from "../../shared/item/province/province.component
   imports: [
     CommonModule,
     FormsModule,
-    ProvinceComponent
+    ProvinceComponent,
+    DistrictComponent,
+    CommuneComponent,
+    AddressComponent
 ],
   templateUrl: './user-detail.component.html',
   styleUrl: './user-detail.component.css'
 })
 export class UserDetailComponent {
-  isEditAddress:boolean = false;
   addressString: string = '';
   isActive: number = 1;
   userInfo: UserInfoResponseModel = ConstructerUserInfoResponseModel();
@@ -33,14 +38,9 @@ export class UserDetailComponent {
     
   }
 
-  changeEditAddress() {
-    this.isEditAddress = !this.isEditAddress;
-  }
-
   changeActive(number: number) {
     this.isActive = number;
-    console.log(this.userInfo);
-    
+    console.log(this.userInfo);    
   }
 
   isHandleUpdate() {
@@ -51,6 +51,18 @@ export class UserDetailComponent {
     this.userInfo.province = selectedProvinceId!;
     console.log(this.userInfo.province + 'this.userInfo.province');    
     console.log(selectedProvinceId + 'selectedProvinceId');    
+  }
+
+  onSelectedDistrictsIdChange(selectedDistrictId: number | null) : void {
+    this.userInfo.district = selectedDistrictId!;
+    console.log(this.userInfo.district + 'this.userInfo.district');
+    console.log(selectedDistrictId + 'selectedDistrictId');
+  }
+
+  onSelectedCommunesIdChange(selectedCommunesId: number | null) : void {
+    this.userInfo.commune = selectedCommunesId!;
+    console.log(this.userInfo.commune + 'this.userInfo.district');
+    console.log(selectedCommunesId + 'selectedDistrictId');
   }
 
   async getUserInfo() {

@@ -1,12 +1,15 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+export interface Address {
+  addressId: number;
+  communeId: number;
+  houseNumber: string;
+  note: string;
+}
 
-
-
-@NgModule({
-  declarations: [],
-  imports: [
-    CommonModule
-  ]
-})
-export class AddressModule { }
+export function ConstructorAddress() {
+  return {
+    addressId: 0,
+    communeId: 0,
+    houseNumber: '',
+    note: '',
+  };
+}
