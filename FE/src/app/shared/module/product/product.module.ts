@@ -12,6 +12,7 @@ export interface Product {
   description: string;
   modifiedBy: string;
   price: number;
+  priceHistoryId: number,
   expriryDate: Date;
   createTime: Date;
   modifiedTime: Date;

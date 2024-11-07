@@ -84,6 +84,58 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "API.Controllers.CommuneController",
+    "Method": "Get",
+    "RelativePath": "api/Commune",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.CommuneController",
+    "Method": "GetByDistrictId",
+    "RelativePath": "api/Commune/Get By District Id",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "districtId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.DistrictController",
+    "Method": "Get",
+    "RelativePath": "api/District",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.DistrictController",
+    "Method": "GetByDistrictId",
+    "RelativePath": "api/District/Get By Province ID",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "provinceID",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "API.Controllers.ProductController",
     "Method": "Get",
     "RelativePath": "api/Product",
@@ -137,6 +189,16 @@
         "IsRequired": false
       }
     ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.ProvinceController",
+    "Method": "Get",
+    "RelativePath": "api/Province",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
     "ReturnTypes": []
   },
   {
@@ -247,6 +309,16 @@
         "IsRequired": true
       }
     ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.UserInfoController",
+    "Method": "Get",
+    "RelativePath": "api/UserInfo",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
     "ReturnTypes": []
   }
 ]

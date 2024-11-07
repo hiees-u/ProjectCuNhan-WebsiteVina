@@ -14,10 +14,31 @@ export class CustomerService {
     }
   }
 
+  async getUserInfo() : Promise<BaseResponseModel> {
+    //https://localhost:7060/api/UserInfo
+    const url = `${this.apiUrl}UserInfo`;
+
+    try {
+      const response = await fetch(url, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${this.token}`,
+        },
+      });
+      
+      if(!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      };
+      return await response.json();
+    } catch (error) {
+      console.error('Error:', error);
+      throw error;
+    }
+  }
+
   async updateCart(cart: CartResponse): Promise<BaseResponseModel> {
-    //https://localhost:7060/api/Cart
     const url = `${this.apiUrl}Cart`;
-    // const token = localStorage.getItem('token');
 
     const response = await fetch(url, {
       method: 'PUT',

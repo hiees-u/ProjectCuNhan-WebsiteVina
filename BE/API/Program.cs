@@ -17,6 +17,10 @@ builder.Services.AddScoped<ICategory, CategoryBLL>();
 builder.Services.AddScoped<ISubCategory, SubCategoryBLL>();
 builder.Services.AddScoped<ISupplier, SupplierBLL>();
 builder.Services.AddScoped<ICart, CartBLL>();
+builder.Services.AddScoped<IUserInfo,UserInfoBLL>();
+builder.Services.AddScoped<IProvince, ProvinceBLL>();
+builder.Services.AddScoped<ICommune, CommuneBLL>();
+builder.Services.AddScoped<IDistrict, DistrictBLL>();
 
 
 builder.Services.AddControllers();

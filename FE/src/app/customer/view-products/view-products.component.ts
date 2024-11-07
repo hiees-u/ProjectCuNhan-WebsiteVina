@@ -215,6 +215,8 @@ export class ViewProductsComponent {
       );
       if (response.isSuccess) {
         this.products = response.data;
+        console.log(this.products);
+        
       } else {
         console.log('Failed to get products');
       }
