@@ -1,4 +1,5 @@
-﻿using DTO.Responses;
+﻿using DTO.Commune;
+using DTO.Responses;
 
 namespace BLL.Interface
 {
@@ -6,5 +7,7 @@ namespace BLL.Interface
     {
         public BaseResponseModel Gets();
         public BaseResponseModel GetCommunesByDistrictIDAsync(int districID);
+
+        public BaseResponseModel PostCommune(CommuneRequestModule req);
     }
 }

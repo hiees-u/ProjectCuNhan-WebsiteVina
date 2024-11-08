@@ -717,6 +717,7 @@ END;
 GRANT EXECUTE ON OBJECT::dbo.SP_GetCommunesByDistrictID TO  Customer;
 --RUN
 EXEC SP_GetCommunesByDistrictID @DistrictID = 8
+go
 --#########################################################################GET User District#####################################################################################
 go
 CREATE PROCEDURE SP_GetDistrict
@@ -759,3 +760,93 @@ END;
 GRANT EXECUTE ON SP_GetAddressById TO Customer;
 
 EXEC SP_GetAddressById @AddressId = 1;
+go
+--#########################################################################INSERT COMMUNE#####################################################################################
+CREATE PROCEDURE InsertCommune
+    @CommuneName NVARCHAR(255),
+    @DistrictID INT
+AS
+BEGIN
+    -- Bắt đầu một giao dịch
+    BEGIN TRANSACTION;
+
+    DECLARE @NewID TABLE (ID INT);
+
+    -- Chèn bản ghi mới vào bảng Commune và lấy ID vào bảng tạm @NewID
+    INSERT INTO Commune (CommuneName, DistrictID)
+    OUTPUT INSERTED.CommuneID INTO @NewID(ID)
+    VALUES (@CommuneName, @DistrictID);
+
+    -- Kết thúc giao dịch
+    COMMIT TRANSACTION;
+
+    -- Trả về ID vừa chèn
+    SELECT ID FROM @NewID;
+END;
+
+--PHân quyền
+GRANT EXEC ON OBJECT::dbo.InsertCommune TO  Customer;
+GRANT EXEC ON OBJECT::dbo.InsertCommune TO  OrderApprover;
+GRANT EXEC ON OBJECT::dbo.InsertCommune TO  Moderator;
+GRANT EXEC ON OBJECT::dbo.InsertCommune TO  WarehouseEmployee;
+
+--RUN
+EXEC InsertCommune
+    @CommuneName = N'Tên xã',
+    @DistrictID = 1;
+go
+--#########################################################################INSERT ADDRESS#####################################################################################
+CREATE PROCEDURE InsertAddress
+    @CommuneID INT,
+    @HouseNumber NVARCHAR(255),
+    @Note NVARCHAR(MAX)
+AS
+BEGIN
+    -- Bắt đầu một giao dịch
+    BEGIN TRANSACTION;
+
+    DECLARE @NewID TABLE (ID INT);
+
+    -- Chèn bản ghi mới vào bảng Address và lấy ID vào bảng tạm @NewID
+    INSERT INTO Address (CommuneID, HouseNumber, Note)
+    OUTPUT INSERTED.AddressID INTO @NewID(ID)
+    VALUES (@CommuneID, @HouseNumber, @Note);
+
+    -- Kết thúc giao dịch
+    COMMIT TRANSACTION;
+
+    -- Trả về ID vừa chèn
+    SELECT ID FROM @NewID;
+END;
+
+--PHân quyền
+GRANT EXEC ON OBJECT::dbo.InsertAddress TO  Customer;
+GRANT EXEC ON OBJECT::dbo.InsertAddress TO  OrderApprover;
+GRANT EXEC ON OBJECT::dbo.InsertAddress TO  Moderator;
+GRANT EXEC ON OBJECT::dbo.InsertAddress TO  WarehouseEmployee;
+--RUN
+go
+--#########################################################################GET ADDRESS By Commmune, Note, HouseNumber#####################################################################################
+CREATE PROCEDURE GetAddressID
+    @CommuneID INT,
+    @HouseNumber NVARCHAR(30),
+    @Note NVARCHAR(50)
+AS
+BEGIN
+    -- Chọn AddressID từ bảng Address dựa trên các điều kiện đầu vào
+    SELECT AddressID
+    FROM Address
+    WHERE CommuneID = @CommuneID
+      AND HouseNumber = @HouseNumber
+      AND Note = @Note;
+END;
+
+--PHân quyền
+GRANT EXEC ON OBJECT::dbo.GetAddressID TO  Customer;
+GRANT EXEC ON OBJECT::dbo.GetAddressID TO  OrderApprover;
+GRANT EXEC ON OBJECT::dbo.GetAddressID TO  Moderator;
+GRANT EXEC ON OBJECT::dbo.GetAddressID TO  WarehouseEmployee;
+--RUN
+EXEC GetAddressID @CommuneID = 15,  @HouseNumber = N'String', @Note = N'string'
+
+select * from Address

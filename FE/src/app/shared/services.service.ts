@@ -46,7 +46,7 @@ export class ServicesService {
           Authorization: `Bearer ${this.token}`, // Nếu API yêu cầu xác thực, thêm header này
         },
       });
-      if (!response.ok) {
+      if (!response.ok) {       
         throw new Error(`HTTP error! status: ${response.status}`);
       }
       return await response.json();

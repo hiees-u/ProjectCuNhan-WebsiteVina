@@ -1,20 +1,53 @@
 import { Injectable } from '@angular/core';
 import { BaseResponseModel } from '../shared/module/base-response/base-response.module';
 import { CartResponse } from '../shared/module/cart/cart.module';
+import { UserInfoRequestModel } from '../shared/module/user-info/user-info.module';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CustomerService {
-  private token:string = ''
+  private token: string = '';
   private apiUrl = 'https://localhost:7060/api/';
   constructor() {
     if (typeof window !== 'undefined') {
-      this.token =localStorage.getItem('token') || ''
+      this.token = localStorage.getItem('token') || '';
     }
   }
 
-  async getUserInfo() : Promise<BaseResponseModel> {
+  //lấy token
+  ngOnInit(): void {
+    if (typeof window !== 'undefined') {
+      this.token = localStorage.getItem('token') || '';
+    }
+  }
+
+  async putUserInfo(uf: UserInfoRequestModel): Promise<BaseResponseModel> {
+    //https://localhost:7060/api/UserInfo
+    const url = `${this.apiUrl}UserInfo`;
+    const option = {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${this.token}`,
+      },
+      body: JSON.stringify(uf),
+    };
+
+    try {
+      const response = await fetch(url, option);
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      return await response.json();
+    } catch (error) {
+      console.error('Error:', error);
+      throw error;
+    }
+  }
+
+  async getUserInfo(): Promise<BaseResponseModel> {
     //https://localhost:7060/api/UserInfo
     const url = `${this.apiUrl}UserInfo`;
 
@@ -26,10 +59,10 @@ export class CustomerService {
           Authorization: `Bearer ${this.token}`,
         },
       });
-      
-      if(!response.ok) {
+
+      if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
-      };
+      }
       return await response.json();
     } catch (error) {
       console.error('Error:', error);

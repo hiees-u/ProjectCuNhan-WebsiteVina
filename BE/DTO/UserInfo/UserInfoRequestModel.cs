@@ -4,11 +4,16 @@ namespace DTO.UserInfo
 {
     public class UserInfoRequestModel
     {
-        public string? FullName { get; set; }
-        public string? Email { get; set; }
-        public string? Phone { get; set; }
-        public int AddressId { get; set; }
-        public int Gender { get; set; }
+        public string? FullName { get; set; } //--
+        public string? Email { get; set; } //--
+        public string? Phone { get; set; } //--
+        public int AddressId { get; set; } = 0;
+        public int Gender { get; set; }  //--
+        public string HouseNumber { get; set; } = string.Empty; //-- Check Address ID
+        public string? Note { get; set; } = null; //-- Check Address ID
+        public string CommuneName { get; set; } = null!;
+        public int Commune { get; set; } = 0; //-- Check Address ID Can Input 0 => Insert Component
+        public int DistrictId { get; set; } = 0; //-- Bắt Bộc trường hợp Commune chưa tồn tại => Insert Commune
 
         public bool IsValidEmail()
         {

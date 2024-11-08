@@ -1,8 +1,9 @@
 <div class="container">
   <select
-    name="province"
+    name="commune"
     [(ngModel)]="selectedCommuneId"
     (change)="onCommuneChange()"
+    *ngIf="!isShowInsertCommune"
   >
     <option
       *ngFor="let item of communes"
@@ -12,4 +13,27 @@
       {{ item.communeName }}
     </option>
   </select>
+  <input
+    type="text"
+    name="commune-ins"
+    id="commune-ins"
+    (change)="onCommuneChange()"
+    [(ngModel)]="communeNameInsert"
+    *ngIf="isShowInsertCommune"
+  />
+  <span
+    class="addCommune"
+    *ngIf="!isShowInsertCommune"
+    (click)="onChangeEditCommune()"
+  >
+    <i class="fa-solid fa-plus"></i>
+  </span>
+  <span
+    class="addCommune"
+    *ngIf="isShowInsertCommune"
+    (click)="onChangeEditCommune()"
+  >
+    <!-- trừ -->
+    <i class="fa-solid fa-minus"></i>
+  </span>
 </div>

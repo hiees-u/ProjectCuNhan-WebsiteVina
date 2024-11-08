@@ -223,4 +223,6 @@ select {
   height: 31px;
   border: 1px solid var(--secon-text-color);
   width: 100%;
+  height: fit-content;
+  padding: 5px 0;
 }
