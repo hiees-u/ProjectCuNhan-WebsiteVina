@@ -16,6 +16,48 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "API.Controllers.AddressController",
+    "Method": "Post",
+    "RelativePath": "api/Address",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "req",
+        "Type": "DTO.Address.AddressRequestModule",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.AddressController",
+    "Method": "GetId",
+    "RelativePath": "api/Address/Get Id",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "communeId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "houseNumber",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "note",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "API.Controllers.CartController",
     "Method": "Get",
     "RelativePath": "api/Cart",
@@ -107,6 +149,22 @@
     "IsController": true,
     "Order": 0,
     "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.CommuneController",
+    "Method": "Post",
+    "RelativePath": "api/Commune",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "req",
+        "Type": "DTO.Commune.CommuneRequestModule",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": []
   },
   {
@@ -335,6 +393,22 @@
     "IsController": true,
     "Order": 0,
     "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.UserInfoController",
+    "Method": "Put",
+    "RelativePath": "api/UserInfo",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "req",
+        "Type": "DTO.UserInfo.UserInfoRequestModel",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": []
   }
 ]

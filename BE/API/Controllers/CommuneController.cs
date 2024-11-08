@@ -1,4 +1,5 @@
 ﻿using BLL.Interface;
+using DTO.Commune;
 using DTO.Responses;
 using Microsoft.AspNetCore.Mvc;
 
@@ -31,6 +32,18 @@ namespace API.Controllers
         public IActionResult GetByDistrictId(int districtId)
         {
             BaseResponseModel model = this.commune.GetCommunesByDistrictIDAsync(districtId);
+
+            if (model.IsSuccess)
+            {
+                return Ok(model);
+            }
+            return BadRequest(model);
+        }
+
+        [HttpPost]
+        public IActionResult Post(CommuneRequestModule req)
+        {
+            BaseResponseModel model = this.commune.PostCommune(req);
 
             if (model.IsSuccess)
             {

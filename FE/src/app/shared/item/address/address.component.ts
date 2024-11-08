@@ -1,30 +1,34 @@
-import { Component, Input, SimpleChanges } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+  SimpleChanges,
+} from '@angular/core';
 import { ServicesService } from '../../services.service';
-import { Address, ConstructorAddress } from '../../module/address/address.module';
-import { BaseResponseModel } from '../../module/base-response/base-response.module';
+import {
+  Address,
+  ConstructorAddress,
+} from '../../module/address/address.module';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-address',
   standalone: true,
-  imports: [],
+  imports: [FormsModule],
   templateUrl: './address.component.html',
-  styleUrl: './address.component.css'
+  styleUrl: './address.component.css',
 })
 export class AddressComponent {
-  @Input() AddressId: number = 0;
-  address: Address = ConstructorAddress();
+  @Input() address: Address = ConstructorAddress();
+  @Output() addressChange = new EventEmitter<Address>();
 
   constructor(private service: ServicesService) {}
 
-  async ngOnChanges(changes: SimpleChanges) {
-    this.getAddressById(this.AddressId);
+  ngOnInit(): void {
   }
 
-  async getAddressById(idAddress: number) {
-    const response : BaseResponseModel = await this.service.GetAddressById(idAddress);
-    if(response.isSuccess) {
-      this.address = response.data;
-    }
+  onInputChange() {
+    this.addressChange.emit(this.address);
   }
-
 }

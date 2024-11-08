@@ -6,18 +6,38 @@ export interface UserInfoResponseModel {
   addressId: number;
   customerType?: string;
   phone?: string;
-  gender?: string;
-  commune?: number;      // Thêm thuộc tính commune
-  district?: number;     // Thêm thuộc tính district
-  province?: number; 
+  gender?: number;
+  Commune: number; // Thuộc tính communeId
+  district?: number; // Thuộc tính district
+  province?: number;
 }
 
 export interface UserInfoRequestModel {
   fullName?: string;
   email?: string;
   phone?: string;
-  addressId: number;
-  gender: number;
+  addressId: number | 0;
+  gender: number | 0;
+  houseNumber: string;
+  note: string;
+  communeName: string;
+  Commune: number | 0;
+  districtId: number | 0;
+}
+
+export function ConstructorUserInfoRequestModel() {
+  return {
+    fullName: '',
+    email: '',
+    phone: '',
+    addressId: 0,
+    gender: 0,
+    houseNumber: '',
+    note: '',
+    Commune: '',
+    communeId: 0,
+    districtId: 0,
+  };
 }
 
 export function ConstructerUserInfoResponseModel() {
@@ -26,12 +46,12 @@ export function ConstructerUserInfoResponseModel() {
     fullName: '',
     email: '',
     address: '',
+    addressId: 0,
     customerType: '',
-    gender: '',
     phone: '',
-    addressId: 1,
-    commune: 0,
-    district: 0,
-    province: 0
+    gender: 0,
+    Commune: 0, // Thuộc tính communeId
+    district: 0, // Thuộc tính district
+    province: 0,
   };
 }

@@ -413,7 +413,6 @@ C:\Users\ADMIN\Desktop\DoAnWebsiteCaffeeVINA_MAIN\BE\API\bin\Debug\net8.0\DTO.dl
 C:\Users\ADMIN\Desktop\DoAnWebsiteCaffeeVINA_MAIN\BE\API\bin\Debug\net8.0\BLL.pdb
 C:\Users\ADMIN\Desktop\DoAnWebsiteCaffeeVINA_MAIN\BE\API\bin\Debug\net8.0\DLL.pdb
 C:\Users\ADMIN\Desktop\DoAnWebsiteCaffeeVINA_MAIN\BE\API\bin\Debug\net8.0\DTO.pdb
-C:\Users\ADMIN\Desktop\DoAnWebsiteCaffeeVINA_MAIN\BE\API\obj\Debug\net8.0\API.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\ADMIN\Desktop\DoAnWebsiteCaffeeVINA_MAIN\BE\API\obj\Debug\net8.0\staticwebassets.build.json
 C:\Users\ADMIN\Desktop\DoAnWebsiteCaffeeVINA_MAIN\BE\API\obj\Debug\net8.0\staticwebassets.development.json
 C:\Users\ADMIN\Desktop\DoAnWebsiteCaffeeVINA_MAIN\BE\API\obj\Debug\net8.0\staticwebassets\msbuild.API.Microsoft.AspNetCore.StaticWebAssets.props
@@ -428,3 +427,4 @@ C:\Users\ADMIN\Desktop\DoAnWebsiteCaffeeVINA_MAIN\BE\API\obj\Debug\net8.0\refint
 C:\Users\ADMIN\Desktop\DoAnWebsiteCaffeeVINA_MAIN\BE\API\obj\Debug\net8.0\API.pdb
 C:\Users\ADMIN\Desktop\DoAnWebsiteCaffeeVINA_MAIN\BE\API\obj\Debug\net8.0\API.genruntimeconfig.cache
 C:\Users\ADMIN\Desktop\DoAnWebsiteCaffeeVINA_MAIN\BE\API\obj\Debug\net8.0\ref\API.dll
+C:\Users\ADMIN\Desktop\DoAnWebsiteCaffeeVINA_MAIN\BE\API\obj\Debug\net8.0\API.MvcApplicationPartsAssemblyInfo.cs

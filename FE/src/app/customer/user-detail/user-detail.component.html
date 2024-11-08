@@ -60,22 +60,24 @@
           <div class="box-input">
             <div class="box-edit-address">
               <app-address
-                [AddressId]="userInfo.addressId"
+                [address]="address"
+                (addressChange)="onAddressChange($event)"
               ></app-address>
-              <app-commune
-              [selectedCommuneId]="userInfo.commune!"
+              <app-commune 
+              [selectedCommuneId]="userInfo.communeId"
+              [selectedDistrictId]="userInfo.district!"
               (selectedCommuneIdChange)="onSelectedCommunesIdChange($event)"
-              [selectedDistrictId]="userInfo.district!"
-              ></app-commune>
+              (communeNameInsertChange)="onCommuneNameInsert($event)"
+              ></app-commune> 
               <app-district
-              [selectedDistrictId]="userInfo.district!"
-              (selectedDistrictIdChange)="onSelectedDistrictsIdChange($event)"
-              [selectedProvinceId]="userInfo.province!"
+                [selectedProvinceId]="userInfo.province!"
+                (selectedDistrictIdChange)="onSelectedDistrictsIdChange($event)"
+                [selectedDistrictId]="userInfo.district!"
               ></app-district>
               <app-province
                 [selectedProvinceId]="userInfo.province!"
                 (selectedProvinceIdChange)="onSelectedProvinceIdChange($event)"
-              ></app-province>
+              ></app-province> 
             </div>
           </div>
         </div>
