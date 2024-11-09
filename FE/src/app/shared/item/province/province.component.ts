@@ -22,14 +22,17 @@ export class ProvinceComponent {
   constructor(private service: ServicesService) {}
 
   ngOnChanges(changes: SimpleChanges): void {
-    //Called before any other lifecycle hook. Use it to inject dependencies, but avoid any serious work here.
-    //Add '${implements OnChanges}' to the class.
     if(changes['selectedProvinceId']) {
-      console.log('Tỉnh ID đã được truyền vào Component con = '+ this.selectedProvinceId);
+      // console.log('========================================');
+      // console.log('Tỉnh ID đã được truyền vào Province Component = '+ this.selectedProvinceId);
+      // console.log('thời gian: ' , new  Date().toLocaleString());
     }
   }
 
   async ngOnInit(): Promise<void> {
+    // console.log('========================================');    
+    // console.log('Khởi Tạo Province!!', new Date().toLocaleString());
+    
     const response : BaseResponseModel = await this.service.GetProvinces();
     if(response.isSuccess) {
       this.provinces = response.data;
@@ -37,6 +40,9 @@ export class ProvinceComponent {
   }
 
   onProvinceChange() {
+    // console.log('========================================');    
+    // console.log('Tỉnh ID đang seleceted đã được gửi đi từ Province Component = '+ this.selectedProvinceId);
+    //   console.log('thời gian: ' , new  Date().toLocaleString());
     this.selectedProvinceIdChange.emit(this.selectedProvinceId);
   }
 }

@@ -33,17 +33,17 @@ namespace BLL
                             if (reader.Read()) 
                             { 
                                 uf = new UserInfoResponseModel { 
-                                    AccountName = reader["Tên Đăng Nhập"]?.ToString() ?? string.Empty, 
-                                    FullName = reader["Họ Tên"].ToString(), 
-                                    Email = reader["Email"].ToString(), 
-                                    Phone = reader["Số Điện Thoại"].ToString(), 
-                                    Gender = Convert.ToInt32(reader["Giới Tính"]),
-                                    CustomerType = reader["Loại Khách Hàng"].ToString(),
-                                    Address = reader["Địa Chỉ"].ToString() ,
-                                    AddressId = Convert.ToInt32(reader["Địa Chỉ ID"]),
-                                    Commune = Convert.ToInt32(reader["Xã"]),
-                                    Province = Convert.ToInt32(reader["Tỉnh"]),
-                                    District = Convert.ToInt32(reader["Quận"]),
+                                    accountName = reader["Tên Đăng Nhập"]?.ToString() ?? string.Empty, 
+                                    fullName = reader["Họ Tên"].ToString(), 
+                                    email = reader["Email"].ToString(), 
+                                    phone = reader["Số Điện Thoại"].ToString(), 
+                                    gender = Convert.ToInt32(reader["Giới Tính"]),
+                                    customerType = reader["Loại Khách Hàng"].ToString(),
+                                    address = reader["Địa Chỉ"].ToString() ,
+                                    addressId = Convert.ToInt32(reader["Địa Chỉ ID"]),
+                                    commune = Convert.ToInt32(reader["Xã"]),
+                                    province = Convert.ToInt32(reader["Tỉnh"]),
+                                    district = Convert.ToInt32(reader["Quận"]),
                                 }; 
                             } 
                         }
@@ -70,22 +70,23 @@ namespace BLL
         {
 
             //--kiểm tra req.CommuneName, req.HouseNumber, req.Note đã tồn tại trong bảng Địa Chỉ chưa
-            req.AddressId = (int)((this._address.GetAddressID(new DTO.Address.AddressRequestModule()
+            req.addressId = (int)((this._address.GetAddressID(new DTO.Address.AddressRequestModule()
             {
                 //CommuneName = req.CommuneName,
-                HouseNumber = req.HouseNumber,
-                CommuneId = req.Commune,
-                Note = req.Note
+                HouseNumber = req.houseNumber,
+                CommuneId = req.commune,
+                Note = req.note
             })).Data!); //-- trả về  0 hoăc AddressId
 
             //--> chưa tồn tại địa chỉ --> insert mới
-            if (req.AddressId <= 0) {
-                req.AddressId = (int)(this._address.Post(new DTO.Address.AddressRequestModule()
+            if (req.addressId <= 0) {
+                req.addressId = (int)(this._address.Post(new DTO.Address.AddressRequestModule()
                 {
-                    CommuneName = req.CommuneName,
-                    HouseNumber = req.HouseNumber,
-                    Note = req.Note,
-                    DistrictId = req.DistrictId,
+                    CommuneName = req.communeName,
+                    CommuneId = req.commune,
+                    HouseNumber = req.houseNumber,
+                    Note = req.note,
+                    DistrictId = req.districtId,
                 })).Data!;
             }
 
@@ -100,11 +101,11 @@ namespace BLL
                         cmd.CommandType = System.Data.CommandType.StoredProcedure;
 
                         //- thêm các tham số đầu vào
-                        cmd.Parameters.AddWithValue("@FullName", req.FullName);
-                        cmd.Parameters.AddWithValue("@Phone", req.Phone);
-                        cmd.Parameters.AddWithValue("@Email", req.Email);
-                        cmd.Parameters.AddWithValue("@AddressID", req.AddressId);
-                        cmd.Parameters.AddWithValue("@Gender", req.Gender);
+                        cmd.Parameters.AddWithValue("@FullName", req.fullName);
+                        cmd.Parameters.AddWithValue("@Phone", req.phone);
+                        cmd.Parameters.AddWithValue("@Email", req.email);
+                        cmd.Parameters.AddWithValue("@AddressID", req.addressId);
+                        cmd.Parameters.AddWithValue("@Gender", req.gender);
 
                         connection.Open();
                         cmd.ExecuteNonQuery();

@@ -2,16 +2,16 @@
 {
     public class UserInfoResponseModel
     {
-        public string AccountName { get; set; } = null!;
-        public string? FullName { get; set; }
-        public string? Email { get; set; }
-        public string? Address { get; set; }
-        public int? AddressId { get; set; }
-        public int? Commune { get; set; }
-        public int? District { get; set; }
-        public int? Province { get; set; }
-        public string? CustomerType { get; set; }
-        public string? Phone { get; set; }
-        public int? Gender { get; set; }
+        public string accountName { get; set; } = null!;
+        public string? fullName { get; set; }
+        public string? email { get; set; }
+        public string? address { get; set; }
+        public int? addressId { get; set; }
+        public string? customerType { get; set; }
+        public string? phone { get; set; }
+        public int? gender { get; set; }
+        public int? commune { get; set; }
+        public int? district { get; set; }
+        public int? province { get; set; }
     }
 }

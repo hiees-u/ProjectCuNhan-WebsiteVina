@@ -33,7 +33,7 @@ import {
   selector: 'app-view-products',
   standalone: true,
   imports: [
-    OrderProductsComponent,
+    // OrderProductsComponent,
     CommonModule,
     NgIf,
     NgFor,

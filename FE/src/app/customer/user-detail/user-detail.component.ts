@@ -21,6 +21,11 @@ import {
   ConstructorCommune,
 } from '../../shared/module/commune/commune.module';
 import { UserInfoRequestModel } from '../../shared/module/user-info/user-info.module';
+import { NotificationComponent } from '../../shared/item/notification/notification.component';
+import {
+  ConstructerNotification,
+  Notification,
+} from '../../shared/module/notification/notification.module';
 
 @Component({
   selector: 'app-user-detail',
@@ -32,27 +37,30 @@ import { UserInfoRequestModel } from '../../shared/module/user-info/user-info.mo
     DistrictComponent,
     CommuneComponent,
     AddressComponent,
+    NotificationComponent,
   ],
   templateUrl: './user-detail.component.html',
   styleUrl: './user-detail.component.css',
 })
 export class UserDetailComponent {
   addressString: string = '';
+  isShowCommune: Boolean = false;
   isActive: number = 1;
   address: Address = ConstructorAddress();
   userInfo: UserInfoResponseModel = ConstructerUserInfoResponseModel();
   communenInsert: CommuneResponseModel = ConstructorCommune(); //-- lưu thông tin Commune(xã) được thêm mới
+
+  //--
+  trigger: any;
+  dataNotification: Notification = ConstructerNotification();
 
   constructor(
     private service: CustomerService,
     private servicee: ServicesService
   ) {}
 
-  async ngOnInit() {
-    await this.getUserInfo();
-    if (this.userInfo.addressId) {
-      this.getAddressById(this.userInfo.addressId);
-    }
+  ngOnInit() {
+    this.getUserInfo();
     console.log(this.userInfo);
   }
 
@@ -61,12 +69,9 @@ export class UserDetailComponent {
       idAddress
     );
     if (response.isSuccess) {
+      console.log('UserInfo có data: ', new Date().toLocaleString);
       this.address = response.data;
     }
-  }
-
-  changeActive(number: number) {
-    this.isActive = number;
   }
 
   // Fetch PUT UserInfo
@@ -75,54 +80,89 @@ export class UserDetailComponent {
     console.log(this.address);
     console.log(this.communenInsert);
 
-    console.log('Commune ID: ' + this.userInfo.Commune);
-
     // chuẩn bị:
     const request: UserInfoRequestModel = {
       fullName: this.userInfo.fullName,
       addressId: this.address.addressId,
-      Commune: this.userInfo.Commune,
+      commune:
+        this.communenInsert.communeId != -1
+          ? this.communenInsert.communeId
+          : this.userInfo.commune,
       communeName: this.communenInsert.communeName,
-      districtId: this.communenInsert.districtId,
+      districtId: this.userInfo.district!,
       email: this.userInfo.email,
-      gender: typeof this.userInfo.gender === 'string' ? parseInt(this.userInfo.gender, 10) : 0,
+      gender:
+        typeof this.userInfo.gender === 'string'
+          ? parseInt(this.userInfo.gender, 10)
+          : 0,
       houseNumber: this.address.houseNumber,
       note: this.address.note,
       phone: this.userInfo.phone,
     };
 
     console.log(request);
+    console.log('Commune Id đang được selected: ', this.userInfo.commune);
 
     // chạy:
     const response: BaseResponseModel = await this.service.putUserInfo(request);
+    this.dataNotification.messages = response.message!;
+    if (response.isSuccess) {
+      this.dataNotification.status = 'success';
+    } else {
+      this.dataNotification.status = 'warning';
+    }
+    this.trigger = Date.now();
+    console.log(response);
+    
   }
 
-  onAddressChange(updatedAddress: Address) {
-    this.address = updatedAddress;
+  getCommutNameChangeChildComponent(commune: CommuneResponseModel) {
+    this.communenInsert = commune;
+    console.log(commune);
+    console.log(this.communenInsert);
   }
 
-  async onSelectedProvinceIdChange(selectedProvinceId: number | null) {
-    this.userInfo.province = selectedProvinceId!;
+  //nhận 1 addres
+  getAddressChangeChildComponent(address: Address) {
+    this.address = address;
+    console.log(address);
   }
 
-  async onSelectedDistrictsIdChange(selectedDistrictId: number | null) {
-    this.userInfo.district = selectedDistrictId!;
-    this.communenInsert.districtId = selectedDistrictId!;
+  //nhận huyện id đang được selected từ component con
+  getDistrictIDChangeChildComponent(districtId: number) {
+    this.userInfo.district = districtId;
+    // console.log('========================================');
+    // console.log(
+    //   'Nhận Được Huyện: ' + this.userInfo.district + ' từ Component Con => ',
+    //   new Date().toLocaleString()
+    // );
   }
 
-  onSelectedCommunesIdChange(selectedCommunesId: number | null) {
-    this.userInfo.Commune = selectedCommunesId!;
+  //nhận tỉnh id đang được selected từ component con
+  getProvinceIDChangeChildComponent(provinceId: number) {
+    this.userInfo.province = provinceId;
+    // console.log('========================================');
+    // console.log(
+    //   'Nhận Được Tỉnh: ' + this.userInfo.province + ' từ Component Con => ',
+    //   new Date().toLocaleString()
+    // );
   }
 
-  async onCommuneNameInsert(communeName: string) {
-    this.communenInsert.communeName = communeName;
-  }
-
+  //-- Gọi API lấy dữ liệu UserInfo
   async getUserInfo() {
     const response: BaseResponseModel = await this.service.getUserInfo();
     if (response.isSuccess) {
       this.userInfo = response.data;
-      console.log(response.data);      
+      this.isShowCommune = true;
+      if (this.userInfo.addressId) {
+        console.log('get address');
+
+        this.getAddressById(this.userInfo.addressId);
+      }
     }
+  }
+
+  changeActive(number: number) {
+    this.isActive = number;
   }
 }

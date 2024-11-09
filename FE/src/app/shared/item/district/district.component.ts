@@ -44,12 +44,17 @@ export class DistrictComponent {
         }
       }
     }
+    if (changes['selectedDistrictId']) {
+      // console.log('========================================');
+      // console.log(
+      //   'Huyện ID đã được nhận Component cha = ' + this.selectedDistrictId
+      // );
+      // console.log('thời gian: ', new Date().toLocaleString());
+    }
   }
 
   async ngOnInit(): Promise<void> {
-    console.log(
-      this.selectedDistrictId + ' select District ID được truyền vào'
-    );
+    // console.log('thời gian: ', new Date().toLocaleString());
 
     const response: BaseResponseModel = await this.service.GetDistricts();
     if (response.isSuccess) {
@@ -59,5 +64,10 @@ export class DistrictComponent {
 
   async onDistrictChange() {
     await this.selectedDistrictIdChange.emit(this.selectedDistrictId);
+    // console.log('========================================');
+    // console.log(
+    //   'Huyện ID đã được trả Component cha = ' + this.selectedDistrictId
+    // );
+    // console.log('thời gian: ', new Date().toLocaleString());
   }
 }

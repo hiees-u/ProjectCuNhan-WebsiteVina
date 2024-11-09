@@ -32,12 +32,6 @@ C:\Users\ADMIN\Desktop\BE\BLL\bin\Debug\net8.0\DLL.pdb
 C:\Users\ADMIN\Desktop\BE\BLL\bin\Debug\net8.0\DTO.pdb
 C:\Users\ADMIN\Desktop\BE\BLL\obj\Debug\net8.0\BLL.csproj.Up2Date
 C:\Users\ADMIN\Desktop\BE\BLL\obj\Debug\net8.0\ref\BLL.dll
-C:\Users\ADMIN\Desktop\DoAnWebsiteCaffeeVINA_MAIN\BE\BLL\obj\Debug\net8.0\BLL.csproj.AssemblyReference.cache
-C:\Users\ADMIN\Desktop\DoAnWebsiteCaffeeVINA_MAIN\BE\BLL\obj\Debug\net8.0\BLL.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\ADMIN\Desktop\DoAnWebsiteCaffeeVINA_MAIN\BE\BLL\obj\Debug\net8.0\BLL.AssemblyInfoInputs.cache
-C:\Users\ADMIN\Desktop\DoAnWebsiteCaffeeVINA_MAIN\BE\BLL\obj\Debug\net8.0\BLL.AssemblyInfo.cs
-C:\Users\ADMIN\Desktop\DoAnWebsiteCaffeeVINA_MAIN\BE\BLL\obj\Debug\net8.0\BLL.csproj.CoreCompileInputs.cache
-C:\Users\ADMIN\Desktop\DoAnWebsiteCaffeeVINA_MAIN\BE\BLL\obj\Debug\net8.0\BLL.sourcelink.json
 C:\Users\ADMIN\Desktop\DoAnWebsiteCaffeeVINA_MAIN\BE\BLL\bin\Debug\net8.0\BLL.deps.json
 C:\Users\ADMIN\Desktop\DoAnWebsiteCaffeeVINA_MAIN\BE\BLL\bin\Debug\net8.0\BLL.dll
 C:\Users\ADMIN\Desktop\DoAnWebsiteCaffeeVINA_MAIN\BE\BLL\bin\Debug\net8.0\BLL.pdb
@@ -45,6 +39,12 @@ C:\Users\ADMIN\Desktop\DoAnWebsiteCaffeeVINA_MAIN\BE\BLL\bin\Debug\net8.0\DLL.dl
 C:\Users\ADMIN\Desktop\DoAnWebsiteCaffeeVINA_MAIN\BE\BLL\bin\Debug\net8.0\DTO.dll
 C:\Users\ADMIN\Desktop\DoAnWebsiteCaffeeVINA_MAIN\BE\BLL\bin\Debug\net8.0\DLL.pdb
 C:\Users\ADMIN\Desktop\DoAnWebsiteCaffeeVINA_MAIN\BE\BLL\bin\Debug\net8.0\DTO.pdb
+C:\Users\ADMIN\Desktop\DoAnWebsiteCaffeeVINA_MAIN\BE\BLL\obj\Debug\net8.0\BLL.csproj.AssemblyReference.cache
+C:\Users\ADMIN\Desktop\DoAnWebsiteCaffeeVINA_MAIN\BE\BLL\obj\Debug\net8.0\BLL.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ADMIN\Desktop\DoAnWebsiteCaffeeVINA_MAIN\BE\BLL\obj\Debug\net8.0\BLL.AssemblyInfoInputs.cache
+C:\Users\ADMIN\Desktop\DoAnWebsiteCaffeeVINA_MAIN\BE\BLL\obj\Debug\net8.0\BLL.AssemblyInfo.cs
+C:\Users\ADMIN\Desktop\DoAnWebsiteCaffeeVINA_MAIN\BE\BLL\obj\Debug\net8.0\BLL.csproj.CoreCompileInputs.cache
+C:\Users\ADMIN\Desktop\DoAnWebsiteCaffeeVINA_MAIN\BE\BLL\obj\Debug\net8.0\BLL.sourcelink.json
 C:\Users\ADMIN\Desktop\DoAnWebsiteCaffeeVINA_MAIN\BE\BLL\obj\Debug\net8.0\BLL.csproj.Up2Date
 C:\Users\ADMIN\Desktop\DoAnWebsiteCaffeeVINA_MAIN\BE\BLL\obj\Debug\net8.0\BLL.dll
 C:\Users\ADMIN\Desktop\DoAnWebsiteCaffeeVINA_MAIN\BE\BLL\obj\Debug\net8.0\refint\BLL.dll
