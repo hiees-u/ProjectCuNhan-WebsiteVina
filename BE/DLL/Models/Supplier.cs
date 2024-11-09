@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
@@ -22,7 +23,7 @@ public partial class Supplier
     [Column("AddressID")]
     public int AddressId { get; set; }
 
-    public string DeleteBy { get; set; }
+    public int? DeleteBy { get; set; }
 
     [Column(TypeName = "datetime")]
     public DateTime? DeleteTime { get; set; }

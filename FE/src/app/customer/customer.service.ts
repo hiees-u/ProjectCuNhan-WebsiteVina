@@ -1,12 +1,20 @@
 import { Injectable } from '@angular/core';
 import { BaseResponseModel } from '../shared/module/base-response/base-response.module';
-import { CartResponse } from '../shared/module/cart/cart.module';
+import { CartItem, CartResponse } from '../shared/module/cart/cart.module';
 import { UserInfoRequestModel } from '../shared/module/user-info/user-info.module';
+import { BehaviorSubject, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CustomerService {
+  private data = new BehaviorSubject<CartItem[]>([]); //test
+  currentData = this.data.asObservable();
+
+  sendData(data: CartItem[]) {
+    this.data.next(data);
+  }
+
   private token: string = '';
   private apiUrl = 'https://localhost:7060/api/';
   constructor() {

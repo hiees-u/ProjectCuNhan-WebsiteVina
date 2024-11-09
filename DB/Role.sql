@@ -602,7 +602,44 @@ END;
 GRANT EXECUTE ON OBJECT::dbo.SP_UpdateCart TO  Customer;
 
 EXEC SP_UpdateCart @ProductID = 4, @Quantity = 1
+go
 --#########################################################################Create Order Customer#####################################################################################
+CREATE PROCEDURE SP_InsertOrder
+    @Phone NVARCHAR(11),
+    @Address_ID INT,
+    @Name_Recipient NVARCHAR(50)
+AS
+BEGIN
+    DECLARE @IdCustomer INT;
+    DECLARE @AccountName NVARCHAR(50);
+
+    -- Lấy tên tài khoản hiện tại
+    SET @AccountName = SUSER_NAME();
+
+    -- Lấy customer_Id từ bảng Customer
+    SELECT @IdCustomer = c.customerId
+    FROM UserInfo uf
+    JOIN Customer c ON c.customerId = uf.customer_Id
+    WHERE uf.AccountName = @AccountName;
+
+    -- Kiểm tra xem IdCustomer có giá trị hay không
+    IF @IdCustomer IS NOT NULL
+    BEGIN
+        -- Chèn dữ liệu vào bảng Order
+        INSERT INTO [Order] (Phone, Adress_ID, Name_Recipient, CreateBy)
+        VALUES (@Phone, @Address_ID, @Name_Recipient, @IdCustomer);
+    END
+    ELSE
+    BEGIN
+        PRINT 'User does not have a corresponding customer record.';
+    END
+END;
+
+--phân quyền
+GRANT EXECUTE ON OBJECT::dbo.SP_InsertOrder TO  Customer;
+--RUN EXAMPLE
+EXEC SP_InsertOrder @Phone = '0393370172', @Address_ID = 1, @Name_Recipient = N'mhieu';
+
 --#########################################################################Update User Info#####################################################################################
 CREATE PROCEDURE SP_UpdateUserInfo
     @FullName NVARCHAR(100),
@@ -688,7 +725,6 @@ GRANT EXECUTE ON OBJECT::dbo.SP_GetProvinces TO  Customer;
 EXEC SP_GetProvinces;
 go
 --#########################################################################GET User Communers#####################################################################################
-
 CREATE PROCEDURE SP_GetCommunes
 AS
 BEGIN
@@ -719,7 +755,6 @@ GRANT EXECUTE ON OBJECT::dbo.SP_GetCommunesByDistrictID TO  Customer;
 EXEC SP_GetCommunesByDistrictID @DistrictID = 8
 go
 --#########################################################################GET User District#####################################################################################
-go
 CREATE PROCEDURE SP_GetDistrict
 AS
 BEGIN
@@ -849,4 +884,3 @@ GRANT EXEC ON OBJECT::dbo.GetAddressID TO  WarehouseEmployee;
 --RUN
 EXEC GetAddressID @CommuneID = 15,  @HouseNumber = N'String', @Note = N'string'
 
-select * from Address
