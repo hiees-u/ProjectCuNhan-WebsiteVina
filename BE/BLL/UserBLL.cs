@@ -3,24 +3,12 @@ using BLL.LoginBLL;
 using DLL.Models;
 using DTO.Responses;
 using DTO.User;
-using Microsoft.EntityFrameworkCore;
 using System.Data.SqlClient;
 
 namespace BLL
 {
     public class UserBLL : IUser
     {
-        private readonly string[] Roles = new[] { "Customer", "Development", "Moderator", "Order Approver", "Warehouse Employee" };
-        
-        private readonly IAuthService _authService;
-
-        private int role = -1;
-
-        public UserBLL(IAuthService authService)
-        {
-            _authService = authService;
-        }
-
         public BaseResponseModel Login(LoginRequestModule module)
         {
             if (!module.Validate()) {
@@ -32,7 +20,7 @@ namespace BLL
             }
 
             using (var conn = new DbVINA(ConnectionStringHelper.Set(module)))
-            {              
+            {
                 var user = conn.Users.FirstOrDefault(u => u.AccountName == module.AccountName);
 
                 if (user == null) {
@@ -43,33 +31,10 @@ namespace BLL
                     };
                 }
 
-                var command = conn.Database.GetDbConnection().CreateCommand();
-                command.CommandText = "GetRoleNameByCurrentUser";
-                command.CommandType = System.Data.CommandType.StoredProcedure;
-
-                conn.Database.OpenConnection();
-
-                string roleName = "";
-
-                using (var reader = command.ExecuteReader())
-                {
-                    if (reader.Read())
-                    {
-                        roleName = reader.GetString(0);
-                    }
-                }
-
-                var token = _authService.GenerateJwtToken(new DTO.AuthModel
-                {
-                    userName = module.AccountName,
-                    Roles = roleName
-                });
-
                 return new BaseResponseModel()
                 {
                     IsSuccess = true,
-                    Message = $"Đăng Nhập Thành Công! Vai trò: {roleName}",
-                    Data = token
+                    Message = "Đăng Nhập Thành Công!"
                 };
             }
         }
@@ -172,24 +137,7 @@ namespace BLL
             };
         }
 
-        //Get role (int) User
-        public BaseResponseModel GetRole(string token)
-        {
-            var roleName = _authService.DecodeToken(token);
+        //Get role User
 
-            for (int i = 0; i < Roles.Length; i++)
-            {
-                if(roleName.Role.Equals(Roles[i], StringComparison.OrdinalIgnoreCase))
-                {
-                    role = i;
-                    break;
-                }
-            }
-            return new BaseResponseModel
-            {
-                IsSuccess = true,
-                Data = role,
-            };
-        }
     }
 }

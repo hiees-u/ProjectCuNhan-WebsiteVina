@@ -2,8 +2,6 @@
 using Microsoft.AspNetCore.Mvc;
 using DTO.Responses;
 using BLL.Interface;
-using Microsoft.AspNetCore.Authorization;
-using BLL;
 
 namespace API.Controllers
 {
@@ -50,7 +48,6 @@ namespace API.Controllers
             }
         }
 
-        [Authorize]
         [HttpPost("ChangePassword")]
         public IActionResult ChangePassword([FromBody] LoginChangePassRequestModule module)
         {
@@ -62,37 +59,10 @@ namespace API.Controllers
             return BadRequest(res);
         }
 
-        [Authorize(Roles = "Customer")]
         [HttpPost("LogOut")]
         public IActionResult LogOut()
         {
             return Ok(userBll.LogOut());
         }
-
-        [Authorize]
-        [HttpGet("GetRole")]
-        public IActionResult GetRole()
-        {
-            if (!Request.Headers.ContainsKey("Authorization"))
-            {
-                return BadRequest("Authorization header is missing.");
-            }
-
-            var authorizationHeader = Request.Headers["Authorization"].ToString();
-            if (string.IsNullOrWhiteSpace(authorizationHeader))
-            {
-                return BadRequest("Authorization header is empty.");
-            }
-
-            var token = authorizationHeader.Replace("Bearer ", "");
-            if (string.IsNullOrWhiteSpace(token))
-            {
-                return BadRequest("Token is empty.");
-            }
-
-            return Ok(userBll.GetRole(token));
-        }
-
-
     }
 }
