@@ -10,6 +10,7 @@ body {
   --main-style: cursive;
   --main-width: 1080px;
   --secon-text-color: #767676;
+  --secon-text-color2: #504f4f;
   --main-text-color: #383435;
 }
 
@@ -202,4 +203,8 @@ a {
 .br {
   width: 100%;
   border-bottom: 1px solid #858484;
+}
+
+.text-center {
+  text-align: center;
 }

@@ -210,6 +210,22 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "API.Controllers.OrderController",
+    "Method": "Order",
+    "RelativePath": "api/Order",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "DTO.Order.OrderRequestModule",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "API.Controllers.ProductController",
     "Method": "Get",
     "RelativePath": "api/Product",

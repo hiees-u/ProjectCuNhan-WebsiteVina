@@ -23,6 +23,7 @@ builder.Services.AddScoped<ICommune, CommuneBLL>();
 builder.Services.AddScoped<IDistrict, DistrictBLL>();
 builder.Services.AddScoped<ICell, CellsBLL>();
 builder.Services.AddScoped<IAddress, AddressBLL>();
+builder.Services.AddScoped<IOrder, OrderBLL>();
 
 
 builder.Services.AddControllers();

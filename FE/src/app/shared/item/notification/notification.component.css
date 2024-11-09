@@ -1,16 +1,16 @@
 .container {
   padding: 10px 20px;
-  border-radius: 10px;
+  border-radius: 10px 0 0 10px;
   color: #fff;
   display: block;
 }
 
 .error {
-  background-color: rgb(245, 34, 34);
+  background-color: rgb(244, 87, 87);
 }
 
 .success {
-  background-color: #0084ff;
+  background-color: #53a7f5;
 }
 
 .hidden {

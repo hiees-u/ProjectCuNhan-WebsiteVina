@@ -9,6 +9,7 @@ import {
   ConstructerNotification,
   Notification,
 } from '../../shared/module/notification/notification.module';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cart-detail',
@@ -29,7 +30,7 @@ export class CartDetailComponent {
   dataNotification: Notification = ConstructerNotification();
 
   cartItems: CartItem[] = [];
-  constructor(private Customer: CustomerService) {}
+  constructor(private Customer: CustomerService, private router: Router) {}
 
   ngOnInit(): void {
     this.getCart();     
@@ -121,13 +122,22 @@ export class CartDetailComponent {
   }
 
   onOrder() {
+    let orderItems: CartItem[] = [];    
+
     this.cartItems.forEach(item => {
       if(item.checked) {
-        console.log(item);
-        
+        item.totalPrice = item.price * item.quantity;
+        orderItems.push(item);
         console.log(item.productId + 'is' + (item.checked ? 'checked' : 'uncheck'));   
       }
     });
+    console.log(orderItems);
+
+    //test
+    this.Customer.sendData(orderItems);
+
+    // chuyển sang trang đặt hàng
+    this.router.navigate(['/customer/order-product']);
   }
 
 }
