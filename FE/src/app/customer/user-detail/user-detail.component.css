@@ -217,7 +217,7 @@ select {
   color: var(--main-text-color);
   font-size: 0.6em;
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   flex-direction: row;
   align-items: center;
   height: 31px;
@@ -225,4 +225,11 @@ select {
   width: 100%;
   height: fit-content;
   padding: 5px 0;
+}
+
+.notification {
+  position: fixed;
+  top: 130px;
+  right: 0;
+  z-index: 9999;
 }

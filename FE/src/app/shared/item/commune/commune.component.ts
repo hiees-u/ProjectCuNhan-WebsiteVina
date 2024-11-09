@@ -6,7 +6,10 @@ import {
   Output,
   SimpleChanges,
 } from '@angular/core';
-import { CommuneResponseModel } from '../../module/commune/commune.module';
+import {
+  CommuneResponseModel,
+  ConstructorCommune,
+} from '../../module/commune/commune.module';
 import { ServicesService } from '../../services.service';
 import { BaseResponseModel } from '../../module/base-response/base-response.module';
 import { CommonModule } from '@angular/common';
@@ -19,83 +22,68 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './commune.component.html',
   styleUrl: './commune.component.css',
 })
-export class CommuneComponent implements OnChanges {
-  communes: CommuneResponseModel[] = [];
-  @Input() selectedDistrictId: number = 0; //huyen
-  @Input() selectedCommuneId: number | undefined;
-  @Output() selectedCommuneIdChange = new EventEmitter<number>();
-  @Output() communeNameInsertChange = new EventEmitter<string>();
-  communeNameInsert: string = '';
-  isShowInsertCommune: boolean = false;
+export class CommuneComponent {
+  @Input() selectedCommuneId: number = 0;
+  @Input() selectedDistrictId: number = 0;
+  @Input() communeInput: CommuneResponseModel = ConstructorCommune();
+  @Output() communeOutput = new EventEmitter<CommuneResponseModel>();
+  //--
+  isShowInput: boolean = false;
+
+  commune: CommuneResponseModel[] = [];
 
   constructor(private service: ServicesService) {}
 
-  async ngOnChanges(changes: SimpleChanges) {
+  ngOnInit(): void {
+    this.getComunesByDistrict(this.selectedDistrictId);
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['selectedCommuneId']) {
+      console.log('Dữ liệu Xã Id được thay đổi: ', this.selectedCommuneId);
+    }
+
     if (changes['selectedDistrictId']) {
-      console.log(
-        this.selectedCommuneId +
-          ' selectedCommuneId được truyền vào ở component con'
-      );
-
-      this.getCommunes();
-      if (this.selectedDistrictId !== 0) {
-        const response: BaseResponseModel =
-          await this.service.GetComunesByDistrictId(this.selectedDistrictId);
-        if (response.isSuccess) {
-          if (this.communes.length > 0) {
-            this.isShowInsertCommune = false;
-          } else {
-            this.isShowInsertCommune = true;
-          }
-          this.onCommuneChange();
-          this.communes = response.data;
-        }
-      }
+      console.log('Dữ liệu Huyện Id được thay đổi: ', this.selectedDistrictId);
+      this.getComunesByDistrict(this.selectedDistrictId);
     }
   }
 
-  async getCommunes() {
-    const response: BaseResponseModel =
-      await this.service.GetComunesByDistrictId(this.selectedDistrictId);
-    if (response.isSuccess) {
-      this.communes = response.data;
-    }
-  }
-
-  async ngOnInit(): Promise<void> {
-    const response: BaseResponseModel = await this.service.GetCommunes();
-    if (response.isSuccess) {
-      this.communes = response.data;
-      if (this.communes.length > 0) {
-        this.isShowInsertCommune = false;
-      }
-    }
-  }
-
+  //khi select commune or input commune is send data to parent
   onCommuneChange() {
-    if (this.isShowInsertCommune) {
-      //--trường hợp nhập xã
-      this.communeNameInsertChange.emit(this.communeNameInsert);
-      this.selectedCommuneIdChange.emit(0);
-      console.log('Trả về tên xã mới', this.communeNameInsert);
+    if (this.isShowInput) {
+      console.log('hiện input thêm xã');
+      this.communeInput.communeId = 0;
     } else {
-      //--trường hợp chọn xã
-      // this.communeNameInsertChange.emit('');
-      this.selectedCommuneIdChange.emit(this.selectedCommuneId);
-      this.communeNameInsertChange.emit(
-        this.communes.find((c) => c.communeId == this.selectedCommuneId)
-          ?.communeName
-      );
-    }
-
+      let communeId = this.selectedCommuneId;
+      if (typeof communeId === 'string') {
+        communeId = parseInt(communeId, 10);
+      }
+      // this.communeInput.communeId = communeId;
+      this.communeInput = this.commune.find(
+        (com) => com.communeId === communeId
+      )!;
+      console.log(this.communeInput);
+    }    
+    // this.communeInput.communeName = '';
+    this.communeOutput.emit(this.communeInput);
   }
 
-  onChangeEditCommune() {
-    this.isShowInsertCommune = !this.isShowInsertCommune;
-    console.log('nhập xã mới');
-    if (!this.isShowInsertCommune) {
-      this.getCommunes();
-      this.onCommuneChange();
+  //-- ẩn hiện input nhập xã mới
+  isCommuneChange() {
+    this.isShowInput = !this.isShowInput;
+    this.communeInput.communeName = '';
+    if(!this.isShowInput) {
+      this.communeInput.communeId = this.selectedCommuneId;
+    }
+  }
+
+  //-- get Commune by District Id
+  async getComunesByDistrict(districtId: number) {
+    const response: BaseResponseModel =
+      await this.service.GetComunesByDistrictId(districtId);
+    if (response.isSuccess) {
+      this.commune = response.data;
     }
   }
 }

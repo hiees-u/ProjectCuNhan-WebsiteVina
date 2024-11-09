@@ -1,3 +1,6 @@
+<div class="notification">
+  <app-notification [data]="dataNotification" [trigger]="trigger"></app-notification>
+</div>
 <div class="container">
   <div class="content-f">
     <div class="User-header">
@@ -61,22 +64,21 @@
             <div class="box-edit-address">
               <app-address
                 [address]="address"
-                (addressChange)="onAddressChange($event)"
+                (addressChange)="getAddressChangeChildComponent($event)"
               ></app-address>
-              <app-commune 
-              [selectedCommuneId]="userInfo.communeId"
+              <app-commune
+              [selectedCommuneId]="userInfo.commune"
               [selectedDistrictId]="userInfo.district!"
-              (selectedCommuneIdChange)="onSelectedCommunesIdChange($event)"
-              (communeNameInsertChange)="onCommuneNameInsert($event)"
-              ></app-commune> 
+              (communeOutput)="getCommutNameChangeChildComponent($event)"
+              ></app-commune>  
               <app-district
                 [selectedProvinceId]="userInfo.province!"
-                (selectedDistrictIdChange)="onSelectedDistrictsIdChange($event)"
+                (selectedDistrictIdChange)="getDistrictIDChangeChildComponent($event)"
                 [selectedDistrictId]="userInfo.district!"
               ></app-district>
               <app-province
                 [selectedProvinceId]="userInfo.province!"
-                (selectedProvinceIdChange)="onSelectedProvinceIdChange($event)"
+                (selectedProvinceIdChange)="getProvinceIDChangeChildComponent($event)"
               ></app-province> 
             </div>
           </div>

@@ -7,7 +7,7 @@ import { RouterOutlet } from '@angular/router';
 @Component({
   selector: 'app-customer-dashboard',
   standalone: true,
-  imports: [ViewProductsComponent, CommonModule, RouterOutlet],
+  imports: [CommonModule, RouterOutlet],
   templateUrl: './customer-dashboard.component.html',
   styleUrl: './customer-dashboard.component.css',
 })

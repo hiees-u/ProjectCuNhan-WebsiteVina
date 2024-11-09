@@ -2,11 +2,12 @@
   <select
     name="commune"
     [(ngModel)]="selectedCommuneId"
+    *ngIf="!isShowInput"
     (change)="onCommuneChange()"
-    *ngIf="!isShowInsertCommune"
   >
+    <!-- *ngIf="" -->
     <option
-      *ngFor="let item of communes"
+      *ngFor="let item of commune"
       [value]="item.communeId"
       id="{{ item.communeId }}"
     >
@@ -17,23 +18,14 @@
     type="text"
     name="commune-ins"
     id="commune-ins"
+    *ngIf="isShowInput"
     (change)="onCommuneChange()"
-    [(ngModel)]="communeNameInsert"
-    *ngIf="isShowInsertCommune"
+    [(ngModel)]="communeInput.communeName"
   />
-  <span
-    class="addCommune"
-    *ngIf="!isShowInsertCommune"
-    (click)="onChangeEditCommune()"
-  >
+  <span class="addCommune" (click)="isCommuneChange()" *ngIf="!isShowInput">
     <i class="fa-solid fa-plus"></i>
   </span>
-  <span
-    class="addCommune"
-    *ngIf="isShowInsertCommune"
-    (click)="onChangeEditCommune()"
-  >
-    <!-- trừ -->
+  <span class="addCommune" (click)="isCommuneChange()" *ngIf="isShowInput">
     <i class="fa-solid fa-minus"></i>
   </span>
 </div>

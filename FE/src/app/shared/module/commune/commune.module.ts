@@ -11,7 +11,7 @@ export interface CommuneResponseModel {
 // export class CommuneModule {}
 export function ConstructorCommune() {
   return {
-    communeId: 0,
+    communeId: -1,
     communeName: '',
     districtId: 0
   }

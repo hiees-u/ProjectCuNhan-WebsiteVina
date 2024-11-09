@@ -28,10 +28,8 @@ export class NotificationComponent implements OnChanges {
       } else if(this.data.status === 'success') {
         this.lable = 'Thành công';
       }
-
-      console.log(this.data.status);
-      
     }
+    console.log(this.data.status);
   }
 
   showNotification() {
